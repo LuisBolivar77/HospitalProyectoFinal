@@ -5,31 +5,39 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TIPO_PERSONAL")
-public class TipoPersonal implements Serializable{
-	
+@Table(name="CIRUGIA")
+public class Cirugia implements Serializable{
+
 	@Id
-	@Column(name="ID", nullable=false)
+	@Column(name="ID")
 	private String id;
 	
-	@Column(name="DESCRIPCION")
+	@Column(name="DECRIPCION", nullable=false, length=200)
 	private String descripcion;
 	
-	public TipoPersonal() {
+	@ManyToOne
+	@JoinColumn(name="TIPO_CIRUGIA")
+	private TipoCirugia tipoCirugia;
+	
+	public Cirugia() {
 		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * @param id
 	 * @param descripcion
+	 * @param tipoCirugia
 	 */
-	public TipoPersonal(String id, String descripcion) {
+	public Cirugia(String id, String descripcion, TipoCirugia tipoCirugia) {
 		super();
 		this.id = id;
 		this.descripcion = descripcion;
+		this.tipoCirugia = tipoCirugia;
 	}
 
 	/**
@@ -59,7 +67,20 @@ public class TipoPersonal implements Serializable{
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-	
 
+	/**
+	 * @return the tipoCirugia
+	 */
+	public TipoCirugia getTipoCirugia() {
+		return tipoCirugia;
+	}
+
+	/**
+	 * @param tipoCirugia the tipoCirugia to set
+	 */
+	public void setTipoCirugia(TipoCirugia tipoCirugia) {
+		this.tipoCirugia = tipoCirugia;
+	}
+	
+	
 }
