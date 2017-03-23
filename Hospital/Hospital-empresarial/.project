@@ -3,6 +3,7 @@
 	<name>Hospital-empresarial</name>
 	<comment></comment>
 	<projects>
+		<project>Hospital-persistencia</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
