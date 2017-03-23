@@ -10,34 +10,34 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_CIRUGIA")
-public class Cirugia implements Serializable{
-
+@Table(name="T_EPS")
+public class Eps implements Serializable{
+	
 	@Id
-	@Column(name="ID")
+	@Column(name="ID", nullable=false)
 	private String id;
 	
-	@Column(name="DECRIPCION", nullable=false, length=200)
+	@Column(name="DESCRIPCION", nullable=false, length=200)
 	private String descripcion;
 	
 	@ManyToOne
-	@JoinColumn(name="TIPO_CIRUGIA")
-	private TipoCirugia tipoCirugia;
+	@JoinColumn(name="tipoEps", nullable=false)
+	private TipoEps tipoEps;
 	
-	public Cirugia() {
+	public Eps() {
 		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * @param id
 	 * @param descripcion
-	 * @param tipoCirugia
+	 * @param tipoEps
 	 */
-	public Cirugia(String id, String descripcion, TipoCirugia tipoCirugia) {
+	public Eps(String id, String descripcion, TipoEps tipoEps) {
 		super();
 		this.id = id;
 		this.descripcion = descripcion;
-		this.tipoCirugia = tipoCirugia;
+		this.tipoEps = tipoEps;
 	}
 
 	/**
@@ -69,18 +69,20 @@ public class Cirugia implements Serializable{
 	}
 
 	/**
-	 * @return the tipoCirugia
+	 * @return the tipoEps
 	 */
-	public TipoCirugia getTipoCirugia() {
-		return tipoCirugia;
+	public TipoEps getTipoEps() {
+		return tipoEps;
 	}
 
 	/**
-	 * @param tipoCirugia the tipoCirugia to set
+	 * @param tipoEps the tipoEps to set
 	 */
-	public void setTipoCirugia(TipoCirugia tipoCirugia) {
-		this.tipoCirugia = tipoCirugia;
+	public void setTipoEps(TipoEps tipoEps) {
+		this.tipoEps = tipoEps;
 	}
 	
 	
+	
+
 }
