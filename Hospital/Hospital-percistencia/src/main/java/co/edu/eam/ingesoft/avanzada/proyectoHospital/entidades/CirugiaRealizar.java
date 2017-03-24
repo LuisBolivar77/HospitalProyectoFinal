@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -14,12 +15,15 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="T_CIRUGIA_REALIZAR")
+@IdClass(CirugiaRealizarPK.class)
 public class CirugiaRealizar implements Serializable{
 
+	@Id
 	@ManyToOne
 	@JoinColumn(name="CIRUGIA")
 	private Cirugia cirugia;
 	
+	@Id
 	@ManyToOne
 	@JoinColumn(name="ORDEN_MEDICA")
 	private OrdenMedica ordenMedica;
