@@ -18,10 +18,10 @@ public class HorarioQuirofano implements Serializable{
 
 	@Id
 	@Column(name="FECHA_HORA")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaHora;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="HORA_FIN")
 	private Date horaFin;
 	

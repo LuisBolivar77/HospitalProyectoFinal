@@ -19,11 +19,11 @@ public class Horario implements Serializable{
 	
 	@Id
 	@Column(name="FECHA_HORA")
-	@Temporal(TemporalType.DATE)
-	private Date fecha_hora;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechaHora;
 	
 	@Column(name="HORA_FIN")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date horaFin;
 	
 	@ManyToOne
@@ -39,9 +39,9 @@ public class Horario implements Serializable{
 	 * @param horaFin
 	 * @param personalMedico
 	 */
-	public Horario(Date fecha_hora, Date horaFin, PersonalMedico personalMedico) {
+	public Horario(Date fechaHora, Date horaFin, PersonalMedico personalMedico) {
 		super();
-		this.fecha_hora = fecha_hora;
+		this.fechaHora = fechaHora;
 		this.horaFin = horaFin;
 		this.personalMedico = personalMedico;
 	}
@@ -49,15 +49,15 @@ public class Horario implements Serializable{
 	/**
 	 * @return the fecha_hora
 	 */
-	public Date getFecha_hora() {
-		return fecha_hora;
+	public Date getFechaHora() {
+		return fechaHora;
 	}
 
 	/**
 	 * @param fecha_hora the fecha_hora to set
 	 */
-	public void setFecha_hora(Date fecha_hora) {
-		this.fecha_hora = fecha_hora;
+	public void setFechaHora(Date fechaHora) {
+		this.fechaHora = fechaHora;
 	}
 
 	/**

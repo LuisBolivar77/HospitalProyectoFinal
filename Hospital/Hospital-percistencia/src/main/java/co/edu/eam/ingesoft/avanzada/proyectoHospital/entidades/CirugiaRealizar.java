@@ -24,7 +24,7 @@ public class CirugiaRealizar implements Serializable{
 	@JoinColumn(name="ORDEN_MEDICA")
 	private OrdenMedica ordenMedica;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="FECHA_HORA")
 	private Date fechaHora;
 	

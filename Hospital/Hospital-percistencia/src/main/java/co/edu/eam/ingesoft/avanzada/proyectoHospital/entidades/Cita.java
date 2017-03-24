@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,7 +38,8 @@ public class Cita implements Serializable{
 	@JoinColumn(name="TIPO_CITA")
 	private TipoCita tipoCita;
 	
-	@JoinColumn(name="HORARIO")
+	@JoinColumn(name="HORARIO", referencedColumnName = "FECHA_HORA")
+	@OneToOne
 	private Horario horario;
 	
 	@Column(name="ANOCTACIONES", nullable=false, length=200)

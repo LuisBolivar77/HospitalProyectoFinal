@@ -23,7 +23,7 @@ public class Examen implements Serializable{
 	@Column(name="DESCRIPCION", nullable=false, length=200)
 	private String descripcion;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="FECHA_HORA", nullable=false)
 	private Date fechaHora;
 	
