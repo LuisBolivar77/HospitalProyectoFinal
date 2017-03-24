@@ -1,12 +1,12 @@
 package co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -20,11 +20,19 @@ public class Horario implements Serializable{
 	@Id
 	@Column(name="FECHA_HORA")
 	@Temporal(TemporalType.TIMESTAMP)
+<<<<<<< Updated upstream
 	private Date fechaHora;
 	
 	@Column(name="HORA_FIN")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date horaFin;
+=======
+	private Date fecha_hora;
+	
+	@Column(name="HORA_FIN")
+	@Temporal(TemporalType.TIME)
+	private Time horaFin;
+>>>>>>> Stashed changes
 	
 	@ManyToOne
 	@JoinColumn(name="PERSONAL_MEDICO")
@@ -39,7 +47,11 @@ public class Horario implements Serializable{
 	 * @param horaFin
 	 * @param personalMedico
 	 */
+<<<<<<< Updated upstream
 	public Horario(Date fechaHora, Date horaFin, PersonalMedico personalMedico) {
+=======
+	public Horario(Date fecha_hora, Time horaFin, PersonalMedico personalMedico) {
+>>>>>>> Stashed changes
 		super();
 		this.fechaHora = fechaHora;
 		this.horaFin = horaFin;
@@ -70,7 +82,7 @@ public class Horario implements Serializable{
 	/**
 	 * @param horaFin the horaFin to set
 	 */
-	public void setHoraFin(Date horaFin) {
+	public void setHoraFin(Time horaFin) {
 		this.horaFin = horaFin;
 	}
 

@@ -1,6 +1,7 @@
 package co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -26,6 +27,10 @@ public class Examen implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="FECHA_HORA", nullable=false)
 	private Date fechaHora;
+	
+	@Temporal(TemporalType.TIME)
+	@Column(name="HORA_FIN")
+	private Time horaFin;
 	
 	@ManyToOne
 	@JoinColumn(name="TIP_EXAMEN")
