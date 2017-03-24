@@ -20,19 +20,11 @@ public class Horario implements Serializable{
 	@Id
 	@Column(name="FECHA_HORA")
 	@Temporal(TemporalType.TIMESTAMP)
-<<<<<<< Updated upstream
 	private Date fechaHora;
-	
-	@Column(name="HORA_FIN")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date horaFin;
-=======
-	private Date fecha_hora;
 	
 	@Column(name="HORA_FIN")
 	@Temporal(TemporalType.TIME)
 	private Time horaFin;
->>>>>>> Stashed changes
 	
 	@ManyToOne
 	@JoinColumn(name="PERSONAL_MEDICO")
@@ -47,11 +39,7 @@ public class Horario implements Serializable{
 	 * @param horaFin
 	 * @param personalMedico
 	 */
-<<<<<<< Updated upstream
-	public Horario(Date fechaHora, Date horaFin, PersonalMedico personalMedico) {
-=======
 	public Horario(Date fecha_hora, Time horaFin, PersonalMedico personalMedico) {
->>>>>>> Stashed changes
 		super();
 		this.fechaHora = fechaHora;
 		this.horaFin = horaFin;

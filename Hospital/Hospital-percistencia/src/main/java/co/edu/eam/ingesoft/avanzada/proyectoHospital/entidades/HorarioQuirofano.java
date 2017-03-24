@@ -1,6 +1,7 @@
 package co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -38,7 +39,7 @@ public class HorarioQuirofano implements Serializable{
 	 * @param horaFin
 	 * @param quirofano
 	 */
-	public HorarioQuirofano(Date fechaHora, Date horaFin, Quirofano quirofano) {
+	public HorarioQuirofano(Date fechaHora, Time horaFin, Quirofano quirofano) {
 		super();
 		this.fechaHora = fechaHora;
 		this.horaFin = horaFin;
@@ -69,7 +70,7 @@ public class HorarioQuirofano implements Serializable{
 	/**
 	 * @param horaFin the horaFin to set
 	 */
-	public void setHoraFin(Date horaFin) {
+	public void setHoraFin(Time horaFin) {
 		this.horaFin = horaFin;
 	}
 
