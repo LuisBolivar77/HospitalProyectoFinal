@@ -19,7 +19,7 @@ public class Examen implements Serializable{
 
 	@Id
 	@Column(name="ID")
-	private String id;
+	private int id;
 	
 	@Column(name="DESCRIPCION", nullable=false, length=200)
 	private String descripcion;
@@ -46,7 +46,7 @@ public class Examen implements Serializable{
 	 * @param fechaHora
 	 * @param tipoExamen
 	 */
-	public Examen(String id, String descripcion, Date fechaHora, TipoExamen tipoExamen) {
+	public Examen(int id, String descripcion, Date fechaHora, TipoExamen tipoExamen) {
 		super();
 		this.id = id;
 		this.descripcion = descripcion;
@@ -57,14 +57,14 @@ public class Examen implements Serializable{
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

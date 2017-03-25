@@ -18,7 +18,7 @@ public class Receta implements Serializable {
 
 	@Id
 	@Column(name = "ID")
-	private String id;
+	private int id;
 
 	@Column(name = "DESCRIPCION", nullable = false, length = 200)
 	private String descripcion;
@@ -41,7 +41,7 @@ public class Receta implements Serializable {
 	 * @param fecha
 	 * @param ordenMedica
 	 */
-	public Receta(String id, String descripcion, Date fecha, OrdenMedica ordenMedica) {
+	public Receta(int id, String descripcion, Date fecha, OrdenMedica ordenMedica) {
 		super();
 		this.id = id;
 		this.descripcion = descripcion;
@@ -52,14 +52,14 @@ public class Receta implements Serializable {
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

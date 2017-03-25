@@ -4,29 +4,23 @@ import java.io.Serializable;
 
 public class ResultadoExamenPK implements Serializable{
 	
-	private String examen;
+	private int examen;
 	
-	private String historial;
+	private int historial;
 	
 	public ResultadoExamenPK() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((examen == null) ? 0 : examen.hashCode());
-		result = prime * result + ((historial == null) ? 0 : historial.hashCode());
+		result = prime * result + examen;
+		result = prime * result + historial;
 		return result;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -36,18 +30,13 @@ public class ResultadoExamenPK implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		ResultadoExamenPK other = (ResultadoExamenPK) obj;
-		if (examen == null) {
-			if (other.examen != null)
-				return false;
-		} else if (!examen.equals(other.examen))
+		if (examen != other.examen)
 			return false;
-		if (historial == null) {
-			if (other.historial != null)
-				return false;
-		} else if (!historial.equals(other.historial))
+		if (historial != other.historial)
 			return false;
 		return true;
 	}
 
+	
 	
 }

@@ -19,7 +19,7 @@ public class Hospitalizacion implements Serializable{
 	
 	@Id
 	@Column(name="ID")
-	private String id;
+	private int id;
 	
 	@Column(name="DESCRIPCION", nullable=false, length=200)
 	private String descripcion;
@@ -52,7 +52,7 @@ public class Hospitalizacion implements Serializable{
 	 * @param ordenMedica
 	 * @param cama
 	 */
-	public Hospitalizacion(String id, String descripcion, Date fechaEntrada, Date fechaSalida, OrdenMedica ordenMedica,
+	public Hospitalizacion(int id, String descripcion, Date fechaEntrada, Date fechaSalida, OrdenMedica ordenMedica,
 			Cama cama) {
 		super();
 		this.id = id;
@@ -66,14 +66,14 @@ public class Hospitalizacion implements Serializable{
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

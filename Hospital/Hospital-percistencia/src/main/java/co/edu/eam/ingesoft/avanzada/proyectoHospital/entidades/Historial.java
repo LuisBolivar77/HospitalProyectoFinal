@@ -13,7 +13,7 @@ public class Historial implements Serializable{
 
 	@Id
 	@Column(name="ID")
-	private String id;
+	private int id;
 	
 	public Historial() {
 		// TODO Auto-generated constructor stub
@@ -22,7 +22,7 @@ public class Historial implements Serializable{
 	/**
 	 * @param id
 	 */
-	public Historial(String id) {
+	public Historial(int id) {
 		super();
 		this.id = id;
 	}
@@ -30,14 +30,14 @@ public class Historial implements Serializable{
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	

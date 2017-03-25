@@ -13,7 +13,7 @@ public class TipoEps implements Serializable{
 	
 	@Id
 	@Column(name="ID", nullable=false)
-	private String id;
+	private int id;
 	
 	@Column(name="DESCRIPCION", nullable=false, length=200)
 	private String Descripcion;
@@ -26,7 +26,7 @@ public class TipoEps implements Serializable{
 	 * @param id
 	 * @param descripcion
 	 */
-	public TipoEps(String id, String descripcion) {
+	public TipoEps(int id, String descripcion) {
 		super();
 		this.id = id;
 		Descripcion = descripcion;
@@ -35,14 +35,14 @@ public class TipoEps implements Serializable{
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

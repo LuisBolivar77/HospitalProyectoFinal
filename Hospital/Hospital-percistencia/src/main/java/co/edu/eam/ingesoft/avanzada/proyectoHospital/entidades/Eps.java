@@ -15,7 +15,7 @@ public class Eps implements Serializable{
 	
 	@Id
 	@Column(name="ID", nullable=false)
-	private String id;
+	private int id;
 	
 	@Column(name="DESCRIPCION", nullable=false, length=200)
 	private String descripcion;
@@ -33,7 +33,7 @@ public class Eps implements Serializable{
 	 * @param descripcion
 	 * @param tipoEps
 	 */
-	public Eps(String id, String descripcion, TipoEps tipoEps) {
+	public Eps(int id, String descripcion, TipoEps tipoEps) {
 		super();
 		this.id = id;
 		this.descripcion = descripcion;
@@ -43,14 +43,14 @@ public class Eps implements Serializable{
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

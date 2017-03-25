@@ -13,7 +13,7 @@ public class TipoCita implements Serializable{
 	
 	@Id
 	@Column(name="ID", nullable=false)
-	private String id;
+	private int id;
 	
 	@Column(name="DURACION", nullable=false)
 	private int duracion;
@@ -26,7 +26,7 @@ public class TipoCita implements Serializable{
 	 * @param id
 	 * @param duracion
 	 */
-	public TipoCita(String id, int duracion) {
+	public TipoCita(int id, int duracion) {
 		super();
 		this.id = id;
 		this.duracion = duracion;
@@ -35,14 +35,14 @@ public class TipoCita implements Serializable{
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

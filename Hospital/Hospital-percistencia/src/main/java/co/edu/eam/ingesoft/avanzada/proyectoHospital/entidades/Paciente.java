@@ -15,7 +15,7 @@ public class Paciente implements Serializable{
 	
 	@Id
 	@Column(name="IDENTIFICACION", nullable=false)
-	private String identificadion;
+	private String identificacion;
 	
 	@Column(name="NOMBRE", nullable=false, length=30)
 	private String nombre;
@@ -37,9 +37,9 @@ public class Paciente implements Serializable{
 	 * @param apellido
 	 * @param eps
 	 */
-	public Paciente(String identificadion, String nombre, String apellido, Eps eps) {
+	public Paciente(String identificacion, String nombre, String apellido, Eps eps) {
 		super();
-		this.identificadion = identificadion;
+		this.identificacion = identificacion;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.eps = eps;
@@ -48,15 +48,15 @@ public class Paciente implements Serializable{
 	/**
 	 * @return the identificadion
 	 */
-	public String getIdentificadion() {
-		return identificadion;
+	public String getIdentificacion() {
+		return identificacion;
 	}
 
 	/**
 	 * @param identificadion the identificadion to set
 	 */
-	public void setIdentificadion(String identificadion) {
-		this.identificadion = identificadion;
+	public void setIdentificacion(String identificacion) {
+		this.identificacion = identificacion;
 	}
 
 	/**

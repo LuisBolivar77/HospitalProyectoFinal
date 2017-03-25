@@ -18,7 +18,7 @@ public class Cama implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String id;
 	
-	@Column(name="DESCRIPCION")
+	@Column(name="DESCRIPCION", length=200, nullable=false)
 	private String descripcion;
 	
 	public Cama() {
