@@ -18,7 +18,7 @@ public class Sintoma implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="DESCRIPCION", length=30, nullable=false)
+	@Column(name="DESCRIPCION", length=200, nullable=false)
 	private String descripcion;
 	
 	public Sintoma() {

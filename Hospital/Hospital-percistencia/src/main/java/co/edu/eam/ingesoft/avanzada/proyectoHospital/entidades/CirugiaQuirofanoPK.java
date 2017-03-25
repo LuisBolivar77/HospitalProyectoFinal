@@ -4,11 +4,9 @@ import java.io.Serializable;
 
 public class CirugiaQuirofanoPK implements Serializable{
 	
-	private String quirofanoId;
+	private int quirofano;
 	
-	private String cirugiaOrdenId;
-	
-	private String cirugiaId;
+	private int cirugiaRealizar;
 	
 	
 	public CirugiaQuirofanoPK() {
@@ -16,66 +14,37 @@ public class CirugiaQuirofanoPK implements Serializable{
 	}
 
 
-	/**
-	 * @param quirofanoId
-	 * @param cirugiaOrdenId
-	 * @param cirugiaId
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
 	 */
-	public CirugiaQuirofanoPK(String quirofanoId, String cirugiaOrdenId, String cirugiaId) {
-		super();
-		this.quirofanoId = quirofanoId;
-		this.cirugiaOrdenId = cirugiaOrdenId;
-		this.cirugiaId = cirugiaId;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + cirugiaRealizar;
+		result = prime * result + quirofano;
+		return result;
 	}
 
 
-	/**
-	 * @return the quirofanoId
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
-	public String getQuirofanoId() {
-		return quirofanoId;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CirugiaQuirofanoPK other = (CirugiaQuirofanoPK) obj;
+		if (cirugiaRealizar != other.cirugiaRealizar)
+			return false;
+		if (quirofano != other.quirofano)
+			return false;
+		return true;
 	}
 
-
-	/**
-	 * @param quirofanoId the quirofanoId to set
-	 */
-	public void setQuirofanoId(String quirofanoId) {
-		this.quirofanoId = quirofanoId;
-	}
-
-
-	/**
-	 * @return the cirugiaOrdenId
-	 */
-	public String getCirugiaOrdenId() {
-		return cirugiaOrdenId;
-	}
-
-
-	/**
-	 * @param cirugiaOrdenId the cirugiaOrdenId to set
-	 */
-	public void setCirugiaOrdenId(String cirugiaOrdenId) {
-		this.cirugiaOrdenId = cirugiaOrdenId;
-	}
-
-
-	/**
-	 * @return the cirugiaId
-	 */
-	public String getCirugiaId() {
-		return cirugiaId;
-	}
-
-
-	/**
-	 * @param cirugiaId the cirugiaId to set
-	 */
-	public void setCirugiaId(String cirugiaId) {
-		this.cirugiaId = cirugiaId;
-	}
-	
-	
 
 }

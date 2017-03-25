@@ -17,10 +17,10 @@ public class PersonalMedico implements Serializable{
 	@Column(name="ID")
 	private String id;
 	
-	@Column(name="NOMBRE")
+	@Column(name="NOMBRE", length=40, nullable=false)
 	private String nombre;
 	
-	@Column(name="DIRECCION")
+	@Column(name="DIRECCION", length=50, nullable=true)
 	private String direccion;
 	
 	@Column(name="telefono")

@@ -17,10 +17,10 @@ public class Paciente implements Serializable{
 	@Column(name="IDENTIFICACION", nullable=false)
 	private String identificadion;
 	
-	@Column(name="NOMBRE", nullable=false)
+	@Column(name="NOMBRE", nullable=false, length=30)
 	private String nombre;
 	
-	@Column(name="APELLIDO", nullable=false)
+	@Column(name="APELLIDO", nullable=false, length=30)
 	private String apellido;
 	
 	@ManyToOne

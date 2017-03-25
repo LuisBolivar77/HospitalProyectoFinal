@@ -15,7 +15,7 @@ public class TipoPersonal implements Serializable{
 	@Column(name="ID", nullable=false)
 	private String id;
 	
-	@Column(name="DESCRIPCION")
+	@Column(name="DESCRIPCION", length=40)
 	private String descripcion;
 	
 	public TipoPersonal() {

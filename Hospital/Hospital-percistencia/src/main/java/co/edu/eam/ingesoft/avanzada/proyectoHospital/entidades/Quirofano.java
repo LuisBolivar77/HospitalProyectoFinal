@@ -13,10 +13,10 @@ public class Quirofano implements Serializable{
 
 	@Id
 	@Column(name="ID")
-	private String id;
+	private int id;
 	
-	@Column(name="DESCRIPCION", nullable=false)
-	private String Descripcion;
+	@Column(name="DESCRIPCION", nullable=false, length=200)
+	private String descripcion;
 	
 	public Quirofano() {
 		// TODO Auto-generated constructor stub
@@ -26,23 +26,23 @@ public class Quirofano implements Serializable{
 	 * @param id
 	 * @param descripcion
 	 */
-	public Quirofano(String id, String descripcion) {
+	public Quirofano(int id, String descripcion) {
 		super();
 		this.id = id;
-		Descripcion = descripcion;
+		this.descripcion = descripcion;
 	}
 
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -50,14 +50,14 @@ public class Quirofano implements Serializable{
 	 * @return the descripcion
 	 */
 	public String getDescripcion() {
-		return Descripcion;
+		return descripcion;
 	}
 
 	/**
 	 * @param descripcion the descripcion to set
 	 */
 	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
+		this.descripcion = descripcion;
 	}
 	
 	

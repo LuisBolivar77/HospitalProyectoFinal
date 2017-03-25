@@ -4,52 +4,50 @@ import java.io.Serializable;
 
 public class ResultadoExamenPK implements Serializable{
 	
-	private String examenID;
+	private String examen;
 	
-	private String historialMedico;
+	private String historial;
 	
 	public ResultadoExamenPK() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param examenID
-	 * @param historialMedico
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
 	 */
-	public ResultadoExamenPK(String examenID, String historialMedico) {
-		super();
-		this.examenID = examenID;
-		this.historialMedico = historialMedico;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((examen == null) ? 0 : examen.hashCode());
+		result = prime * result + ((historial == null) ? 0 : historial.hashCode());
+		return result;
 	}
 
-	/**
-	 * @return the examenID
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
-	public String getExamenID() {
-		return examenID;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ResultadoExamenPK other = (ResultadoExamenPK) obj;
+		if (examen == null) {
+			if (other.examen != null)
+				return false;
+		} else if (!examen.equals(other.examen))
+			return false;
+		if (historial == null) {
+			if (other.historial != null)
+				return false;
+		} else if (!historial.equals(other.historial))
+			return false;
+		return true;
 	}
 
-	/**
-	 * @param examenID the examenID to set
-	 */
-	public void setExamenID(String examenID) {
-		this.examenID = examenID;
-	}
-
-	/**
-	 * @return the historialMedico
-	 */
-	public String getHistorialMedico() {
-		return historialMedico;
-	}
-
-	/**
-	 * @param historialMedico the historialMedico to set
-	 */
-	public void setHistorialMedico(String historialMedico) {
-		this.historialMedico = historialMedico;
-	}
 	
-	
-
 }

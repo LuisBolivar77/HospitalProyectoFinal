@@ -1,10 +1,16 @@
 package co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades;
 
-public class SintomaPatologiaPK {
+import java.io.Serializable;
+
+public class SintomaPatologiaPK implements Serializable {
 	
 	private int sintoma;
 	
 	private int patologia;
+	
+	public SintomaPatologiaPK() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()

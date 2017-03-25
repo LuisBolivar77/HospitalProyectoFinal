@@ -1,6 +1,8 @@
 package co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades;
 
-public class MedicamentoPacientePK {
+import java.io.Serializable;
+
+public class MedicamentoPacientePK implements Serializable {
 	
 	private int historial;
 	

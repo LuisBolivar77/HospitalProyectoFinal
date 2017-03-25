@@ -15,7 +15,7 @@ public class Cirugia implements Serializable{
 
 	@Id
 	@Column(name="ID")
-	private String id;
+	private int id;
 	
 	@Column(name="DECRIPCION", nullable=false, length=200)
 	private String descripcion;
@@ -33,7 +33,7 @@ public class Cirugia implements Serializable{
 	 * @param descripcion
 	 * @param tipoCirugia
 	 */
-	public Cirugia(String id, String descripcion, TipoCirugia tipoCirugia) {
+	public Cirugia(int id, String descripcion, TipoCirugia tipoCirugia) {
 		super();
 		this.id = id;
 		this.descripcion = descripcion;
@@ -43,14 +43,14 @@ public class Cirugia implements Serializable{
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

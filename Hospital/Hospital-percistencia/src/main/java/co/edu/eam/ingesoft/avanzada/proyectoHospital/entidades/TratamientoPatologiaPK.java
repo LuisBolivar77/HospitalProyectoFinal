@@ -1,10 +1,16 @@
 package co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades;
 
-public class TratamientoPatologiaPK {
+import java.io.Serializable;
+
+public class TratamientoPatologiaPK implements Serializable {
 
 	private int patologia;
 	
 	private int tratamiento;
+	
+	public TratamientoPatologiaPK() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()

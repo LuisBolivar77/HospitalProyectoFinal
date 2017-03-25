@@ -33,7 +33,7 @@ public class Hospitalizacion implements Serializable{
 	private Date fechaSalida;
 	
 	@OneToOne
-	@JoinColumn(name="ORDEN_MEDICA", referencedColumnName="ID")
+	@JoinColumn(name="ORDEN_MEDICA")
 	private OrdenMedica ordenMedica;
 	
 	@ManyToOne

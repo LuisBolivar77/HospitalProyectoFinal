@@ -12,44 +12,43 @@ public class CirugiaRealizarPK implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param cirugia
-	 * @param ordenMedica
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
 	 */
-	public CirugiaRealizarPK(String cirugia, String ordenMedica) {
-		super();
-		this.cirugia = cirugia;
-		this.ordenMedica = ordenMedica;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cirugia == null) ? 0 : cirugia.hashCode());
+		result = prime * result + ((ordenMedica == null) ? 0 : ordenMedica.hashCode());
+		return result;
 	}
 
-	/**
-	 * @return the cirugia
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
-	public String getCirugia() {
-		return cirugia;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CirugiaRealizarPK other = (CirugiaRealizarPK) obj;
+		if (cirugia == null) {
+			if (other.cirugia != null)
+				return false;
+		} else if (!cirugia.equals(other.cirugia))
+			return false;
+		if (ordenMedica == null) {
+			if (other.ordenMedica != null)
+				return false;
+		} else if (!ordenMedica.equals(other.ordenMedica))
+			return false;
+		return true;
 	}
 
-	/**
-	 * @param cirugia the cirugia to set
-	 */
-	public void setCirugia(String cirugia) {
-		this.cirugia = cirugia;
-	}
-
-	/**
-	 * @return the ordenMedica
-	 */
-	public String getOrdenMedica() {
-		return ordenMedica;
-	}
-
-	/**
-	 * @param ordenMedica the ordenMedica to set
-	 */
-	public void setOrdenMedica(String ordenMedica) {
-		this.ordenMedica = ordenMedica;
-	}
-	
 	
 	
 }

@@ -31,14 +31,14 @@ public class Cita implements Serializable{
 	private PersonalMedico personalMedico;
 	
 	@ManyToOne
-	@JoinColumn(name="CITA")
+	@JoinColumn(name="CITA", nullable=true)
 	private Cita cita;
 	
 	@ManyToOne
 	@JoinColumn(name="TIPO_CITA")
 	private TipoCita tipoCita;
 	
-	@JoinColumn(name="HORARIO", referencedColumnName = "FECHA_HORA")
+	@JoinColumn(name="HORARIO")
 	@OneToOne
 	private Horario horario;
 	
