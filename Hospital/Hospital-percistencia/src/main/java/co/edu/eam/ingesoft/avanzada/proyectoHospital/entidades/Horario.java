@@ -23,8 +23,8 @@ public class Horario implements Serializable{
 	private Date fechaHora;
 	
 	@Column(name="HORA_FIN")
-	@Temporal(TemporalType.TIME)
-	private Time horaFin;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date horaFin;
 	
 	@ManyToOne
 	@JoinColumn(name="PERSONAL_MEDICO")

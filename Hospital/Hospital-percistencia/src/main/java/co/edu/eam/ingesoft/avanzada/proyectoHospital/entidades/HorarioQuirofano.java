@@ -24,7 +24,7 @@ public class HorarioQuirofano implements Serializable{
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="HORA_FIN")
-	private Time horaFin;
+	private Date horaFin;
 	
 	@ManyToOne
 	@JoinColumn(name="QUIROFANO")

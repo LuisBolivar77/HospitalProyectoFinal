@@ -28,9 +28,9 @@ public class Examen implements Serializable{
 	@Column(name="FECHA_HORA", nullable=false)
 	private Date fechaHora;
 	
-	@Temporal(TemporalType.TIME)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="HORA_FIN")
-	private Time horaFin;
+	private Date horaFin;
 	
 	@ManyToOne
 	@JoinColumn(name="TIP_EXAMEN")
