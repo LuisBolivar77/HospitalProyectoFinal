@@ -11,6 +11,14 @@ public class PatologiaPacientePK implements Serializable {
 	public PatologiaPacientePK() {
 		// TODO Auto-generated constructor stub
 	}
+	
+
+	public PatologiaPacientePK(int historial, int patologia) {
+		super();
+		this.historial = historial;
+		this.patologia = patologia;
+	}
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -41,6 +49,26 @@ public class PatologiaPacientePK implements Serializable {
 		if (patologia != other.patologia)
 			return false;
 		return true;
+	}
+
+
+	public int getHistorial() {
+		return historial;
+	}
+
+
+	public void setHistorial(int historial) {
+		this.historial = historial;
+	}
+
+
+	public int getPatologia() {
+		return patologia;
+	}
+
+
+	public void setPatologia(int patologia) {
+		this.patologia = patologia;
 	}
 	
 	

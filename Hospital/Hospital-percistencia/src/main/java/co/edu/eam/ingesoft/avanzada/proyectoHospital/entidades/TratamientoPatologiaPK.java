@@ -11,6 +11,16 @@ public class TratamientoPatologiaPK implements Serializable {
 	public TratamientoPatologiaPK() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public TratamientoPatologiaPK(int patologia, int tratamiento) {
+		super();
+		this.patologia = patologia;
+		this.tratamiento = tratamiento;
+	}
+
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -42,6 +52,31 @@ public class TratamientoPatologiaPK implements Serializable {
 			return false;
 		return true;
 	}
+
+
+
+	public int getPatologia() {
+		return patologia;
+	}
+
+
+
+	public void setPatologia(int patologia) {
+		this.patologia = patologia;
+	}
+
+
+
+	public int getTratamiento() {
+		return tratamiento;
+	}
+
+
+
+	public void setTratamiento(int tratamiento) {
+		this.tratamiento = tratamiento;
+	}
+	
 	
 	
 	

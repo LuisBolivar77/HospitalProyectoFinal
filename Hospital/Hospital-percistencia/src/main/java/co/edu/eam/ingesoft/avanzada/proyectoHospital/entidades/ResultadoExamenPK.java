@@ -11,6 +11,16 @@ public class ResultadoExamenPK implements Serializable{
 	public ResultadoExamenPK() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public ResultadoExamenPK(int examen, int historial) {
+		super();
+		this.examen = examen;
+		this.historial = historial;
+	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -35,6 +45,30 @@ public class ResultadoExamenPK implements Serializable{
 		if (historial != other.historial)
 			return false;
 		return true;
+	}
+
+
+
+	public int getExamen() {
+		return examen;
+	}
+
+
+
+	public void setExamen(int examen) {
+		this.examen = examen;
+	}
+
+
+
+	public int getHistorial() {
+		return historial;
+	}
+
+
+
+	public void setHistorial(int historial) {
+		this.historial = historial;
 	}
 
 	

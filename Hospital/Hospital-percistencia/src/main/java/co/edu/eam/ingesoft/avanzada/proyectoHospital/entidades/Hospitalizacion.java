@@ -37,7 +37,7 @@ public class Hospitalizacion implements Serializable{
 	private OrdenMedica ordenMedica;
 	
 	@ManyToOne
-	@JoinColumn(name="CAMA")
+	@JoinColumn(name="CAMA_ID")
 	private Cama cama;
 	
 	public Hospitalizacion() {

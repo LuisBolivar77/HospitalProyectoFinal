@@ -23,8 +23,8 @@ public class CirugiaQuirofano implements Serializable{
 	@Id
 	@ManyToOne
 	@JoinColumns({
-		@JoinColumn(name="CIRUGIA_ID",referencedColumnName="CIRUGIA"),
-		@JoinColumn(name="ORDEN_MEDICA_ID",referencedColumnName="ORDEN_MEDICA")
+		@JoinColumn(name="CIRUGIA_ID",referencedColumnName="CIRUGIA_ID"),
+		@JoinColumn(name="ORDEN_MEDICA_ID",referencedColumnName="ORDEN_MEDICA_ID")
 	})
 	private CirugiaRealizar cirugiaRealizar;
 	

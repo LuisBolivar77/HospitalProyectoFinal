@@ -11,6 +11,16 @@ public class CirugiaRealizarPK implements Serializable{
 	public CirugiaRealizarPK() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public CirugiaRealizarPK(int cirugia, int ordenMedica) {
+		super();
+		this.cirugia = cirugia;
+		this.ordenMedica = ordenMedica;
+	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -35,6 +45,30 @@ public class CirugiaRealizarPK implements Serializable{
 		if (ordenMedica != other.ordenMedica)
 			return false;
 		return true;
+	}
+
+
+
+	public int getCirugia() {
+		return cirugia;
+	}
+
+
+
+	public void setCirugia(int cirugia) {
+		this.cirugia = cirugia;
+	}
+
+
+
+	public int getOrdenMedica() {
+		return ordenMedica;
+	}
+
+
+
+	public void setOrdenMedica(int ordenMedica) {
+		this.ordenMedica = ordenMedica;
 	}
 
 	

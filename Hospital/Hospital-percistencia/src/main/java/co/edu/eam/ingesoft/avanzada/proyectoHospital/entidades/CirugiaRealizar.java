@@ -20,12 +20,12 @@ public class CirugiaRealizar implements Serializable{
 
 	@Id
 	@ManyToOne
-	@JoinColumn(name="CIRUGIA")
+	@JoinColumn(name="CIRUGIA_ID")
 	private Cirugia cirugia;
 	
 	@Id
 	@ManyToOne
-	@JoinColumn(name="ORDEN_MEDICA")
+	@JoinColumn(name="ORDEN_MEDICA_ID")
 	private OrdenMedica ordenMedica;
 	
 	@Temporal(TemporalType.TIMESTAMP)
