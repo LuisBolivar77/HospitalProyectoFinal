@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_TIPO_PERSONAL")
+@Table(name="TIPO_PERSONAL")
 public class TipoPersonal implements Serializable{
 	
 	@Id

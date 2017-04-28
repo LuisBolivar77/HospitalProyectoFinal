@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_ORDEN_MEDICA")
+@Table(name="ORDEN_MEDICA")
 public class OrdenMedica implements Serializable{
 	
 	@Id
@@ -21,7 +21,7 @@ public class OrdenMedica implements Serializable{
 	private String descripcion;
 	
 	@ManyToOne
-	@JoinColumn(name="cita")
+	@JoinColumn(name="CITA_ID")
 	private Cita cita;
 	
 	public OrdenMedica() {

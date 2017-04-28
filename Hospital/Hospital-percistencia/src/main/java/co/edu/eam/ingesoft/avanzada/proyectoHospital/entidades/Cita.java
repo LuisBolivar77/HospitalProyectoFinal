@@ -15,63 +15,52 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="T_CITA")
+@Table(name="CITA")
 public class Cita implements Serializable{
 
 	@Id
 	@Column(name="ID", nullable=false)
 	private String id;
 	
-	@ManyToOne
-	@JoinColumn(name="PACIENTE")
-	private Paciente paciente;
-	
-	@ManyToOne
-	@JoinColumn(name="PERSONAL_MEDICO")
-	private PersonalMedico personalMedico;
-	
-	@ManyToOne
-	@JoinColumn(name="CITA", nullable=true)
-	private Cita cita;
-	
-	@ManyToOne
-	@JoinColumn(name="TIPO_CITA")
-	private TipoCita tipoCita;
-	
-	@JoinColumn(name="HORARIO")
+	@JoinColumn(name="HORARIO", unique = true)
 	@OneToOne
 	private Horario horario;
 	
 	@Column(name="ANOCTACIONES", nullable=false, length=200)
 	private String anotaciones;
 	
+	@ManyToOne
+	@JoinColumn(name="CITA_ID", nullable=true)
+	private Cita cita;
 	
+	@ManyToOne
+	@JoinColumn(name="TIPO_CITA_ID")
+	private TipoCita tipoCita;
+	
+	@ManyToOne
+	@JoinColumn(name="PERSONAL_MEDICO_ID")
+	private PersonalMedico personalMedico;
+	
+	@ManyToOne
+	@JoinColumn(name="PACIENTE_ID")
+	private Paciente paciente;
+
 	public Cita() {
 		// TODO Auto-generated constructor stub
 	}
 
 
-	/**
-	 * @param id
-	 * @param paciente
-	 * @param personalMedico
-	 * @param cita
-	 * @param tipoCita
-	 * @param horario
-	 * @param anotaciones
-	 */
-	public Cita(String id, Paciente paciente, PersonalMedico personalMedico, Cita cita, TipoCita tipoCita,
-			Horario horario, String anotaciones) {
+	public Cita(String id, Horario horario, String anotaciones, Cita cita, TipoCita tipoCita,
+			PersonalMedico personalMedico, Paciente paciente) {
 		super();
 		this.id = id;
-		this.paciente = paciente;
-		this.personalMedico = personalMedico;
-		this.cita = cita;
-		this.tipoCita = tipoCita;
 		this.horario = horario;
 		this.anotaciones = anotaciones;
+		this.cita = cita;
+		this.tipoCita = tipoCita;
+		this.personalMedico = personalMedico;
+		this.paciente = paciente;
 	}
-
 
 	/**
 	 * @return the id

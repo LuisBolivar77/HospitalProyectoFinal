@@ -9,99 +9,69 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento;
+
 @Entity
-@Table(name="T_PACIENTE")
-public class Paciente implements Serializable{
-	
-	@Id
-	@Column(name="IDENTIFICACION", nullable=false)
-	private String identificacion;
-	
-	@Column(name="NOMBRE", nullable=false, length=30)
-	private String nombre;
-	
-	@Column(name="APELLIDO", nullable=false, length=30)
-	private String apellido;
-	
+@Table(name = "PACIENTE")
+public class Paciente extends Usuario implements Serializable {
+
 	@ManyToOne
-	@JoinColumn(name="eps", nullable=false)
+	@JoinColumn(name = "EPS_ID", nullable = false)
 	private Eps eps;
-	
-	public Paciente() {
-		// TODO Auto-generated constructor stub
-	}
 
-	/**
-	 * @param identificadion
-	 * @param nombre
-	 * @param apellido
-	 * @param eps
-	 */
-	public Paciente(String identificacion, String nombre, String apellido, Eps eps) {
-		super();
-		this.identificacion = identificacion;
-		this.nombre = nombre;
-		this.apellido = apellido;
+	@Column(name = "USUARIO_ASIGNADO")
+	private boolean usuarioAsignado;
+
+	public Paciente(int identificacion, TipoDocumento tipoDocumento, String usuario, String password, String nombre,
+			String apellido, String email, int telefono, int celular, String direccion, Eps eps,
+			boolean usuarioAsignado) {
+		super(identificacion, tipoDocumento, usuario, password, nombre, apellido, email, telefono, celular, direccion);
 		this.eps = eps;
+		this.usuarioAsignado = usuarioAsignado;
 	}
 
-	/**
-	 * @return the identificadion
-	 */
-	public String getIdentificacion() {
-		return identificacion;
-	}
-
-	/**
-	 * @param identificadion the identificadion to set
-	 */
-	public void setIdentificacion(String identificacion) {
-		this.identificacion = identificacion;
-	}
-
-	/**
-	 * @return the nombre
-	 */
-	public String getNombre() {
-		return nombre;
-	}
-
-	/**
-	 * @param nombre the nombre to set
-	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	/**
-	 * @return the apellido
-	 */
-	public String getApellido() {
-		return apellido;
-	}
-
-	/**
-	 * @param apellido the apellido to set
-	 */
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	/**
-	 * @return the eps
-	 */
 	public Eps getEps() {
 		return eps;
 	}
 
-	/**
-	 * @param eps the eps to set
-	 */
 	public void setEps(Eps eps) {
 		this.eps = eps;
 	}
-	
-	
-	
+
+	public boolean isUsuarioAsignado() {
+		return usuarioAsignado;
+	}
+
+	public void setUsuarioAsignado(boolean usuarioAsignado) {
+		this.usuarioAsignado = usuarioAsignado;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((eps == null) ? 0 : eps.hashCode());
+		result = prime * result + (usuarioAsignado ? 1231 : 1237);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Paciente other = (Paciente) obj;
+		if (eps == null) {
+			if (other.eps != null)
+				return false;
+		} else if (!eps.equals(other.eps))
+			return false;
+		if (usuarioAsignado != other.usuarioAsignado)
+			return false;
+		return true;
+	}
 
 }

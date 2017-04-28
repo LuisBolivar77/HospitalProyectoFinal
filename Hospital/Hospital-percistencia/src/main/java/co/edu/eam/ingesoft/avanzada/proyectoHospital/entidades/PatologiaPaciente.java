@@ -10,60 +10,75 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_PATOLOGIA_PACIENTE")
+@Table(name = "PATOLOGIA_PACIENTE")
 @IdClass(PatologiaPacientePK.class)
 public class PatologiaPaciente implements Serializable {
 
 	@Id
-	@JoinColumn(name="HISTORIAL_ID")
-	@ManyToOne
-	private Historial historial;
-	
-	@Id
-	@JoinColumn(name="PATOLOGIA_ID")
+	@JoinColumn(name = "PATOLOGIA_ID")
 	@ManyToOne
 	private Patologia patologia;
-	
+
+	@Id
+	@ManyToOne
+	@JoinColumn(name = "CITA_ID")
+	private Cita cita;
+
 	public PatologiaPaciente() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param historial
-	 * @param patologia
-	 */
-	public PatologiaPaciente(Historial historial, Patologia patologia) {
+	public PatologiaPaciente(Patologia patologia, Cita cita) {
 		super();
-		this.historial = historial;
 		this.patologia = patologia;
+		this.cita = cita;
 	}
 
-	/**
-	 * @return the historial
-	 */
-	public Historial getHistorial() {
-		return historial;
-	}
-
-	/**
-	 * @param historial the historial to set
-	 */
-	public void setHistorial(Historial historial) {
-		this.historial = historial;
-	}
-
-	/**
-	 * @return the patologia
-	 */
 	public Patologia getPatologia() {
 		return patologia;
 	}
 
-	/**
-	 * @param patologia the patologia to set
-	 */
 	public void setPatologia(Patologia patologia) {
 		this.patologia = patologia;
-	}	
-	
+	}
+
+	public Cita getCita() {
+		return cita;
+	}
+
+	public void setCita(Cita cita) {
+		this.cita = cita;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cita == null) ? 0 : cita.hashCode());
+		result = prime * result + ((patologia == null) ? 0 : patologia.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PatologiaPaciente other = (PatologiaPaciente) obj;
+		if (cita == null) {
+			if (other.cita != null)
+				return false;
+		} else if (!cita.equals(other.cita))
+			return false;
+		if (patologia == null) {
+			if (other.patologia != null)
+				return false;
+		} else if (!patologia.equals(other.patologia))
+			return false;
+		return true;
+	}
+
 }

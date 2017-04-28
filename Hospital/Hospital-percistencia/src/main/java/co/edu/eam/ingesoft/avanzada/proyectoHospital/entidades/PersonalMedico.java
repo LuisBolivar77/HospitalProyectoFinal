@@ -5,134 +5,80 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento;
+
 @Entity
-@Table(name="T_PERSONAL_MEDICO")
-public class PersonalMedico implements Serializable{
+@Table(name = "PERSONAL_MEDICO")
+public class PersonalMedico extends Usuario implements Serializable {
 
-	@Id
-	@Column(name="ID")
-	private String id;
-	
-	@Column(name="NOMBRE", length=40, nullable=false)
-	private String nombre;
-	
-	@Column(name="DIRECCION", length=50, nullable=true)
-	private String direccion;
-	
-	@Column(name="telefono")
-	private String telefono;
-	
 	@ManyToOne
-	@JoinColumn(name="TIPO_PERSONAL")
+	@JoinColumn(name = "TIPO_PERSONAL_ID")
 	private TipoPersonal tipoPersonal;
-	
-	
-	public PersonalMedico() {
-		// TODO Auto-generated constructor stub
-	}
 
+	@ManyToOne
+	@JoinColumn(name = "ESPECIALIZACION_ID", nullable = true)
+	private Especializacion especializacion;
 
-	/**
-	 * @param id
-	 * @param nombre
-	 * @param direccion
-	 * @param telefono
-	 * @param tipoPersonal
-	 */
-	public PersonalMedico(String id, String nombre, String direccion, String telefono, TipoPersonal tipoPersonal) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.direccion = direccion;
-		this.telefono = telefono;
+	public PersonalMedico(int identificacion, TipoDocumento tipoDocumento, String usuario, String password,
+			String nombre, String apellido, String email, int telefono, int celular, String direccion,
+			TipoPersonal tipoPersonal, Especializacion especializacion) {
+		super(identificacion, tipoDocumento, usuario, password, nombre, apellido, email, telefono, celular, direccion);
 		this.tipoPersonal = tipoPersonal;
+		this.especializacion = especializacion;
 	}
 
-
-	/**
-	 * @return the id
-	 */
-	public String getId() {
-		return id;
-	}
-
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
-	}
-
-
-	/**
-	 * @return the nombre
-	 */
-	public String getNombre() {
-		return nombre;
-	}
-
-
-	/**
-	 * @param nombre the nombre to set
-	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-
-	/**
-	 * @return the direccion
-	 */
-	public String getDireccion() {
-		return direccion;
-	}
-
-
-	/**
-	 * @param direccion the direccion to set
-	 */
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-
-
-	/**
-	 * @return the telefono
-	 */
-	public String getTelefono() {
-		return telefono;
-	}
-
-
-	/**
-	 * @param telefono the telefono to set
-	 */
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-
-
-	/**
-	 * @return the tipoPersonal
-	 */
 	public TipoPersonal getTipoPersonal() {
 		return tipoPersonal;
 	}
 
-
-	/**
-	 * @param tipoPersonal the tipoPersonal to set
-	 */
 	public void setTipoPersonal(TipoPersonal tipoPersonal) {
 		this.tipoPersonal = tipoPersonal;
 	}
-	
-	
-	
-	
+
+	public Especializacion getEspecializacion() {
+		return especializacion;
+	}
+
+	public void setEspecializacion(Especializacion especializacion) {
+		this.especializacion = especializacion;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((especializacion == null) ? 0 : especializacion.hashCode());
+		result = prime * result + ((tipoPersonal == null) ? 0 : tipoPersonal.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PersonalMedico other = (PersonalMedico) obj;
+		if (especializacion == null) {
+			if (other.especializacion != null)
+				return false;
+		} else if (!especializacion.equals(other.especializacion))
+			return false;
+		if (tipoPersonal == null) {
+			if (other.tipoPersonal != null)
+				return false;
+		} else if (!tipoPersonal.equals(other.tipoPersonal))
+			return false;
+		return true;
+	}
+
 }

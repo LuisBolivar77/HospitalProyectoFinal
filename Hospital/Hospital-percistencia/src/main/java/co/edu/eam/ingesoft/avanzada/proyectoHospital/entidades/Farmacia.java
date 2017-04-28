@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_FARMACIA")
+@Table(name="FARMACIA")
 public class Farmacia implements Serializable {
 
 	@Id
@@ -18,7 +18,7 @@ public class Farmacia implements Serializable {
 	@Column(name="ID")
 	private int id;
 	
-	@Column(name="DESCRIPCION", length=30, nullable=false)
+	@Column(name="DESCRIPCION", length=40, nullable=false)
 	private String descripcion;
 	
 	public Farmacia() {

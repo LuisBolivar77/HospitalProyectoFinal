@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @IdClass(TratamientoPatologiaPK.class)
-@Table(name="T_TRATAMIENTO_PATOLOGIA")
+@Table(name="TRATAMIENTO_PATOLOGIA")
 public class TratamientoPatologia implements Serializable {
 
 	@Id

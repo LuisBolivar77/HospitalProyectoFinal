@@ -14,103 +14,87 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="T_EXAMEN")
-public class Examen implements Serializable{
+@Table(name = "EXAMEN")
+public class Examen implements Serializable {
 
 	@Id
-	@Column(name="ID")
+	@Column(name = "ID")
 	private int id;
-	
-	@Column(name="DESCRIPCION", nullable=false, length=200)
+
+	@Column(name = "DESCRIPCION", nullable = false, length = 200)
 	private String descripcion;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="FECHA_HORA", nullable=false)
-	private Date fechaHora;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="HORA_FIN")
-	private Date horaFin;
-	
 	@ManyToOne
-	@JoinColumn(name="TIP_EXAMEN")
-    private TipoExamen tipoExamen;
-	
+	@JoinColumn(name = "TIP_EXAMEN")
+	private TipoExamen tipoExamen;
+
 	public Examen() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param id
-	 * @param descripcion
-	 * @param fechaHora
-	 * @param tipoExamen
-	 */
-	public Examen(int id, String descripcion, Date fechaHora, TipoExamen tipoExamen) {
+	public Examen(int id, String descripcion, TipoExamen tipoExamen) {
 		super();
 		this.id = id;
 		this.descripcion = descripcion;
-		this.fechaHora = fechaHora;
 		this.tipoExamen = tipoExamen;
 	}
 
-	/**
-	 * @return the id
-	 */
 	public int getId() {
 		return id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the descripcion
-	 */
 	public String getDescripcion() {
 		return descripcion;
 	}
 
-	/**
-	 * @param descripcion the descripcion to set
-	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
-	/**
-	 * @return the fechaHora
-	 */
-	public Date getFechaHora() {
-		return fechaHora;
-	}
-
-	/**
-	 * @param fechaHora the fechaHora to set
-	 */
-	public void setFechaHora(Date fechaHora) {
-		this.fechaHora = fechaHora;
-	}
-
-	/**
-	 * @return the tipoExamen
-	 */
 	public TipoExamen getTipoExamen() {
 		return tipoExamen;
 	}
 
-	/**
-	 * @param tipoExamen the tipoExamen to set
-	 */
 	public void setTipoExamen(TipoExamen tipoExamen) {
 		this.tipoExamen = tipoExamen;
 	}
-	
-	
-	
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((tipoExamen == null) ? 0 : tipoExamen.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Examen other = (Examen) obj;
+		if (descripcion == null) {
+			if (other.descripcion != null)
+				return false;
+		} else if (!descripcion.equals(other.descripcion))
+			return false;
+		if (id != other.id)
+			return false;
+		if (tipoExamen == null) {
+			if (other.tipoExamen != null)
+				return false;
+		} else if (!tipoExamen.equals(other.tipoExamen))
+			return false;
+		return true;
+	}
+
 }

@@ -14,7 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="T_HORARIO")
+@Table(name="HORARIO")
 public class Horario implements Serializable{
 	
 	@Id
@@ -27,7 +27,7 @@ public class Horario implements Serializable{
 	private Date horaFin;
 	
 	@ManyToOne
-	@JoinColumn(name="PERSONAL_MEDICO")
+	@JoinColumn(name="PERSONAL_MEDICO_ID")
 	private PersonalMedico personalMedico;
 	
 	public Horario() {

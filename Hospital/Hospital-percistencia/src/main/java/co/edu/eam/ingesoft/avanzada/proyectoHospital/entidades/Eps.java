@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_EPS")
+@Table(name="EPS")
 public class Eps implements Serializable{
 	
 	@Id
@@ -21,7 +21,7 @@ public class Eps implements Serializable{
 	private String descripcion;
 	
 	@ManyToOne
-	@JoinColumn(name="tipoEps", nullable=false)
+	@JoinColumn(name="TIPO_EPS_ID", nullable=false)
 	private TipoEps tipoEps;
 	
 	public Eps() {

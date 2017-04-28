@@ -13,7 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "T_RECETA")
+@Table(name = "RECETA")
 public class Receta implements Serializable {
 
 	@Id
@@ -28,7 +28,7 @@ public class Receta implements Serializable {
 	private Date fecha;
 
 	@OneToOne
-	@JoinColumn(name = "ORDEN_MEDICA")
+	@JoinColumn(name = "ORDEN_MEDICA_ID")
 	private OrdenMedica ordenMedica;
 
 	public Receta() {

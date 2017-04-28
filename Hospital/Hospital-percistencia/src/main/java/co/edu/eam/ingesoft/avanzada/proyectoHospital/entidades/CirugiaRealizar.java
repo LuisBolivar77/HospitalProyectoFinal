@@ -14,42 +14,44 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="T_CIRUGIA_REALIZAR")
+@Table(name = "CIRUGIA_REALIZAR")
 @IdClass(CirugiaRealizarPK.class)
-public class CirugiaRealizar implements Serializable{
+public class CirugiaRealizar implements Serializable {
 
 	@Id
 	@ManyToOne
-	@JoinColumn(name="CIRUGIA_ID")
+	@JoinColumn(name = "CIRUGIA_ID")
 	private Cirugia cirugia;
-	
+
 	@Id
 	@ManyToOne
-	@JoinColumn(name="ORDEN_MEDICA_ID")
+	@JoinColumn(name = "ORDEN_MEDICA_ID")
 	private OrdenMedica ordenMedica;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="FECHA_HORA")
+	@Column(name = "FECHA_HORA")
 	private Date fechaHora;
-	
-	
+
+	@ManyToOne
+	@JoinColumn(name = "QUIROFANO_ID")
+	private Quirofano quirofano;
+
+	@ManyToOne
+	@JoinColumn(name = "CITA_ID", nullable = true)
+	private Cita cita;
+
 	public CirugiaRealizar() {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	/**
-	 * @param cirugia
-	 * @param ordenMedica
-	 * @param fechaHora
-	 */
-	public CirugiaRealizar(Cirugia cirugia, OrdenMedica ordenMedica, Date fechaHora) {
+	public CirugiaRealizar(Cirugia cirugia, OrdenMedica ordenMedica, Date fechaHora, Quirofano quirofano, Cita cita) {
 		super();
 		this.cirugia = cirugia;
 		this.ordenMedica = ordenMedica;
 		this.fechaHora = fechaHora;
+		this.quirofano = quirofano;
+		this.cita = cita;
 	}
-
 
 	/**
 	 * @return the cirugia
@@ -58,14 +60,13 @@ public class CirugiaRealizar implements Serializable{
 		return cirugia;
 	}
 
-
 	/**
-	 * @param cirugia the cirugia to set
+	 * @param cirugia
+	 *            the cirugia to set
 	 */
 	public void setCirugia(Cirugia cirugia) {
 		this.cirugia = cirugia;
 	}
-
 
 	/**
 	 * @return the ordenMedica
@@ -74,14 +75,13 @@ public class CirugiaRealizar implements Serializable{
 		return ordenMedica;
 	}
 
-
 	/**
-	 * @param ordenMedica the ordenMedica to set
+	 * @param ordenMedica
+	 *            the ordenMedica to set
 	 */
 	public void setOrdenMedica(OrdenMedica ordenMedica) {
 		this.ordenMedica = ordenMedica;
 	}
-
 
 	/**
 	 * @return the fechaHora
@@ -90,14 +90,12 @@ public class CirugiaRealizar implements Serializable{
 		return fechaHora;
 	}
 
-
 	/**
-	 * @param fechaHora the fechaHora to set
+	 * @param fechaHora
+	 *            the fechaHora to set
 	 */
 	public void setFechaHora(Date fechaHora) {
 		this.fechaHora = fechaHora;
 	}
-	
-	
-	
+
 }

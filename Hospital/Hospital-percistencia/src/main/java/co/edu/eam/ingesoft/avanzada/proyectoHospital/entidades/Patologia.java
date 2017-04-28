@@ -10,20 +10,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_PATOLOGIA")
+@Table(name = "PATOLOGIA")
 public class Patologia implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="ID")
+	@Column(name = "ID")
 	private int id;
-	
-	@Column(name="NOMBRE", length=30, nullable=false)
+
+	@Column(name = "NOMBRE", length = 40, nullable = false, unique = true)
 	private String nombre;
-	
-	@Column(name="ANOTACIONES", length=200, nullable=true)
+
+	@Column(name = "ANOTACIONES", length = 200, nullable = true)
 	private String anotacion;
-	
+
 	public Patologia() {
 		// TODO Auto-generated constructor stub
 	}
@@ -46,7 +46,8 @@ public class Patologia implements Serializable {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -60,7 +61,8 @@ public class Patologia implements Serializable {
 	}
 
 	/**
-	 * @param nombre the nombre to set
+	 * @param nombre
+	 *            the nombre to set
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -74,10 +76,11 @@ public class Patologia implements Serializable {
 	}
 
 	/**
-	 * @param anotacion the anotacion to set
+	 * @param anotacion
+	 *            the anotacion to set
 	 */
 	public void setAnotacion(String anotacion) {
 		this.anotacion = anotacion;
-	}	
-	
+	}
+
 }
