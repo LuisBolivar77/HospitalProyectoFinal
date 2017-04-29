@@ -34,6 +34,10 @@ public class ResultadoExamen implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "FECHA_HORA")
 	private Date fechaHora;
+	
+	public ResultadoExamen() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public ResultadoExamen(Examen examen, OrdenMedica ordenMedica, String resultado, Date fechaHora) {
 		super();

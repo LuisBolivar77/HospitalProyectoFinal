@@ -50,6 +50,10 @@ public class Usuario implements Serializable {
 
 	@Column(name = "DIRECCION", length = 30)
 	protected String direccion;
+	
+	public Usuario() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Usuario(int identificacion, TipoDocumento tipoDocumento, String usuario, String password, String nombre,
 			String apellido, String email, int telefono, int celular, String direccion) {

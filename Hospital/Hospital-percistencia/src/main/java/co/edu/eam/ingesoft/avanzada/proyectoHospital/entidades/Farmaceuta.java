@@ -17,6 +17,11 @@ public class Farmaceuta extends Usuario implements Serializable {
 	@JoinColumn(name = "FARMACIA_ID")
 	private Farmacia farmacia;
 	
+	public Farmaceuta() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	public Farmaceuta(int identificacion, TipoDocumento tipoDocumento, String usuario, String password, String nombre,
 			String apellido, String email, int telefono, int celular, String direccion, Farmacia farmacia) {
 		super(identificacion, tipoDocumento, usuario, password, nombre, apellido, email, telefono, celular, direccion);

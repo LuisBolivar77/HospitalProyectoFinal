@@ -21,6 +21,10 @@ public class Paciente extends Usuario implements Serializable {
 
 	@Column(name = "USUARIO_ASIGNADO")
 	private boolean usuarioAsignado;
+	
+	public Paciente() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Paciente(int identificacion, TipoDocumento tipoDocumento, String usuario, String password, String nombre,
 			String apellido, String email, int telefono, int celular, String direccion, Eps eps,

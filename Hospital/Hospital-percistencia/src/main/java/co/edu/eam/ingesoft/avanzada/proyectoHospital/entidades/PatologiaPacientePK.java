@@ -4,45 +4,57 @@ import java.io.Serializable;
 
 public class PatologiaPacientePK implements Serializable {
 
-	private int cita;
-
 	private int patologia;
+	
+	private String cita;	
 
 	public PatologiaPacientePK() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PatologiaPacientePK(int cita, int patologia) {
-		super();
-		this.cita = cita;
-		this.patologia = patologia;
-	}
-
-	public int getCita() {
-		return cita;
-	}
-
-	public void setCita(int cita) {
-		this.cita = cita;
-	}
-
+	/**
+	 * @return the patologia
+	 */
 	public int getPatologia() {
 		return patologia;
 	}
 
+	/**
+	 * @param patologia the patologia to set
+	 */
 	public void setPatologia(int patologia) {
 		this.patologia = patologia;
 	}
 
+	/**
+	 * @return the cita
+	 */
+	public String getCita() {
+		return cita;
+	}
+
+	/**
+	 * @param cita the cita to set
+	 */
+	public void setCita(String cita) {
+		this.cita = cita;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + cita;
+		result = prime * result + ((cita == null) ? 0 : cita.hashCode());
 		result = prime * result + patologia;
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -52,11 +64,16 @@ public class PatologiaPacientePK implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		PatologiaPacientePK other = (PatologiaPacientePK) obj;
-		if (cita != other.cita)
+		if (cita == null) {
+			if (other.cita != null)
+				return false;
+		} else if (!cita.equals(other.cita))
 			return false;
 		if (patologia != other.patologia)
 			return false;
 		return true;
 	}
+
+	
 
 }

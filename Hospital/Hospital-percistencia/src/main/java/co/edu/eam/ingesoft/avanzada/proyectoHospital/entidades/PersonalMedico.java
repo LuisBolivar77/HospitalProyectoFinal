@@ -25,6 +25,10 @@ public class PersonalMedico extends Usuario implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "ESPECIALIZACION_ID", nullable = true)
 	private Especializacion especializacion;
+	
+	public PersonalMedico() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public PersonalMedico(int identificacion, TipoDocumento tipoDocumento, String usuario, String password,
 			String nombre, String apellido, String email, int telefono, int celular, String direccion,
