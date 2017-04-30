@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Hospital</title>
+	<link rel="stylesheet" href="#{request.contextPath}/css/components.css" />
+	<link rel="stylesheet" href="#{request.contextPath}/css/responsee.css" />
+	<link rel="stylesheet"
+		href="#{request.contextPath}/owl-carousel/owl.carousel.css" />
+	<link rel="stylesheet"
+		href="#{request.contextPath}/owl-carousel/owl.theme.css" />
+	<!-- CUSTOM STYLE -->
+	<link rel="stylesheet"
+		href="#{request.contextPath}/css/template-style.css" />
+	<link
+		href='#{request.contextPath}/fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&amp;subset=latin,latin-ext'
+		rel='stylesheet' type='text/css' />
+	<script type="text/javascript"
+		src="#{request.contextPath}/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/js/jquery-ui.min.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/js/modernizr.js"></script>
+	<script type="text/javascript"
+		src="#{request.contextPath}/js/responsee.js"></script>
+	<!--[if lt IE 9]>
+	      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+      <![endif]-->
+</h:head>
+<h:body class="size-1140">
+	<!-- TOP NAV WITH LOGO -->
+	<header>
+		<nav>
+			<div class="line">
+				<div class="top-nav">
+					<div class="logo hide-l">
+						<a href="../design/">DESIGN <br /> <strong>THEME</strong></a>
+					</div>
+					<p class="nav-text">Custom menu text</p>
+					<div class="top-nav s-12 l-5">
+						<ul class="right top-ul chevron">
+							<li><a href="#{request.contextPath}/paginas/publico/Login.xhtml">Inicio de sesion</a></li>
+							<li><a >Gestion de Personal</a>
+								<ul>
+									<li><a href="#{request.contextPath}/paginas/seguro/RegistroDePersonal.xhtml">Registro</a></li>
+									<li><a href="#{request.contextPath}/paginas/seguro/MasOpcionesPersonal.xhtml">Mas opciones</a></li>
+
+								</ul></li>
+							<li><a>Gestion de
+									Instalaciones</a>
+								<ul>
+									<li><a href="#{request.contextPath}/paginas/seguro/RegistroDesInstalaciones.xhtml"></a></li>
+									<li><a href="#{request.contextPath}/paginas/seguro/MasOpcionesIntalaciones.xhtml">Mas opciones</a></li>
+
+								</ul></li>
+						</ul>
+					</div>
+					<ul class="s-12 l-2">
+						 <img src="#{request.contextPath}/img/LogoHospital.png" alt="" />
+						
+					</ul>
+					<div class="top-nav s-12 l-5">
+						<ul class="top-ul chevron">
+							<li><a>Gestion de Insumos</a>
+							<ul>
+									<li><a href="#{request.contextPath}/paginas/seguro/RegistroDeInsumos.xhtml">Registro</a></li>
+									<li><a href="#{request.contextPath}/paginas/seguro/MasOpcionesInsumos.xhtml">Mas Opciones</a></li>
+
+								</ul></li>
+							<li><a>Gestion de Enfermedades</a>
+								<ul>
+									<li><a href="#{request.contextPath}/paginas/seguro/RegistroDeEnfermedades.xhtml">Registro</a></li>
+									<li><a href="#{request.contextPath}/paginas/seguro/MasOpcionesEnfermedades.xhtml">Mas Opciones</a></li>
+									
+								</ul></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<section>
+		<!-- CAROUSEL -->
+		<div id="carousel">
+			<div id="owl-demo" class="owl-carousel owl-theme">
+				<div class="item">
+					<img src="#{request.contextPath}/img/firstes.jpeg" alt="" />
+					<div class="carousel-text">
+						<div class="line">
+							<div class="s-12 l-9">
+								<h2>El mejor Hospital del Pais</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- FIRST BLOCK -->
+		<div id="first-block">
+			<div class="line">
+				<div class="margin">
+					<div class="s-12 m-6 l-3 margin-bottom">
+						<i class="icon-paperplane_ico icon2x"></i>
+						<h3>Acerca de Nosotros</h3>
+						<p>Somos el unico hospital que se preocupa por tu salud, con
+							nosotros siempre recibiras la mejor atencion posible.</p>
+					</div>
+					<div class="s-12 m-6 l-3 margin-bottom">
+						<i class="icon-star icon2x"></i>
+						<h3>Servicios</h3>
+						<p>Se atendido por los mejores profesionales en cada una de
+							nuestras areas que necesites.</p>
+					</div>
+					<div class="s-12 m-6 l-3 margin-bottom">
+						<i class="icon-message icon2x"></i>
+						<h3>Contacto</h3>
+						<p>Comunicate con nuestras lineas telefonicas o encuentranos
+							en la calle 14 junto al parque sucre</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- SECOND BLOCK -->
+		<div id="second-block">
+			<div class="line">
+				<div class="margin-bottom">
+					<div class="margin" align="center">
+						<p:messages id="facesMessage" autoUpdate="true" globalOnly="true"
+							closable="true">
+						</p:messages>
+
+						<ui:insert name="cuerpo"></ui:insert>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- GALLERY -->
+		<div id="third-block">
+			<div class="line">
+				<h2>Nuestras Instalaciones</h2>
+				<div class="margin">
+					<div class="s-12 m-6 l-3">
+						<img src="#{request.contextPath}/img/first-small.jpeg"
+							alt="alternative text" />
+
+					</div>
+					<div class="s-12 m-6 l-3">
+						<img src="#{request.contextPath}/img/second-small.jpeg"
+							alt="alternative text" />
+
+					</div>
+					<div class="s-12 m-6 l-3">
+						<img src="#{request.contextPath}/img/third-small.jpeg"
+							alt="alternative text" />
+
+					</div>
+					<div class="s-12 m-6 l-3">
+						<img src="#{request.contextPath}/img/fourth-small.jpeg"
+							alt="alternative text" />
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="fourth-block">
+			<div class="line">
+				<div id="owl-demo2" class="owl-carousel owl-theme">
+					<div class="item">
+						<h2>Nuestra Mision</h2>
+						<p class="s-12 m-12 l-8 center">trabajamos con estandares de
+							acreditacion y eficiencia para brindar atencion integral con
+							calidad y calidez humana garantizando la seguridad del paciente y
+							su familia.</p>
+					</div>
+					<div class="item">
+						<h2>Nuestra Mision</h2>
+						<p class="s-12 m-12 l-8 center">En el año 2030 el Hospital el
+							EDEN sera un hospital universitario lider, con excelencia de
+							prestacion de servicios de salud acreditados..</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- FOOTER -->
+	<footer>
+		<div class="line">
+			<div class="s-12 l-6">
+				<p>Copyright 2015, Vision Design - graphic zoo</p>
+			</div>
+			<div class="s-12 l-6">
+				<p class="right">
+					<a class="right" href="http://www.myresponsee.com"
+						title="Responsee - lightweight responsive framework">Design
+						and coding by Responsee Team</a>
+				</p>
+			</div>
+		</div>
+	</footer>
+	<script type="text/javascript"
+		src="#{request.contextPath}/owl-carousel/owl.carousel.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$("#owl-demo").owlCarousel({
+				slideSpeed : 300,
+				autoPlay : false,
+				navigation : false,
+				pagination : false,
+				singleItem : true
+			});
+			$("#owl-demo2").owlCarousel({
+				slideSpeed : 300,
+				autoPlay : false,
+				navigation : false,
+				pagination : true,
+				singleItem : true
+			});
+		});
+	</script>
+</h:body>
+</html>
