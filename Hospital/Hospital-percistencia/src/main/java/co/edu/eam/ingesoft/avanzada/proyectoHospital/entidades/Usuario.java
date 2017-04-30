@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -17,7 +19,16 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento
 @Entity
 @Table(name = "USUARIO")
 @Inheritance(strategy = InheritanceType.JOINED)
+@NamedQueries({
+	@NamedQuery(name=Usuario.NOMBRE_USUARIO, query="SELECT u FROM Usuario u WHERE u.usuario=?1")
+})
 public class Usuario implements Serializable {
+	
+	/**
+	 * Busca un usuario por su nombre de usuario
+	 * ?1: nombre de usuario
+	 */
+	public static final String NOMBRE_USUARIO = "Usuario.nombreUsuario";
 
 	@Id
 	@Column(name = "IDENTIFICACION", length = 20, nullable = false)
