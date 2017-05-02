@@ -5,11 +5,21 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "ESPECIALIZACION")
+@NamedQueries({
+	@NamedQuery (name = Especializacion.LISTAR_ESPECIALIZACIONES, query="SELECT e FROM Especializacion e")
+})
 public class Especializacion implements Serializable {
+	
+	/**
+	 * Lista las especializaciones registradas
+	 */
+	public static final String LISTAR_ESPECIALIZACIONES = "Especializacion.listar";
 
 	@Id
 	@Column(name = "ID")

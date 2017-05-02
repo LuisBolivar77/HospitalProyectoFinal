@@ -8,6 +8,7 @@ import javax.persistence.Query;
 
 import co.edu.eam.ingesoft.avanzada.negocio.exception.ExcepcionNegocio;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.PersonalMedico;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoPersonal;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Usuario;
 
 public class PersonalMedicoEJB {
@@ -29,6 +30,41 @@ public class PersonalMedicoEJB {
 		} else {
 			em.persist(p);
 		}
+	}
+	
+	/**
+	 * Busca el tipo de personal de un personal médico
+	 * @param id código del tipo de personal
+	 * @return el tipo de personal si lo encuentra, de lo contrario null
+	 */
+	public TipoPersonal buscarTipo (int id){
+		return em.find(TipoPersonal.class, id);
+	}
+	
+	/**
+	 * Obtiene la lista de los tipos de personal registrados
+	 * @return la lista 
+	 */
+	public List<TipoPersonal> listarTipos (){
+		Query q = em.createNamedQuery(TipoPersonal.LISTAR_TIPOS);
+		List<TipoPersonal> lista = q.getResultList();
+		return lista;
+	}
+	
+	/**
+	 * Edita un personal médico
+	 * @param p el personal médico a editar
+	 */
+	public void editar(PersonalMedico p) {
+		em.merge(p);
+	}
+	
+	/**
+	 * Elimina un personal médico registrado
+	 * @param per personal a eliminar
+	 */
+	public void eliminar(PersonalMedico per){
+		em.remove(per);
 	}
 
 	/**

@@ -3,16 +3,20 @@ package co.edu.eam.ingesoft.avanzada.proyectoHospital.controladores;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.inject.Named;
 
 import org.omnifaces.cdi.ViewScoped;
 import org.omnifaces.util.Messages;
 
+import co.edu.eam.ingesoft.avanzada.negocio.beans.EspecializacionEJB;
 import co.edu.eam.ingesoft.avanzada.negocio.beans.PersonalMedicoEJB;
 import co.edu.eam.ingesoft.avanzada.negocio.exception.ExcepcionNegocio;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Especializacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.PersonalMedico;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoPersonal;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Usuario;
 
 @Named("controladorPersonal")
 @ViewScoped
@@ -82,18 +86,39 @@ public class ControladorPersonalMedico implements Serializable {
 	 * Correo electrónico del usuario
 	 */
 	private String email;
+	
+	/**
+	 * Personal que ha sido buscado
+	 */
+	private PersonalMedico buscado;
 
 	/**
 	 * EJB del personal médico
 	 */
+	@EJB
 	private PersonalMedicoEJB personalEJB;
+	
+	/**
+	 * EJB de especialización
+	 */
+	@EJB
+	private EspecializacionEJB especializacionEJB;
+	
+	@PostConstruct
+	public void postContructor (){
+		buscado = null;
+		especializaciones = especializacionEJB.listar();
+		tiposPersonal = personalEJB.listarTipos();
+	}
+	
 
 	/**
 	 * Registra un personal médico en la base de datos
 	 */
 	public void registrar() {
 		
-		//Especializacion esp = 
+		Especializacion esp = especializacionEJB.buscar(tipoEspecializacionSel);
+		TipoPersonal tipo = personalEJB.buscarTipo(tipoPersonalSel);
 		
 		PersonalMedico p = new PersonalMedico();
 		p.setApellido(apellido);
@@ -105,12 +130,75 @@ public class ControladorPersonalMedico implements Serializable {
 		p.setPassword(password);
 		p.setTelefono(telefono);
 		p.setUsuario(username);
+		p.setEspecializacion(esp);
+		p.setTipoPersonal(tipo);
+		
 		try{
 		personalEJB.registrar(p);
+		Messages.addFlashGlobalInfo("Registro exitoso");
 		} catch (ExcepcionNegocio e){
-			Messages.addFlashGlobalInfo(e.getMessage());
+			Messages.addFlashGlobalError(e.getMessage());
 		}
 		
+	}
+	
+	/**
+	 * Busca un personal Médico por su número de identificación
+	 */
+	public void buscar(){
+		PersonalMedico per = personalEJB.buscar(identificacion);
+		if (per != null){
+			buscado = per;
+			nombre = per.getNombre();
+			apellido = per.getApellido();
+			direccion = per.getDireccion();
+			email = per.getEmail();
+			tipoEspecializacionSel = per.getEspecializacion().getId();
+			tipoPersonalSel = per.getTipoPersonal().getId();
+			telefono = per.getTelefono();
+			celular = per.getCelular();
+		    username = per.getUsuario();
+		    password = per.getPassword();		    
+		} else {
+			Messages.addFlashGlobalError("Este usuario no se encuentra registrado");
+		}
+	}
+	
+	/**
+	 * Permite editar el personal médico registrado
+	 */
+	public void editar(){
+		if (buscado == null){
+			Messages.addFlashGlobalError("Debe buscar antes de editar");
+		} else {
+			Especializacion esp = especializacionEJB.buscar(tipoEspecializacionSel);
+			TipoPersonal tipo = personalEJB.buscarTipo(tipoPersonalSel);
+			
+			buscado.setApellido(apellido);
+			buscado.setCelular(celular);
+			buscado.setDireccion(direccion);
+			buscado.setEmail(email);
+			buscado.setIdentificacion(identificacion);
+			buscado.setNombre(nombre);
+			buscado.setPassword(password);
+			buscado.setTelefono(telefono);
+			buscado.setUsuario(username);
+			buscado.setEspecializacion(esp);
+			buscado.setTipoPersonal(tipo);
+			
+			personalEJB.editar(buscado);
+			Messages.addFlashGlobalInfo("Se ha editado exitosamente");
+			
+		}
+	}
+	
+	public void eliminar (){
+		if (buscado == null){
+			Messages.addFlashGlobalError("Debe buscar antes de eliminar");
+		} else {
+			personalEJB.eliminar(buscado);
+			Messages.addFlashGlobalInfo("Se ha eliminado exitosamente");
+		}
 	}
 
 	/**

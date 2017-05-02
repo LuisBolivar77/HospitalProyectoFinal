@@ -5,11 +5,21 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="TIPO_PERSONAL")
+@NamedQueries({
+	@NamedQuery(name=TipoPersonal.LISTAR_TIPOS, query="SELECT tp FROM TipoPersonal tp")
+})
 public class TipoPersonal implements Serializable{
+	
+	/**
+	 * Lista los tipos de personal registrados
+	 */
+	public static final String LISTAR_TIPOS = "TipoPersonal.listar";
 	
 	@Id
 	@Column(name="ID", nullable=false)
