@@ -1,15 +1,19 @@
 package co.edu.eam.ingesoft.avanzada.negocio.beans;
 
+import java.util.List;
+
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import co.edu.eam.ingesoft.avanzada.negocio.exception.ExcepcionNegocio;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Cirugia;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Examen;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Farmacia;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Hospitalizacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Medicamento;
-import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.PersonalMedico;
 
 public class Insumos_ProcedimientosEJB {
 
@@ -107,6 +111,49 @@ public class Insumos_ProcedimientosEJB {
 	
 
 	/**
+	 * metodo que registra una hospitalizacion en la base de datos
+	 * @param hos la hospitalizacion  a registrar
+	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void crearHospitalizacion(Hospitalizacion hos){
+		Hospitalizacion h = buscarHospitalizacion(hos.getId());
+		if(h==null){
+			em.persist(h);
+		}else{
+			throw new ExcepcionNegocio("Esta Hospitalizacion ya se encuentra registrada");
+		}
+	}
+	
+	/**
+	 * metodo que busca una Hospitalizacion
+	 * @param cod codigo por el que se el va a buscar
+ 	 * @return la Hospitalizacion
+	 */
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public Hospitalizacion buscarHospitalizacion(int cod){
+		return em.find(Hospitalizacion.class, cod);
+	}
+	
+	/**
+	 * Edita una Hospitalizacion
+	 * @param h Hospitalizacion a editar
+	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void editar(Hospitalizacion h) {
+		em.merge(h);
+	}
+	
+	/**
+	 * Elimina una Hospitalizacion registrada
+	 * @param hos la Hospitalizacion a eliminar
+	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void eliminar(Hospitalizacion hos){
+		em.remove(hos);
+	}
+	
+	
+	/**
 	 * metodo que registra un Examen en la base de datos
 	 * @param e el examen a registrar
 	 */
@@ -147,4 +194,16 @@ public class Insumos_ProcedimientosEJB {
 	public void eliminar(Examen ex){
 		em.remove(ex);
 	}
+	
+	
+	/**
+	 * metodo que lista todas las farmacias de la base de datos
+	 * @return la lista
+	 */
+	public List<Farmacia>listarFarmacias(){
+		Query q = em.createNamedQuery(Farmacia.LISTAR_FARMACIAS);
+		List<Farmacia> lista = q.getResultList();
+		return lista;
+	}
+	
 }
