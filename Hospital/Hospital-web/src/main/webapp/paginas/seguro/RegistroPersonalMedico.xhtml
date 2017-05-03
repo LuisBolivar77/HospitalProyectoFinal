@@ -78,20 +78,8 @@
 
 				<p:commandButton id="btnRegistrar"
 					value="#{msj['usuario.registrar']}" process="@this,panelRegistro"
-					update="panelRegistro" action="#{controladorPersonal.registrar}" />
-
-				<p:commandButton id="btnbuscar" value="#{msj['usuario.buscar']}"
-					process="@this,panelRegistro" update="panelRegistro"
-					action="#{controladorPersonal.buscar}" />
-
-				<p:commandButton id="btneditar" value="#{msj['usuario.editar']}"
-					process="@this,panelRegistro" update="panelRegistro"
-					action="#{controladorPersonal.editar}" />
-
-				<p:commandButton id="btneliminar"
-					value="#{msj['usuario.eliminar']}" process="@this,panelRegistro"
-					update="panelRegistro"
-					action="#{controladorPersonal.eliminar}" />
+					update="panelRegistro" action="#{controladorPersonal.registrar}"
+					rendered="#{controladorPersonal.editar}" />
 
 				<p:commandButton id="btnCancelar" value="#{msj['usuario.cancelar']}"
 					process="@this,panelRegistro" update="panelDatos"

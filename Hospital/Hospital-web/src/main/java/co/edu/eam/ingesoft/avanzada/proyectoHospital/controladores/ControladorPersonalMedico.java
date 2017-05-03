@@ -81,45 +81,63 @@ public class ControladorPersonalMedico implements Serializable {
 	 * Número de celular del usuario
 	 */
 	private int celular;
-	
+
 	/**
 	 * Correo electrónico del usuario
 	 */
 	private String email;
-	
+
 	/**
 	 * Personal que ha sido buscado
 	 */
-	private PersonalMedico buscado;
+	private PersonalMedico personalEditar;
+
+	/**
+	 * Lsita del personal registrado
+	 */
+	private List<PersonalMedico> listaPersonal;
 
 	/**
 	 * EJB del personal médico
 	 */
 	@EJB
 	private PersonalMedicoEJB personalEJB;
-	
+
 	/**
 	 * EJB de especialización
 	 */
 	@EJB
 	private EspecializacionEJB especializacionEJB;
-	
+
 	@PostConstruct
-	public void postContructor (){
-		buscado = null;
+	public void postContructor() {
+		personalEditar = null;
 		especializaciones = especializacionEJB.listar();
 		tiposPersonal = personalEJB.listarTipos();
+		listaPersonal = personalEJB.listarPersonal();
 	}
 	
+	public String redireccionarEditar (PersonalMedico per){
+		personalEditar = per;
+		return "/paginas/seguro/RegistroPersonalMedico.xhtml?faces-redirect=true";
+	}
+	
+	/**
+	 * Identifica si se ha seleccionado la opción de editar
+	 * @return true si se seleccionó la opción editar, de lo contrario false
+	 */
+	public boolean isEditar(){
+		return personalEditar != null;
+	}
 
 	/**
 	 * Registra un personal médico en la base de datos
 	 */
 	public void registrar() {
-		
+
 		Especializacion esp = especializacionEJB.buscar(tipoEspecializacionSel);
 		TipoPersonal tipo = personalEJB.buscarTipo(tipoPersonalSel);
-		
+
 		PersonalMedico p = new PersonalMedico();
 		p.setApellido(apellido);
 		p.setCelular(celular);
@@ -132,23 +150,23 @@ public class ControladorPersonalMedico implements Serializable {
 		p.setUsuario(username);
 		p.setEspecializacion(esp);
 		p.setTipoPersonal(tipo);
-		
-		try{
-		personalEJB.registrar(p);
-		Messages.addFlashGlobalInfo("Registro exitoso");
-		} catch (ExcepcionNegocio e){
+
+		try {
+			personalEJB.registrar(p);
+			Messages.addFlashGlobalInfo("Registro exitoso");
+		} catch (ExcepcionNegocio e) {
 			Messages.addFlashGlobalError(e.getMessage());
 		}
-		
+
 	}
-	
+
 	/**
 	 * Busca un personal Médico por su número de identificación
 	 */
-	public void buscar(){
+	public void buscar() {
 		PersonalMedico per = personalEJB.buscar(identificacion);
-		if (per != null){
-			buscado = per;
+		if (per != null) {
+			personalEditar = per;
 			nombre = per.getNombre();
 			apellido = per.getApellido();
 			direccion = per.getDireccion();
@@ -157,48 +175,49 @@ public class ControladorPersonalMedico implements Serializable {
 			tipoPersonalSel = per.getTipoPersonal().getId();
 			telefono = per.getTelefono();
 			celular = per.getCelular();
-		    username = per.getUsuario();
-		    password = per.getPassword();		    
+			username = per.getUsuario();
+			password = per.getPassword();
 		} else {
 			Messages.addFlashGlobalError("Este usuario no se encuentra registrado");
 		}
 	}
-	
+
+
 	/**
-	 * Permite editar el personal médico registrado
+	 * Elimina un personal
+	 * 
+	 * @param pm
+	 *            personal que se desea eliminar
 	 */
-	public void editar(){
-		if (buscado == null){
-			Messages.addFlashGlobalError("Debe buscar antes de editar");
-		} else {
-			Especializacion esp = especializacionEJB.buscar(tipoEspecializacionSel);
-			TipoPersonal tipo = personalEJB.buscarTipo(tipoPersonalSel);
-			
-			buscado.setApellido(apellido);
-			buscado.setCelular(celular);
-			buscado.setDireccion(direccion);
-			buscado.setEmail(email);
-			buscado.setIdentificacion(identificacion);
-			buscado.setNombre(nombre);
-			buscado.setPassword(password);
-			buscado.setTelefono(telefono);
-			buscado.setUsuario(username);
-			buscado.setEspecializacion(esp);
-			buscado.setTipoPersonal(tipo);
-			
-			personalEJB.editar(buscado);
-			Messages.addFlashGlobalInfo("Se ha editado exitosamente");
-			
-		}
+	public void eliminarPersonal(PersonalMedico pm) {
+		personalEJB.eliminar(pm);
+		Messages.addFlashGlobalInfo("Se ha eliminado exitosamente");
 	}
-	
-	public void eliminar (){
-		if (buscado == null){
-			Messages.addFlashGlobalError("Debe buscar antes de eliminar");
-		} else {
-			personalEJB.eliminar(buscado);
-			Messages.addFlashGlobalInfo("Se ha eliminado exitosamente");
-		}
+
+	/**
+	 * Edita un personal
+	 * @param per Personal que se desea editar
+	 */
+	public void editarPersonal(PersonalMedico per) {
+
+		Especializacion esp = especializacionEJB.buscar(tipoEspecializacionSel);
+		TipoPersonal tipo = personalEJB.buscarTipo(tipoPersonalSel);
+
+		personalEditar.setApellido(apellido);
+		personalEditar.setCelular(celular);
+		personalEditar.setDireccion(direccion);
+		personalEditar.setEmail(email);
+		personalEditar.setIdentificacion(identificacion);
+		personalEditar.setNombre(nombre);
+		personalEditar.setPassword(password);
+		personalEditar.setTelefono(telefono);
+		personalEditar.setUsuario(username);
+		personalEditar.setEspecializacion(esp);
+		personalEditar.setTipoPersonal(tipo);
+
+		personalEJB.editar(personalEditar);
+		Messages.addFlashGlobalInfo("Se ha editado exitosamente");
+
 	}
 
 	/**
@@ -211,8 +230,23 @@ public class ControladorPersonalMedico implements Serializable {
 		password = "";
 		telefono = 0;
 		username = "";
-		celular=0;
-		email="";
+		celular = 0;
+		email = "";
+	}
+
+	/**
+	 * @return the listaPersonal
+	 */
+	public List<PersonalMedico> getListaPersonal() {
+		return listaPersonal;
+	}
+
+	/**
+	 * @param listaPersonal
+	 *            the listaPersonal to set
+	 */
+	public void setListaPersonal(List<PersonalMedico> listaPersonal) {
+		this.listaPersonal = listaPersonal;
 	}
 
 	/**
@@ -275,7 +309,8 @@ public class ControladorPersonalMedico implements Serializable {
 	}
 
 	/**
-	 * @param email the email to set
+	 * @param email
+	 *            the email to set
 	 */
 	public void setEmail(String email) {
 		this.email = email;

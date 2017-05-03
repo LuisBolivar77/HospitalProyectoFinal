@@ -9,6 +9,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,7 +18,15 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento
 
 @Entity
 @Table(name = "PERSONAL_MEDICO")
+@NamedQueries({
+	@NamedQuery(name=PersonalMedico.LISTAR_PERSONAL, query="SELECT p FROM PersonalMedico p")
+})
 public class PersonalMedico extends Usuario implements Serializable {
+	
+	/**
+	 * Obtiene la lista del personal registrado
+	 */
+	public static final String LISTAR_PERSONAL = "PersonalMedico.listar";
 
 	@ManyToOne
 	@JoinColumn(name = "TIPO_PERSONAL_ID")

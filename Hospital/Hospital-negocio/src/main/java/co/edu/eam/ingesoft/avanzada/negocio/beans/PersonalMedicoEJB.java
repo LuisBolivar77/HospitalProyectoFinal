@@ -49,6 +49,17 @@ public class PersonalMedicoEJB {
 	}
 	
 	/**
+	 * Obtiene la lista de personal médico reigstrado
+	 * @return la lista de personal registrado
+	 */
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public List<PersonalMedico> listarPersonal(){
+		Query q = em.createNamedQuery(PersonalMedico.LISTAR_PERSONAL);
+		List<PersonalMedico> lista = q.getResultList();
+		return lista;
+	}
+	
+	/**
 	 * Obtiene la lista de los tipos de personal registrados
 	 * @return la lista 
 	 */
