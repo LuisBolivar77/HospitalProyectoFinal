@@ -1,5 +1,7 @@
 package co.edu.eam.ingesoft.avanzada.negocio.beans;
 
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -15,6 +17,7 @@ public class InstalacionesEJB {
 	 * Registra un quirofano en la base de datos
 	 * @param q quirofano que se desea registrar
 	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void registrarQuirofano (Quirofano q){
 		Quirofano buscado = buscarQuirofano(q.getId());
 		if (buscado == null){
@@ -29,6 +32,7 @@ public class InstalacionesEJB {
 	 * @param numero número del quirofano que se desea buscar
 	 * @return el quirófano si lo encuentra, de lo contrario null
 	 */
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public Quirofano buscarQuirofano (int numero){
 		return em.find(Quirofano.class, numero);
 	}
@@ -37,6 +41,7 @@ public class InstalacionesEJB {
 	 * Edita un quirofano
 	 * @param q quirofano que se desea editar
 	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void editarQuirofano (Quirofano q){
 		em.merge(q);
 	}
@@ -45,6 +50,7 @@ public class InstalacionesEJB {
 	 * Elimina un quirófano
 	 * @param q quirófano que se desea eliminar
 	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void eliminarQuirofano (Quirofano q){
 		em.remove(q);
 	}

@@ -7,11 +7,21 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="EPS")
+@NamedQueries({
+	
+	@NamedQuery(name = "LISTAR_EPS", query = "SELECT e FROM EPS e ORDER BY ASC")
+})
 public class Eps implements Serializable{
+	
+	
+	public static final String LISTAR_EPS = "Listar_EPS";
+	
 	
 	@Id
 	@Column(name="ID", nullable=false)

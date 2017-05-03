@@ -7,12 +7,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="FARMACIA")
+@NamedQueries({
+	@NamedQuery(name="LISTAR_FARMACIAS", query="SELECT f FROM Farmacia f ORDER BY ASC")
+})
 public class Farmacia implements Serializable {
 
+	public static final String LISTAR_FARMACIAS = "ListarFarmacias";
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID")
