@@ -27,7 +27,7 @@ public class MedicamentoPaciente implements Serializable {
 	@Id	
 	@ManyToOne
 	@JoinColumn(name="RECETA_ID")
-	private Receta receta;
+	private Cita cita;
 	
 	@Column(name = "CANTIDAD", nullable = false)
 	private int cantidad;

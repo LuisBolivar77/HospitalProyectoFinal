@@ -22,7 +22,7 @@ public class Cita implements Serializable{
 	@Column(name="ID", nullable=false)
 	private int id;
 	
-	@JoinColumn(name="HORARIO", unique = true)
+	@JoinColumn(name="HORARIO_ID", unique = true)
 	@OneToOne
 	private Horario horario;
 	
