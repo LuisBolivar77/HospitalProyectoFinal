@@ -2,6 +2,8 @@ package co.edu.eam.ingesoft.avanzada.negocio.beans;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
@@ -15,6 +17,8 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Farmacia;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Hospitalizacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Medicamento;
 
+@LocalBean
+@Stateless
 public class Insumos_ProcedimientosEJB {
 
 	

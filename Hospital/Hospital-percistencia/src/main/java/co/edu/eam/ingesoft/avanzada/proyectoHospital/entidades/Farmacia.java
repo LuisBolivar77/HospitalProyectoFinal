@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="FARMACIA")
 @NamedQueries({
-	@NamedQuery(name="LISTAR_FARMACIAS", query="SELECT f FROM Farmacia f ORDER BY ASC")
+	@NamedQuery(name="LISTAR_FARMACIAS", query="SELECT f FROM Farmacia f ")
 })
 public class Farmacia implements Serializable {
 

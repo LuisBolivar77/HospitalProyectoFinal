@@ -20,7 +20,7 @@ public class Cita implements Serializable{
 
 	@Id
 	@Column(name="ID", nullable=false)
-	private String id;
+	private int id;
 	
 	@JoinColumn(name="HORARIO", unique = true)
 	@OneToOne
@@ -50,7 +50,7 @@ public class Cita implements Serializable{
 	}
 
 
-	public Cita(String id, Horario horario, String anotaciones, Cita cita, TipoCita tipoCita,
+	public Cita(int id, Horario horario, String anotaciones, Cita cita, TipoCita tipoCita,
 			PersonalMedico personalMedico, Paciente paciente) {
 		super();
 		this.id = id;
@@ -65,7 +65,7 @@ public class Cita implements Serializable{
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -73,7 +73,7 @@ public class Cita implements Serializable{
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

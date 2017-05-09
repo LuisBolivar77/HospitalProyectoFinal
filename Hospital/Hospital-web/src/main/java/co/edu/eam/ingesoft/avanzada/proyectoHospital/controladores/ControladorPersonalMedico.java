@@ -102,6 +102,7 @@ public class ControladorPersonalMedico implements Serializable {
 	 */
 	@EJB
 	private PersonalMedicoEJB personalEJB;
+	
 
 	/**
 	 * EJB de especialización

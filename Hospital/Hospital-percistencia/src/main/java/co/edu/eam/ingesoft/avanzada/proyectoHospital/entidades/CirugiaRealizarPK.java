@@ -6,31 +6,27 @@ public class CirugiaRealizarPK implements Serializable{
 
 	private int cirugia;
 	
-	private int ordenMedica;
+	private int cita;
 	
 	public CirugiaRealizarPK() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 
-	public CirugiaRealizarPK(int cirugia, int ordenMedica) {
-		super();
-		this.cirugia = cirugia;
-		this.ordenMedica = ordenMedica;
-	}
-
-
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + cirugia;
-		result = prime * result + ordenMedica;
+		result = prime * result + cita;
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -42,33 +38,9 @@ public class CirugiaRealizarPK implements Serializable{
 		CirugiaRealizarPK other = (CirugiaRealizarPK) obj;
 		if (cirugia != other.cirugia)
 			return false;
-		if (ordenMedica != other.ordenMedica)
+		if (cita != other.cita)
 			return false;
 		return true;
-	}
-
-
-
-	public int getCirugia() {
-		return cirugia;
-	}
-
-
-
-	public void setCirugia(int cirugia) {
-		this.cirugia = cirugia;
-	}
-
-
-
-	public int getOrdenMedica() {
-		return ordenMedica;
-	}
-
-
-
-	public void setOrdenMedica(int ordenMedica) {
-		this.ordenMedica = ordenMedica;
 	}
 
 	

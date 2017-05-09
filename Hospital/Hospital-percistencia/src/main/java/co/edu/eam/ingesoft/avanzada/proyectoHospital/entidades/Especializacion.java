@@ -25,7 +25,7 @@ public class Especializacion implements Serializable {
 	@Column(name = "ID")
 	private int id;
 
-	@Column(name = "NONMBRE", length = 30)
+	@Column(name = "NOMBRE", length = 30)
 	private String nombre;
 	
 	

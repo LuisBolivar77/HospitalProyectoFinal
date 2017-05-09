@@ -62,6 +62,9 @@ public class Usuario implements Serializable {
 	@Column(name = "DIRECCION", length = 30)
 	protected String direccion;
 	
+	@Column(name="ROL", length=30)
+	private String rol;
+	
 	public Usuario() {
 		// TODO Auto-generated constructor stub
 	}

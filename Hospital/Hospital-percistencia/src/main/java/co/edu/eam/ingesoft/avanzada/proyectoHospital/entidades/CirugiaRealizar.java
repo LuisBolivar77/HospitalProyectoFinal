@@ -22,11 +22,11 @@ public class CirugiaRealizar implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "CIRUGIA_ID")
 	private Cirugia cirugia;
-
+	
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "ORDEN_MEDICA_ID")
-	private OrdenMedica ordenMedica;
+	@JoinColumn(name = "CITA_ID")
+	private Cita cita;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "FECHA_HORA")
@@ -36,18 +36,13 @@ public class CirugiaRealizar implements Serializable {
 	@JoinColumn(name = "QUIROFANO_ID")
 	private Quirofano quirofano;
 
-	@ManyToOne
-	@JoinColumn(name = "CITA_ID", nullable = true)
-	private Cita cita;
-
 	public CirugiaRealizar() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CirugiaRealizar(Cirugia cirugia, OrdenMedica ordenMedica, Date fechaHora, Quirofano quirofano, Cita cita) {
+	public CirugiaRealizar(Cirugia cirugia, Date fechaHora, Quirofano quirofano, Cita cita) {
 		super();
 		this.cirugia = cirugia;
-		this.ordenMedica = ordenMedica;
 		this.fechaHora = fechaHora;
 		this.quirofano = quirofano;
 		this.cita = cita;
@@ -68,20 +63,6 @@ public class CirugiaRealizar implements Serializable {
 		this.cirugia = cirugia;
 	}
 
-	/**
-	 * @return the ordenMedica
-	 */
-	public OrdenMedica getOrdenMedica() {
-		return ordenMedica;
-	}
-
-	/**
-	 * @param ordenMedica
-	 *            the ordenMedica to set
-	 */
-	public void setOrdenMedica(OrdenMedica ordenMedica) {
-		this.ordenMedica = ordenMedica;
-	}
 
 	/**
 	 * @return the fechaHora

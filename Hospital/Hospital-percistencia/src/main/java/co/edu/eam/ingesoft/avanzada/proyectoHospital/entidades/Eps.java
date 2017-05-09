@@ -14,8 +14,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="EPS")
 @NamedQueries({
-	
-	@NamedQuery(name = "LISTAR_EPS", query = "SELECT e FROM EPS e ORDER BY ASC")
+//	@NamedQuery(name = "LISTAR_EPS", query = "SELECT e FROM Eps e ORDER BY asc")
+	@NamedQuery(name = "LISTAR_EPS", query = "SELECT e FROM Eps e ")
 })
 public class Eps implements Serializable{
 	
