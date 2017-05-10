@@ -18,7 +18,7 @@ public class EncargadoCirugia implements Serializable {
 	@Id
 	@ManyToOne
 	@JoinColumns({ @JoinColumn(name = "CIRUGIA_ID", referencedColumnName = "CIRUGIA_ID"),
-			@JoinColumn(name = "ORDEN_MEDICA_ID", referencedColumnName = "ORDEN_MEDICA_ID") })
+			@JoinColumn(name = "CITA_ID", referencedColumnName = "CITA_ID") })
 	private CirugiaRealizar cirugia;
 
 	@Id

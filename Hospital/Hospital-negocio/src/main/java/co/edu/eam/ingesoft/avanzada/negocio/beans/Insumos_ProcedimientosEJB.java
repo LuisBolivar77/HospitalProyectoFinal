@@ -13,7 +13,6 @@ import javax.persistence.Query;
 import co.edu.eam.ingesoft.avanzada.negocio.exception.ExcepcionNegocio;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Cirugia;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Examen;
-import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Farmacia;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Hospitalizacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Medicamento;
 
@@ -197,17 +196,6 @@ public class Insumos_ProcedimientosEJB {
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void eliminar(Examen ex){
 		em.remove(ex);
-	}
-	
-	
-	/**
-	 * metodo que lista todas las farmacias de la base de datos
-	 * @return la lista
-	 */
-	public List<Farmacia>listarFarmacias(){
-		Query q = em.createNamedQuery(Farmacia.LISTAR_FARMACIAS);
-		List<Farmacia> lista = q.getResultList();
-		return lista;
 	}
 	
 }

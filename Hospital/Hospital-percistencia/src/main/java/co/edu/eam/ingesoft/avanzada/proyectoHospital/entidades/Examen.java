@@ -25,7 +25,7 @@ public class Examen implements Serializable {
 	private String descripcion;
 
 	@ManyToOne
-	@JoinColumn(name = "TIP_EXAMEN")
+	@JoinColumn(name = "TIPO_EXAMEN")
 	private TipoExamen tipoExamen;
 
 	public Examen() {

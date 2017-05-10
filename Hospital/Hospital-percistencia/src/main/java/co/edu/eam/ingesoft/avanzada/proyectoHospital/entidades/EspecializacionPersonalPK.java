@@ -2,13 +2,13 @@ package co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades;
 
 import java.io.Serializable;
 
-public class PatologiaPacientePK implements Serializable {
+public class EspecializacionPersonalPK implements Serializable {
 
-	private int patologia;
+	private int especializacion;
 	
-	private int cita;	
-
-	public PatologiaPacientePK() {
+	private int personal;
+	
+	public EspecializacionPersonalPK() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -19,8 +19,8 @@ public class PatologiaPacientePK implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + cita;
-		result = prime * result + patologia;
+		result = prime * result + especializacion;
+		result = prime * result + personal;
 		return result;
 	}
 
@@ -35,14 +35,14 @@ public class PatologiaPacientePK implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PatologiaPacientePK other = (PatologiaPacientePK) obj;
-		if (cita != other.cita)
+		EspecializacionPersonalPK other = (EspecializacionPersonalPK) obj;
+		if (especializacion != other.especializacion)
 			return false;
-		if (patologia != other.patologia)
+		if (personal != other.personal)
 			return false;
 		return true;
 	}
-
 	
-
+	
+	
 }

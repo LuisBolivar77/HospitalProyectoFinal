@@ -24,6 +24,10 @@ public class Cirugia implements Serializable{
 	@JoinColumn(name="TIPO_CIRUGIA_ID")
 	private TipoCirugia tipoCirugia;
 	
+	@ManyToOne
+	@JoinColumn(name="ESPECIALIZACION_ID")
+	private Especializacion especializacion;
+	
 	public Cirugia() {
 		// TODO Auto-generated constructor stub
 	}

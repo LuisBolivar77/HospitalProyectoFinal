@@ -63,14 +63,14 @@ public class Usuario implements Serializable {
 	protected String direccion;
 	
 	@Column(name="ROL", length=30)
-	private String rol;
+	protected String rol;
 	
 	public Usuario() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Usuario(int identificacion, TipoDocumento tipoDocumento, String usuario, String password, String nombre,
-			String apellido, String email, int telefono, int celular, String direccion) {
+			String apellido, String email, int telefono, int celular, String direccion, String rol) {
 		super();
 		this.identificacion = identificacion;
 		this.tipoDocumento = tipoDocumento;
@@ -82,6 +82,7 @@ public class Usuario implements Serializable {
 		this.telefono = telefono;
 		this.celular = celular;
 		this.direccion = direccion;
+		this.rol = rol;
 	}
 
 	public int getIdentificacion() {
@@ -162,6 +163,22 @@ public class Usuario implements Serializable {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+	
+	
+
+	/**
+	 * @return the rol
+	 */
+	public String getRol() {
+		return rol;
+	}
+
+	/**
+	 * @param rol the rol to set
+	 */
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 
 	@Override

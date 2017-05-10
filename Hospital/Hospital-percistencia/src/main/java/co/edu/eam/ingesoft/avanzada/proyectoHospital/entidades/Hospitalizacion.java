@@ -21,23 +21,20 @@ public class Hospitalizacion implements Serializable{
 	@Column(name="ID")
 	private int id;
 	
-	@Column(name="DESCRIPCION", nullable=false, length=200)
-	private String descripcion;
-	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="FECHA_ENTRADA", nullable = false)
 	private Date fechaEntrada;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="FECHA_SALIDA")
 	private Date fechaSalida;
 	
 	@OneToOne
-	@JoinColumn(name="ORDEN_MEDICA_ID")
-	private OrdenMedica ordenMedica;
+	@JoinColumn(name="CITA_ID")
+	private Cita cita;
 	
 	@ManyToOne
-	@JoinColumn(name="CAMA_ID")
+	@JoinColumn(name="CAMA_NUMERO")
 	private Cama cama;
 	
 	public Hospitalizacion() {
@@ -46,20 +43,17 @@ public class Hospitalizacion implements Serializable{
 
 	/**
 	 * @param id
-	 * @param descripcion
 	 * @param fechaEntrada
 	 * @param fechaSalida
-	 * @param ordenMedica
+	 * @param cita
 	 * @param cama
 	 */
-	public Hospitalizacion(int id, String descripcion, Date fechaEntrada, Date fechaSalida, OrdenMedica ordenMedica,
-			Cama cama) {
+	public Hospitalizacion(int id, Date fechaEntrada, Date fechaSalida, Cita cita, Cama cama) {
 		super();
 		this.id = id;
-		this.descripcion = descripcion;
 		this.fechaEntrada = fechaEntrada;
 		this.fechaSalida = fechaSalida;
-		this.ordenMedica = ordenMedica;
+		this.cita = cita;
 		this.cama = cama;
 	}
 
@@ -75,20 +69,6 @@ public class Hospitalizacion implements Serializable{
 	 */
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	/**
-	 * @return the descripcion
-	 */
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	/**
-	 * @param descripcion the descripcion to set
-	 */
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
 	}
 
 	/**
@@ -120,17 +100,17 @@ public class Hospitalizacion implements Serializable{
 	}
 
 	/**
-	 * @return the ordenMedica
+	 * @return the cita
 	 */
-	public OrdenMedica getOrdenMedica() {
-		return ordenMedica;
+	public Cita getCita() {
+		return cita;
 	}
 
 	/**
-	 * @param ordenMedica the ordenMedica to set
+	 * @param cita the cita to set
 	 */
-	public void setOrdenMedica(OrdenMedica ordenMedica) {
-		this.ordenMedica = ordenMedica;
+	public void setCita(Cita cita) {
+		this.cita = cita;
 	}
 
 	/**
@@ -146,8 +126,5 @@ public class Hospitalizacion implements Serializable{
 	public void setCama(Cama cama) {
 		this.cama = cama;
 	}
-	
-	
-	
 
 }

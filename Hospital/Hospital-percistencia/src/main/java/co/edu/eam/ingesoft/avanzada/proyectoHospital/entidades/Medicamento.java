@@ -26,21 +26,16 @@ public class Medicamento implements Serializable {
 	@Column(name = "DESCRIPCION", length = 200, nullable = false)
 	private String descripcion;
 
-	@JoinColumn(name = "FARMACIA_ID")
-	@ManyToOne
-	private Farmacia farmacia;
-
 	public Medicamento() {
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public Medicamento(int id, int cantidad, String descripcion, Farmacia farmacia) {
+	public Medicamento(int id, int cantidad, String descripcion) {
 		super();
 		this.id = id;
 		this.cantidad = cantidad;
 		this.descripcion = descripcion;
-		this.farmacia = farmacia;
 	}
 
 
@@ -84,19 +79,5 @@ public class Medicamento implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	/**
-	 * @return the farmacia
-	 */
-	public Farmacia getFarmacia() {
-		return farmacia;
-	}
-
-	/**
-	 * @param farmacia
-	 *            the farmacia to set
-	 */
-	public void setFarmacia(Farmacia farmacia) {
-		this.farmacia = farmacia;
-	}
 
 }

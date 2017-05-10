@@ -6,7 +6,7 @@ public class MedicamentoPacientePK implements Serializable {
 	
 	private int medicamento;
 	
-	private int receta;
+	private int cita;
 	
 	public MedicamentoPacientePK() {
 		// TODO Auto-generated constructor stub
@@ -20,23 +20,21 @@ public class MedicamentoPacientePK implements Serializable {
 		this.medicamento = medicamento;
 	}
 
-	public int getReceta() {
-		return receta;
-	}
-
-	public void setReceta(int receta) {
-		this.receta = receta;
-	}
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + cita;
 		result = prime * result + medicamento;
-		result = prime * result + receta;
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -46,13 +44,13 @@ public class MedicamentoPacientePK implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		MedicamentoPacientePK other = (MedicamentoPacientePK) obj;
-		if (medicamento != other.medicamento)
+		if (cita != other.cita)
 			return false;
-		if (receta != other.receta)
+		if (medicamento != other.medicamento)
 			return false;
 		return true;
 	}
-	
-	
+
+
 
 }

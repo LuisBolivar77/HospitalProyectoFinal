@@ -25,8 +25,8 @@ public class ResultadoExamen implements Serializable {
 
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "ORDEN_MEDICA_ID")
-	private OrdenMedica ordenMedica;
+	@JoinColumn(name = "CITA_ID")
+	private Cita cita;
 
 	@Column(name = "RESULTADO")
 	private String resultado;
@@ -39,87 +39,76 @@ public class ResultadoExamen implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ResultadoExamen(Examen examen, OrdenMedica ordenMedica, String resultado, Date fechaHora) {
+	/**
+	 * @param examen
+	 * @param cita
+	 * @param resultado
+	 * @param fechaHora
+	 */
+	public ResultadoExamen(Examen examen, Cita cita, String resultado, Date fechaHora) {
 		super();
 		this.examen = examen;
-		this.ordenMedica = ordenMedica;
+		this.cita = cita;
 		this.resultado = resultado;
 		this.fechaHora = fechaHora;
 	}
 
+	/**
+	 * @return the examen
+	 */
 	public Examen getExamen() {
 		return examen;
 	}
 
+	/**
+	 * @param examen the examen to set
+	 */
 	public void setExamen(Examen examen) {
 		this.examen = examen;
 	}
 
-	public OrdenMedica getOrdenMedica() {
-		return ordenMedica;
+	/**
+	 * @return the cita
+	 */
+	public Cita getCita() {
+		return cita;
 	}
 
-	public void setOrdenMedica(OrdenMedica ordenMedica) {
-		this.ordenMedica = ordenMedica;
+	/**
+	 * @param cita the cita to set
+	 */
+	public void setCita(Cita cita) {
+		this.cita = cita;
 	}
 
+	/**
+	 * @return the resultado
+	 */
 	public String getResultado() {
 		return resultado;
 	}
 
+	/**
+	 * @param resultado the resultado to set
+	 */
 	public void setResultado(String resultado) {
 		this.resultado = resultado;
 	}
 
+	/**
+	 * @return the fechaHora
+	 */
 	public Date getFechaHora() {
 		return fechaHora;
 	}
 
+	/**
+	 * @param fechaHora the fechaHora to set
+	 */
 	public void setFechaHora(Date fechaHora) {
 		this.fechaHora = fechaHora;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((examen == null) ? 0 : examen.hashCode());
-		result = prime * result + ((fechaHora == null) ? 0 : fechaHora.hashCode());
-		result = prime * result + ((ordenMedica == null) ? 0 : ordenMedica.hashCode());
-		result = prime * result + ((resultado == null) ? 0 : resultado.hashCode());
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ResultadoExamen other = (ResultadoExamen) obj;
-		if (examen == null) {
-			if (other.examen != null)
-				return false;
-		} else if (!examen.equals(other.examen))
-			return false;
-		if (fechaHora == null) {
-			if (other.fechaHora != null)
-				return false;
-		} else if (!fechaHora.equals(other.fechaHora))
-			return false;
-		if (ordenMedica == null) {
-			if (other.ordenMedica != null)
-				return false;
-		} else if (!ordenMedica.equals(other.ordenMedica))
-			return false;
-		if (resultado == null) {
-			if (other.resultado != null)
-				return false;
-		} else if (!resultado.equals(other.resultado))
-			return false;
-		return true;
-	}
 
 }

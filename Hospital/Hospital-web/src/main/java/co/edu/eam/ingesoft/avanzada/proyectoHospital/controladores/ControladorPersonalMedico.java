@@ -149,7 +149,7 @@ public class ControladorPersonalMedico implements Serializable {
 		p.setPassword(password);
 		p.setTelefono(telefono);
 		p.setUsuario(username);
-		p.setEspecializacion(esp);
+		//p.setEspecializacion(esp);
 		p.setTipoPersonal(tipo);
 
 		try {
@@ -172,7 +172,7 @@ public class ControladorPersonalMedico implements Serializable {
 			apellido = per.getApellido();
 			direccion = per.getDireccion();
 			email = per.getEmail();
-			tipoEspecializacionSel = per.getEspecializacion().getId();
+		//	tipoEspecializacionSel = per.getEspecializacion().getId();
 			tipoPersonalSel = per.getTipoPersonal().getId();
 			telefono = per.getTelefono();
 			celular = per.getCelular();
@@ -213,7 +213,7 @@ public class ControladorPersonalMedico implements Serializable {
 		personalEditar.setPassword(password);
 		personalEditar.setTelefono(telefono);
 		personalEditar.setUsuario(username);
-		personalEditar.setEspecializacion(esp);
+		//personalEditar.setEspecializacion(esp);
 		personalEditar.setTipoPersonal(tipo);
 
 		personalEJB.editar(personalEditar);
