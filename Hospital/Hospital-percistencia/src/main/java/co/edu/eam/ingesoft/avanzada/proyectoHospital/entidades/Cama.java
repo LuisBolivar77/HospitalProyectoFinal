@@ -21,10 +21,41 @@ public class Cama implements Serializable{
 	@Column(name="DESCRIPCION", length=200, nullable=false)
 	private String descripcion;
 	
+	@Column(name="OCUPADA")
+	private boolean ocupada;
+	
+
 	public Cama() {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @param id
+	 * @param descripcion
+	 * @param ocupada
+	 */
+	public Cama(int id, String descripcion, boolean ocupada) {
+		super();
+		this.id = id;
+		this.descripcion = descripcion;
+		this.ocupada = false;
+	}
+
+
+
+	/**
+	 * @return the ocupada
+	 */
+	public boolean isOcupada() {
+		return ocupada;
+	}
+
+	/**
+	 * @param ocupada the ocupada to set
+	 */
+	public void setOcupada(boolean ocupada) {
+		this.ocupada = ocupada;
+	}
 	/**
 	 * @param id
 	 * @param descripcion

@@ -1,5 +1,6 @@
 package co.edu.eam.ingesoft.avanzada.negocio.beans;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -12,6 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import co.edu.eam.ingesoft.avanzada.negocio.exception.ExcepcionNegocio;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Cita;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.PersonalMedico;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoPersonal;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Usuario;
@@ -103,7 +105,33 @@ public class PersonalMedicoEJB {
 	public PersonalMedico buscar(int id) {
 		return em.find(PersonalMedico.class, id);
 	}
+	
+	/**
+	 * Lista las citas que tiene un médico
+	 * @param id Identificación del médico
+	 * @return la lista de citas del médico
+	 */
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public List<Cita> listaCitasPersonal (int id){
+		Query q = em.createNamedQuery(Cita.LISTAR_CITAS_PERSONAL);
+		q.setParameter(1, id);
+		List<Cita> lista = q.getResultList();
+		return lista;
+	}
 
-
+	/**
+	 * Lista las citas que tiene un médico en una fecha determinada
+	 * @param idPersonal Identificación del médico
+	 * @param fecha Fecha de las citas que se desea buscar
+	 * @return la lista de citas para esa fecha
+	 */
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public List<Cita> listaCitasPersonalFecha (int idPersonal, Date fecha){
+		Query q = em.createNamedQuery(Cita.LISTAR_CITAS_MEDICO_FECHA);
+		q.setParameter(1, idPersonal);
+		q.setParameter(2, fecha);
+		List<Cita> lista = q.getResultList();
+		return lista;
+	}
 
 }

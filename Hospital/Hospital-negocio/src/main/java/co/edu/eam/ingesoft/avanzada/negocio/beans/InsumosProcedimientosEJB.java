@@ -18,7 +18,7 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Medicamento;
 
 @LocalBean
 @Stateless
-public class Insumos_ProcedimientosEJB {
+public class InsumosProcedimientosEJB {
 
 	
 	@PersistenceContext

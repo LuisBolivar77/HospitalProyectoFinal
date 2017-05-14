@@ -19,16 +19,21 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento
 @Entity
 @Table(name = "USUARIO")
 @Inheritance(strategy = InheritanceType.JOINED)
-@NamedQueries({
-	@NamedQuery(name=Usuario.NOMBRE_USUARIO, query="SELECT u FROM Usuario u WHERE u.usuario=?1")
-})
+@NamedQueries({ @NamedQuery(name = Usuario.NOMBRE_USUARIO, query = "SELECT u FROM Usuario u WHERE u.usuario=?1"),
+		@NamedQuery(name = Usuario.BUSCAR_USUARIO, query = "SELECT u FROM Usuario u "
+				+ "WHERE u.usuario=?1 AND u.password=?2") })
 public class Usuario implements Serializable {
-	
+
 	/**
-	 * Busca un usuario por su nombre de usuario
-	 * ?1: nombre de usuario
+	 * Busca un usuario por su nombre de usuario ?1: nombre de usuario
 	 */
 	public static final String NOMBRE_USUARIO = "Usuario.nombreUsuario";
+
+	/**
+	 * Busca un usuario por su nombre de usuario y contraseña ?1: Nombre de
+	 * usuario ?2: Contraseña
+	 */
+	public static final String BUSCAR_USUARIO = "Usuario.buscar";
 
 	@Id
 	@Column(name = "IDENTIFICACION", length = 20, nullable = false)
@@ -61,10 +66,10 @@ public class Usuario implements Serializable {
 
 	@Column(name = "DIRECCION", length = 30)
 	protected String direccion;
-	
-	@Column(name="ROL", length=30)
+
+	@Column(name = "ROL", length = 30)
 	protected String rol;
-	
+
 	public Usuario() {
 		// TODO Auto-generated constructor stub
 	}
@@ -164,8 +169,6 @@ public class Usuario implements Serializable {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-	
-	
 
 	/**
 	 * @return the rol
@@ -175,79 +178,11 @@ public class Usuario implements Serializable {
 	}
 
 	/**
-	 * @param rol the rol to set
+	 * @param rol
+	 *            the rol to set
 	 */
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
-		result = prime * result + celular;
-		result = prime * result + ((direccion == null) ? 0 : direccion.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + identificacion;
-		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + telefono;
-		result = prime * result + ((tipoDocumento == null) ? 0 : tipoDocumento.hashCode());
-		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Usuario other = (Usuario) obj;
-		if (apellido == null) {
-			if (other.apellido != null)
-				return false;
-		} else if (!apellido.equals(other.apellido))
-			return false;
-		if (celular != other.celular)
-			return false;
-		if (direccion == null) {
-			if (other.direccion != null)
-				return false;
-		} else if (!direccion.equals(other.direccion))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (identificacion != other.identificacion)
-			return false;
-		if (nombre == null) {
-			if (other.nombre != null)
-				return false;
-		} else if (!nombre.equals(other.nombre))
-			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		if (telefono != other.telefono)
-			return false;
-		if (tipoDocumento != other.tipoDocumento)
-			return false;
-		if (usuario == null) {
-			if (other.usuario != null)
-				return false;
-		} else if (!usuario.equals(other.usuario))
-			return false;
-		return true;
-	}
-
-	
 
 }

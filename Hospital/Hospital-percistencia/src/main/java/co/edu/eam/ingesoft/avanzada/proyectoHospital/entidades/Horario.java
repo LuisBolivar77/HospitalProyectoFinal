@@ -39,11 +39,19 @@ public class Horario implements Serializable{
 	 * @param horaFin
 	 * @param personalMedico
 	 */
-	public Horario(Date fecha_hora, Time horaFin, PersonalMedico personalMedico) {
+	public Horario(Date fechaHora, Time horaFin, PersonalMedico personalMedico) {
 		super();
 		this.fechaHora = fechaHora;
 		this.horaFin = horaFin;
 		this.personalMedico = personalMedico;
+	}
+	
+	public String getFecha(){
+		return  fechaHora.getDate()+"";
+	}
+	
+	public String getHora(){
+		return fechaHora.getTime()+"";
 	}
 
 	/**
