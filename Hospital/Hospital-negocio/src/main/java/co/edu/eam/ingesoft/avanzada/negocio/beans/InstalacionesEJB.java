@@ -1,5 +1,7 @@
 package co.edu.eam.ingesoft.avanzada.negocio.beans;
 
+import java.util.List;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -8,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import co.edu.eam.ingesoft.avanzada.negocio.exception.ExcepcionNegocio;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Cama;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Quirofano;
 
 @LocalBean
@@ -59,4 +62,7 @@ public class InstalacionesEJB {
 		em.remove(q);
 	}
 
+	public List<Cama>listarCamas(){
+		
+	}
 }

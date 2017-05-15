@@ -12,6 +12,7 @@ import javax.persistence.Query;
 
 import co.edu.eam.ingesoft.avanzada.negocio.exception.ExcepcionNegocio;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Cirugia;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Cita;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Examen;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Hospitalizacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Medicamento;
@@ -197,5 +198,14 @@ public class Insumos_ProcedimientosEJB {
 	public void eliminar(Examen ex){
 		em.remove(ex);
 	}
-	
+
+	/**
+	 * lista las citas de la base de datos
+	 * @return la lista de las citas
+	 */
+	public List<Cita>listarCitas(){
+		Query q = em.createNamedQuery(Cita.listaCitas);
+		List<Cita>lista = q.getResultList();
+		return lista;
+	}
 }

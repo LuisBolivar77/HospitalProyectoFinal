@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -16,8 +18,14 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="CITA")
+@NamedQueries({
+	@NamedQuery(name="listaCitas", query="SELECT c FROM Cita c")
+})
 public class Cita implements Serializable{
 
+	public static String listaCitas = "ListaCitas";
+	
+	
 	@Id
 	@Column(name="ID", nullable=false)
 	private int id;

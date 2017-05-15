@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/template/index.xhtml">
+
+	<ui:define name="cuerpo">
+
+
+
+		<h2 >ORDENAR CIRUGIA</h2>
+		<br></br>
+		<br></br>
+		<br></br>
+
+		<h:form prependId="false">
+			<h:panelGrid id="paneldatos" columns="3">
+				<h:outputLabel for="cbfecha" id="lblfecha" value="fecha:" />
+				<p:calendar pattern="dd/MM/yyyy"
+					value="#{controladorOrdenarCir.fechaSeleccionada}">
+				</p:calendar>
+
+				<h:outputLabel for="cbquirofanos" id="lblquirofanosDisp"
+					value="Quirofanos Disponibles:" />
+				<h:selectOneMenu id="cbquirofanos"
+					value="#{controladorOrdenarCir.quirofanosSeleccionado}">
+
+					<f:selectItems value="#{ControladorClientes.tipos}" var="t"
+						itemValue="#{t}" />
+				</h:selectOneMenu>
+
+				<h:outputLabel for="cTipoCirugia" id="lbltipoCirugia"
+					value="Tipo de Cirugia:" />
+				<h:selectOneMenu id="cTipoCirugia"
+					value="#{controladorOrdenarCir.tipoCirugiaSeleccionada}">
+
+					<f:selectItems value="#{ControladorClientes.tipos}" var="t"
+						itemValue="#{t}" />
+				</h:selectOneMenu>
+
+
+				<h:outputLabel for="cbCirugia" id="lblCirugia" value="cirugia:" />
+				<h:selectOneMenu id="cbCirugia"
+					value="#{controladorOrdenarCir.cirugiaSeleccionada}">
+
+					<f:selectItems value="#{ControladorClientes.tipos}" var="t"
+						itemValue="#{t}" />
+				</h:selectOneMenu>
+
+				<h:outputLabel for="tfAnotaciones" id="lblanotaciones"
+					value="anotaciones:" />
+				<h:inputTextarea id="tfAnotaciones"
+					value="#{controladorOrdenarCir.anotaciones}">
+				</h:inputTextarea>
+
+			</h:panelGrid>
+			<h:panelGrid id="panelbtns" columns="2">
+
+				<p:commandButton  id="btncrear" value="Ordenar"
+					process="@this,paneldatos" update="paneldatos"/>
+
+
+			</h:panelGrid>
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>

@@ -16,7 +16,6 @@ import co.edu.eam.ingesoft.avanzada.negocio.exception.ExcepcionNegocio;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Especializacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.PersonalMedico;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoPersonal;
-import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Usuario;
 
 @Named("controladorPersonal")
 @ViewScoped

@@ -7,12 +7,27 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name="CIRUGIA")
+@NamedQueries({
+	@NamedQuery(name="listarCirugias", query="Select c FROM Cirugia c")
+})
 public class Cirugia implements Serializable{
 
+	/**
+	 * lista de las cirugias
+	 */
+	public static String listarCirugias = "listarCirugias";
+	
+	
 	@Id
 	@Column(name="ID")
 	private int id;

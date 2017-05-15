@@ -7,12 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="CAMA")
+@NamedQueries({
+	@NamedQuery(name="listarCamasDispon ", query="SELECT c FROM Cama c WHERE c.ocupado = 1")
+})
 public class Cama implements Serializable{
 
+	public static String listarCamasDispon = "camasDisponibles";
+	
 	@Id
 	@Column(name="ID")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
