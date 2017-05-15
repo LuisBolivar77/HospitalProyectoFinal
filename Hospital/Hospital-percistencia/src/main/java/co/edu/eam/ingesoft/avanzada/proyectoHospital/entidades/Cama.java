@@ -16,17 +16,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name="CAMA")
 @NamedQueries({
-	@NamedQuery(name="listarCamasDispon ", query="SELECT c FROM Cama c WHERE c.ocupado = 1")
+	@NamedQuery(name="listarCamasDisponibles", query="SELECT c FROM Cama c WHERE c.ocupada = 1")
 })
 public class Cama implements Serializable{
 
-	public static String listarCamasDispon = "camasDisponibles";
+	public static final String listarCamasDisponibles = "camasDisponibles";
 	
 	@Id
-	@Column(name="ID")
+	@Column(name="NUMERO")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_CAMA")
 	@SequenceGenerator(sequenceName="autoincremental", allocationSize=1,  name="SEQ_CAMA")
-	private int id;
+	private int numero;
 	
 	@Column(name="DESCRIPCION", length=200, nullable=false)
 	private String descripcion;
@@ -39,69 +39,45 @@ public class Cama implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param id
-	 * @param descripcion
-	 * @param ocupada
-	 */
-	public Cama(int id, String descripcion, boolean ocupada) {
+
+	public Cama(int numero, String descripcion, boolean ocupada) {
 		super();
-		this.id = id;
+		this.numero = numero;
 		this.descripcion = descripcion;
-		this.ocupada = false;
-	}
-
-
-
-	/**
-	 * @return the ocupada
-	 */
-	public boolean isOcupada() {
-		return ocupada;
-	}
-
-	/**
-	 * @param ocupada the ocupada to set
-	 */
-	public void setOcupada(boolean ocupada) {
 		this.ocupada = ocupada;
 	}
-	/**
-	 * @param id
-	 * @param descripcion
-	 */
-	public Cama(String descripcion) {
-		super();
-		this.descripcion = descripcion;
+
+
+	public int getNumero() {
+		return numero;
 	}
 
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
+
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
 
-	/**
-	 * @return the descripcion
-	 */
 	public String getDescripcion() {
 		return descripcion;
 	}
 
-	/**
-	 * @param descripcion the descripcion to set
-	 */
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+
+	public boolean isOcupada() {
+		return ocupada;
+	}
+
+
+	public void setOcupada(boolean ocupada) {
+		this.ocupada = ocupada;
+	}
+
+
 	
 	
 	

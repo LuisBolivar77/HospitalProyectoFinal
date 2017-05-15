@@ -199,14 +199,5 @@ public class InsumosProcedimientosEJB {
 		em.remove(ex);
 	}
 	
-	/**
-	 * lista las citas de la base de datos
-	 * @return la lista de las citas
-	 */
-	public List<Cita>listarCitas(){
-		Query q = em.createNamedQuery(Cita.listaCitas);
-		List<Cita>lista = q.getResultList();
-		return lista;
-	}
 	
 }

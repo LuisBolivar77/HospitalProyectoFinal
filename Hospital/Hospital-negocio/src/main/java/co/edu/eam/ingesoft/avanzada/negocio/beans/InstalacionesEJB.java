@@ -8,6 +8,7 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import co.edu.eam.ingesoft.avanzada.negocio.exception.ExcepcionNegocio;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Cama;
@@ -62,7 +63,13 @@ public class InstalacionesEJB {
 		em.remove(q);
 	}
 
+	/**
+	 * lista de las camas disponibles
+	 * @return la lista
+	 */
 	public List<Cama>listarCamas(){
-		
+		Query q = em.createNamedQuery(Cama.listarCamasDisponibles);
+		List<Cama>lista = q.getResultList();
+		return lista;
 	}
 }

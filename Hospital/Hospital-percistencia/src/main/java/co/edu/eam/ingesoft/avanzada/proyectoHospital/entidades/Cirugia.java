@@ -31,7 +31,7 @@ public class Cirugia implements Serializable{
 	/**
 	 * lista de las cirugias
 	 */
-	public static String listarCirugias = "listarCirugias";
+	public static final String listarCirugias = "listarCirugias";
 	
 	
 	@Id

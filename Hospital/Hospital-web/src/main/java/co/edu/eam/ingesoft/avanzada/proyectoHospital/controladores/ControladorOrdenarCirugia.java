@@ -2,53 +2,88 @@ package co.edu.eam.ingesoft.avanzada.proyectoHospital.controladores;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.inject.Named;
 
 import org.omnifaces.cdi.ViewScoped;
+
+import co.edu.eam.ingesoft.avanzada.negocio.beans.CirugiaEJB;
+import co.edu.eam.ingesoft.avanzada.negocio.beans.EspecializacionEJB;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Cirugia;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Especializacion;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoCirugia;
 
 @ViewScoped
 @Named("controladorOrdenarCir")
 public class ControladorOrdenarCirugia implements Serializable{
 
 	
-	private Date fechaSeleccionada;
-	
-	private String quirofanosSeleccionado;
-	
-	private String tipoCirugiaSeleccionada;
-	
-	private String cirugiaSeleccionada;
 	
 	private String anotaciones;
 	
+	private List<TipoCirugia>tipoCirugia;
+	
+	private String tipoCirugiaSeleccionada;
+	
+	private String duracion;
+	
+	private List<Especializacion>especializacion;
+	
+	private int especializacionSeleccionada;
+	
+	@EJB
+	private EspecializacionEJB especializacionEJB;
+	
+	@EJB
+	private CirugiaEJB cirugiaEJB;
 	
 	@PostConstruct
 	public void inicializar(){
+		//listarComboTipoCirugia();
+		//listarComboEspecializacion();
+	}
+
+	
+	
+	public void listarComboTipoCirugia(){
+		tipoCirugia = cirugiaEJB.tipoDeCirugia();
+	}
+	
+	public void listarComboEspecializacion(){
+		especializacion = especializacionEJB.listar();
+	}
+
+	
+	
+	public void ordenarCirugia(){
+		
 		
 	}
-
-
-	public Date getFechaSeleccionada() {
-		return fechaSeleccionada;
+	
+	
+	
+	
+	
+	public String getDuracion() {
+		return duracion;
 	}
 
 
-	public void setFechaSeleccionada(Date fechaSeleccionada) {
-		this.fechaSeleccionada = fechaSeleccionada;
+	public void setDuracion(String duracion) {
+		this.duracion = duracion;
+	}
+
+	public int getEspecializacionSeleccionada() {
+		return especializacionSeleccionada;
 	}
 
 
-	public String getQuirofanosSeleccionado() {
-		return quirofanosSeleccionado;
+	public void setEspecializacionSeleccionada(int especializacionSeleccionada) {
+		this.especializacionSeleccionada = especializacionSeleccionada;
 	}
-
-
-	public void setQuirofanosSeleccionado(String quirofanosSeleccionado) {
-		this.quirofanosSeleccionado = quirofanosSeleccionado;
-	}
-
 
 	public String getTipoCirugiaSeleccionada() {
 		return tipoCirugiaSeleccionada;
@@ -60,16 +95,6 @@ public class ControladorOrdenarCirugia implements Serializable{
 	}
 
 
-	public String getCirugiaSeleccionada() {
-		return cirugiaSeleccionada;
-	}
-
-
-	public void setCirugiaSeleccionada(String cirugiaSeleccionada) {
-		this.cirugiaSeleccionada = cirugiaSeleccionada;
-	}
-
-
 	public String getAnotaciones() {
 		return anotaciones;
 	}
@@ -77,6 +102,26 @@ public class ControladorOrdenarCirugia implements Serializable{
 
 	public void setAnotaciones(String anotaciones) {
 		this.anotaciones = anotaciones;
+	}
+
+
+	public List<TipoCirugia> getTipoCirugia() {
+		return tipoCirugia;
+	}
+
+
+	public void setTipoCirugia(List<TipoCirugia> tipoCirugia) {
+		this.tipoCirugia = tipoCirugia;
+	}
+
+
+	public List<Especializacion> getEspecializacion() {
+		return especializacion;
+	}
+
+
+	public void setEspecializacion(List<Especializacion> especializacion) {
+		this.especializacion = especializacion;
 	}
 	
 	

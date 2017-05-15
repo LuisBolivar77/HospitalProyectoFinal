@@ -15,36 +15,28 @@
 
 		<h:form prependId="false">
 			<h:panelGrid id="paneldatos" columns="3">
-				<h:outputLabel for="cbfecha" id="lblfecha" value="fecha:" />
-				<p:calendar pattern="dd/MM/yyyy"
-					value="#{controladorOrdenarCir.fechaSeleccionada}">
-				</p:calendar>
+				
+				<h:outputLabel for="cTEspecializacion" id="lblespecializacion"
+					value="Especializacion para cirugia:" />
+				<h:selectOneMenu id="cTEspecializacion"
+					value="#{controladorOrdenarCir.especializacion}">
 
-				<h:outputLabel for="cbquirofanos" id="lblquirofanosDisp"
-					value="Quirofanos Disponibles:" />
-				<h:selectOneMenu id="cbquirofanos"
-					value="#{controladorOrdenarCir.quirofanosSeleccionado}">
-
-					<f:selectItems value="#{ControladorClientes.tipos}" var="t"
-						itemValue="#{t}" />
+					<f:selectItems value="#{controladorOrdenarCir.especializacionSeleccionada}" var="t"
+						itemValue="#{t.id}" itemLabel=#{t.nombre}/>
 				</h:selectOneMenu>
+
+				<h:outputLabel for="tfduracion" id="lblduracion"
+					value="Duraciom:" />
+                <h:inputText id="tfduracion" value="#{controladorOrdenarCir.duracion}"/>  
+                
 
 				<h:outputLabel for="cTipoCirugia" id="lbltipoCirugia"
 					value="Tipo de Cirugia:" />
 				<h:selectOneMenu id="cTipoCirugia"
 					value="#{controladorOrdenarCir.tipoCirugiaSeleccionada}">
 
-					<f:selectItems value="#{ControladorClientes.tipos}" var="t"
-						itemValue="#{t}" />
-				</h:selectOneMenu>
-
-
-				<h:outputLabel for="cbCirugia" id="lblCirugia" value="cirugia:" />
-				<h:selectOneMenu id="cbCirugia"
-					value="#{controladorOrdenarCir.cirugiaSeleccionada}">
-
-					<f:selectItems value="#{ControladorClientes.tipos}" var="t"
-						itemValue="#{t}" />
+					<f:selectItems value="#{controladorOrdenarCir.tipoCirugia}" var="t"
+						itemValue="#{t}" itemLabel=#{t}/>
 				</h:selectOneMenu>
 
 				<h:outputLabel for="tfAnotaciones" id="lblanotaciones"

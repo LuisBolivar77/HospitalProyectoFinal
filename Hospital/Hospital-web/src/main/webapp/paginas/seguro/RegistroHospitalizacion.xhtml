@@ -21,8 +21,8 @@
 				<h:selectOneMenu id="cbCita"
 					value="#{controladorHospitalizacion.citaSeleccionada}">
 
-					<f:selectItems value="#{ControladorClientes.tipos}" var="t"
-						itemValue="#{t}" />
+					<f:selectItems value="#{controladorHospitalizacion.citas}" var="c"
+						itemValue="#{c}" itemLabel="#{c}"/>
 				</h:selectOneMenu>
 
 				<h:outputLabel for="cbfechaEntr" id="lblfechaEntr"
@@ -41,8 +41,8 @@
 				<h:selectOneMenu id="cbCama"
 					value="#{controladorHospitalizacion.camaSeleccionada}">
 
-					<f:selectItems value="#{ControladorClientes.tipos}" var="t"
-						itemValue="#{t}" />
+					<f:selectItems value="#{controladorHospitalizacion.cama}" var="c"
+						itemValue="#{c}" itemLabel="#{c.numero}"/>
 				</h:selectOneMenu>
 				<!--  <h:outputLabel for="tfAnotaciones" id="lblanotaciones"
 					value="anotaciones:" />
@@ -54,7 +54,8 @@
 			<h:panelGrid id="panelbtns" columns="2">
 
 				<p:commandButton id="btncrear" value="Ordenar"
-					process="@this,paneldatos" update="paneldatos" />
+					process="@this,paneldatos" update="paneldatos" 
+					action="#{controladorHospitalizacion.ordenarHospitalizacion}"/>
 
 
 			</h:panelGrid>
