@@ -19,7 +19,7 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Medicamento;
 
 @LocalBean
 @Stateless
-public class Insumos_ProcedimientosEJB {
+public class InsumosProcedimientosEJB {
 
 	
 	@PersistenceContext
@@ -198,7 +198,7 @@ public class Insumos_ProcedimientosEJB {
 	public void eliminar(Examen ex){
 		em.remove(ex);
 	}
-
+	
 	/**
 	 * lista las citas de la base de datos
 	 * @return la lista de las citas
@@ -208,4 +208,5 @@ public class Insumos_ProcedimientosEJB {
 		List<Cita>lista = q.getResultList();
 		return lista;
 	}
+	
 }

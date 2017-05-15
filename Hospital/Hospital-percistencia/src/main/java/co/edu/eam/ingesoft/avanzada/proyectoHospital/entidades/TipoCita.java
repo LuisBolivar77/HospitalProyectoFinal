@@ -4,7 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +16,8 @@ public class TipoCita implements Serializable{
 	
 	@Id
 	@Column(name="ID", nullable=false)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_TCITA")
+	@SequenceGenerator(sequenceName="autoincremental", allocationSize=1,  name="SEQ_TCITA")
 	private int id;
 	
 	@Column(name="DURACION", nullable=false)

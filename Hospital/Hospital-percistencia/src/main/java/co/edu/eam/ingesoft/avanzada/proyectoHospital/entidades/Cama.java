@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -23,16 +24,48 @@ public class Cama implements Serializable{
 	
 	@Id
 	@Column(name="ID")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_CAMA")
+	@SequenceGenerator(sequenceName="autoincremental", allocationSize=1,  name="SEQ_CAMA")
 	private int id;
 	
 	@Column(name="DESCRIPCION", length=200, nullable=false)
 	private String descripcion;
 	
+	@Column(name="OCUPADA")
+	private boolean ocupada;
+	
+
 	public Cama() {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @param id
+	 * @param descripcion
+	 * @param ocupada
+	 */
+	public Cama(int id, String descripcion, boolean ocupada) {
+		super();
+		this.id = id;
+		this.descripcion = descripcion;
+		this.ocupada = false;
+	}
+
+
+
+	/**
+	 * @return the ocupada
+	 */
+	public boolean isOcupada() {
+		return ocupada;
+	}
+
+	/**
+	 * @param ocupada the ocupada to set
+	 */
+	public void setOcupada(boolean ocupada) {
+		this.ocupada = ocupada;
+	}
 	/**
 	 * @param id
 	 * @param descripcion

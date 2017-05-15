@@ -15,13 +15,12 @@
 				<h:outputLabel id="lblId" value="#{msj['usuario.identificacion']}" />
 				<h:inputText id="tfId" value="#{controladorPersonal.identificacion}" />
 
-				<h:outputLabel id="lblId" value="#{msj['usuario.tipoId']}" />
+				<h:outputLabel id="lbltipo" value="#{msj['usuario.tipoId']}" />
 				<h:selectOneMenu id="cbTipoId"
 					value="#{controladorPersonal.tipoIdSeleccionado}">
 
-					<f:selectItem itemValue="Cedula" itemLabel="CC" />
-					<f:selectItem itemValue="Tarjeta" itemLabel="TI" />
-					<f:selectItem itemValue="Paporte" itemLabel="PAS" />
+					<f:selectItems value="#{controladorPersonal.tiposId}"
+						var="t" itemValue="#{t}"/>
 
 				</h:selectOneMenu>
 
@@ -82,7 +81,7 @@
 					rendered="#{controladorPersonal.editar}" />
 
 				<p:commandButton id="btnCancelar" value="#{msj['usuario.cancelar']}"
-					process="@this,panelRegistro" update="panelDatos"
+					process="@this,panelRegistro" update="panelRegistro"
 					action="#{controladorPersonal.cancelar}" />
 
 			</h:panelGrid>

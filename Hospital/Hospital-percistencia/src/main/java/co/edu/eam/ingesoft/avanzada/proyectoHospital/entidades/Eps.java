@@ -4,11 +4,14 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +28,8 @@ public class Eps implements Serializable{
 	
 	@Id
 	@Column(name="ID", nullable=false)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_EPS")
+	@SequenceGenerator(sequenceName="autoincremental", allocationSize=1,  name="SEQ_EPS")
 	private int id;
 	
 	@Column(name="DESCRIPCION", nullable=false, length=200)

@@ -21,7 +21,7 @@ public class Quirofano implements Serializable{
 	
 	@Id
 	@Column(name="NUMERO")
-	private int id;
+	private int numero;
 	
 	@Column(name="DESCRIPCION", nullable=false, length=200)
 	private String descripcion;
@@ -47,9 +47,9 @@ public class Quirofano implements Serializable{
 
 
 
-	public Quirofano(int id, String descripcion, boolean ocupado) {
+	public Quirofano(int numero, String descripcion, boolean ocupado) {
 		super();
-		this.id = id;
+		this.numero = numero;
 		this.descripcion = descripcion;
 		this.ocupado = ocupado;
 	}
@@ -59,15 +59,15 @@ public class Quirofano implements Serializable{
 	/**
 	 * @return the id
 	 */
-	public int getId() {
-		return id;
+	public int getNumero() {
+		return numero;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setNumero(int id) {
+		this.numero = id;
 	}
 
 	/**

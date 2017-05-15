@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
@@ -12,51 +14,62 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="CITA")
+@Table(name = "CITA")
 @NamedQueries({
-	@NamedQuery(name="listaCitas", query="SELECT c FROM Cita c")
-})
-public class Cita implements Serializable{
+		@NamedQuery(name = Cita.LISTAR_CITAS_PERSONAL, query = "SELECT c FROM Cita c "
+				+ "WHERE c.personalMedico.identificacion = ?1"),
+		@NamedQuery(name = Cita.LISTAR_CITAS_MEDICO_FECHA, query = "SELECT c FROM Cita c "
+				+ "WHERE c.personalMedico.identificacion = ?1 AND c.horario.fechaHora = ?2") })
+public class Cita implements Serializable {
 
-	public static String listaCitas = "ListaCitas";
-	
-	
+	/**
+	 * Lista las citas de un médico
+	 */
+	public static final String LISTAR_CITAS_PERSONAL = "PersonalMedico.listarCitas";
+
+	/**
+	 * Lista las citas de un médico en una feha determinada
+	 */
+	public static final String LISTAR_CITAS_MEDICO_FECHA = "PersonalMedico.listarCitasFecha";
+
 	@Id
-	@Column(name="ID", nullable=false)
+	@Column(name = "ID", nullable = false)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_CITA")
+	@SequenceGenerator(sequenceName="autoincremental", allocationSize=1,  name="SEQ_CITA")
 	private int id;
-	
-	@JoinColumn(name="HORARIO_ID", unique = true)
+
+	@JoinColumn(name = "HORARIO_ID", unique = true)
 	@OneToOne
 	private Horario horario;
-	
-	@Column(name="ANOCTACIONES", nullable=false, length=200)
+
+	@Column(name = "ANOCTACIONES", nullable = false, length = 200)
 	private String anotaciones;
-	
+
 	@ManyToOne
-	@JoinColumn(name="CITA_ID", nullable=true)
+	@JoinColumn(name = "CITA_ID", nullable = true)
 	private Cita cita;
-	
+
 	@ManyToOne
-	@JoinColumn(name="TIPO_CITA_ID")
+	@JoinColumn(name = "TIPO_CITA_ID")
 	private TipoCita tipoCita;
-	
+
 	@ManyToOne
-	@JoinColumn(name="PERSONAL_MEDICO_ID")
+	@JoinColumn(name = "PERSONAL_MEDICO_ID")
 	private PersonalMedico personalMedico;
-	
+
 	@ManyToOne
-	@JoinColumn(name="PACIENTE_ID")
+	@JoinColumn(name = "PACIENTE_ID")
 	private Paciente paciente;
 
 	public Cita() {
 		// TODO Auto-generated constructor stub
 	}
-
 
 	public Cita(int id, Horario horario, String anotaciones, Cita cita, TipoCita tipoCita,
 			PersonalMedico personalMedico, Paciente paciente) {
@@ -77,14 +90,13 @@ public class Cita implements Serializable{
 		return id;
 	}
 
-
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	/**
 	 * @return the paciente
@@ -93,14 +105,13 @@ public class Cita implements Serializable{
 		return paciente;
 	}
 
-
 	/**
-	 * @param paciente the paciente to set
+	 * @param paciente
+	 *            the paciente to set
 	 */
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
 	}
-
 
 	/**
 	 * @return the personalMedico
@@ -109,14 +120,13 @@ public class Cita implements Serializable{
 		return personalMedico;
 	}
 
-
 	/**
-	 * @param personalMedico the personalMedico to set
+	 * @param personalMedico
+	 *            the personalMedico to set
 	 */
 	public void setPersonalMedico(PersonalMedico personalMedico) {
 		this.personalMedico = personalMedico;
 	}
-
 
 	/**
 	 * @return the cita
@@ -125,14 +135,13 @@ public class Cita implements Serializable{
 		return cita;
 	}
 
-
 	/**
-	 * @param cita the cita to set
+	 * @param cita
+	 *            the cita to set
 	 */
 	public void setCita(Cita cita) {
 		this.cita = cita;
 	}
-
 
 	/**
 	 * @return the tipoCita
@@ -141,14 +150,13 @@ public class Cita implements Serializable{
 		return tipoCita;
 	}
 
-
 	/**
-	 * @param tipoCita the tipoCita to set
+	 * @param tipoCita
+	 *            the tipoCita to set
 	 */
 	public void setTipoCita(TipoCita tipoCita) {
 		this.tipoCita = tipoCita;
 	}
-
 
 	/**
 	 * @return the horario
@@ -157,14 +165,13 @@ public class Cita implements Serializable{
 		return horario;
 	}
 
-
 	/**
-	 * @param horario the horario to set
+	 * @param horario
+	 *            the horario to set
 	 */
 	public void setHorario(Horario horario) {
 		this.horario = horario;
 	}
-
 
 	/**
 	 * @return the anotaciones
@@ -173,13 +180,12 @@ public class Cita implements Serializable{
 		return anotaciones;
 	}
 
-
 	/**
-	 * @param anotaciones the anotaciones to set
+	 * @param anotaciones
+	 *            the anotaciones to set
 	 */
 	public void setAnotaciones(String anotaciones) {
 		this.anotaciones = anotaciones;
 	}
 
-	
 }
