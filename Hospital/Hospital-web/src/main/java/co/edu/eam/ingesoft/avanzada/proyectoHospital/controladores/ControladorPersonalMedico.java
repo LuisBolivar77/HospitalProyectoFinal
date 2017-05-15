@@ -17,6 +17,7 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Especializacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.PersonalMedico;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoPersonal;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Usuario;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento;
 
 @Named("controladorPersonal")
 @ViewScoped
@@ -91,11 +92,18 @@ public class ControladorPersonalMedico implements Serializable {
 	 * Personal que ha sido buscado
 	 */
 	private PersonalMedico personalEditar;
+	
+	private TipoDocumento tiposId;
 
 	/**
 	 * Lsita del personal registrado
 	 */
 	private List<PersonalMedico> listaPersonal;
+	
+	/**
+	 * Tipo de identificación seleccionado
+	 */
+	private TipoDocumento tipoIdSeleccionado;
 
 	/**
 	 * EJB del personal médico
@@ -115,7 +123,7 @@ public class ControladorPersonalMedico implements Serializable {
 		personalEditar = null;
 		especializaciones = especializacionEJB.listar();
 		tiposPersonal = personalEJB.listarTipos();
-		listaPersonal = personalEJB.listarPersonal();
+		//listaPersonal = personalEJB.listarPersonal();
 	}
 	
 	public String redireccionarEditar (PersonalMedico per){
@@ -233,6 +241,36 @@ public class ControladorPersonalMedico implements Serializable {
 		username = "";
 		celular = 0;
 		email = "";
+	}
+	
+  
+
+	/**
+	 * @return the tipoIdSeleccionado
+	 */
+	public TipoDocumento[] getTiposId() {
+		return TipoDocumento.values();
+	}	
+
+	/**
+	 * @return the tipoIdSeleccionado
+	 */
+	public TipoDocumento getTipoIdSeleccionado() {
+		return tipoIdSeleccionado;
+	}
+
+	/**
+	 * @param tiposId the tiposId to set
+	 */
+	public void setTiposId(TipoDocumento tiposId) {
+		this.tiposId = tiposId;
+	}
+
+	/**
+	 * @param tipoIdSeleccionado the tipoIdSeleccionado to set
+	 */
+	public void setTipoIdSeleccionado(TipoDocumento tipoIdSeleccionado) {
+		this.tipoIdSeleccionado = tipoIdSeleccionado;
 	}
 
 	/**

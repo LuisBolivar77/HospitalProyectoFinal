@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +16,8 @@ public class Cama implements Serializable{
 
 	@Id
 	@Column(name="ID")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_CAMA")
+	@SequenceGenerator(sequenceName="autoincremental", allocationSize=1,  name="SEQ_CAMA")
 	private int id;
 	
 	@Column(name="DESCRIPCION", length=200, nullable=false)

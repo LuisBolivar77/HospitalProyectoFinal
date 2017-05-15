@@ -23,7 +23,7 @@ public class InstalacionesEJB {
 	 */
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void registrarQuirofano (Quirofano q){
-		Quirofano buscado = buscarQuirofano(q.getId());
+		Quirofano buscado = buscarQuirofano(q.getNumero());
 		if (buscado == null){
 		em.persist(q);
 		} else {

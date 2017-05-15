@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
@@ -12,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,6 +40,8 @@ public class Cita implements Serializable {
 
 	@Id
 	@Column(name = "ID", nullable = false)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_CITA")
+	@SequenceGenerator(sequenceName="autoincremental", allocationSize=1,  name="SEQ_CITA")
 	private int id;
 
 	@JoinColumn(name = "HORARIO_ID", unique = true)
