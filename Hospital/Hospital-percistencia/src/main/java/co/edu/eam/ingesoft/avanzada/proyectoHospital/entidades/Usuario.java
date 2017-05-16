@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -19,9 +21,11 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento
 @Entity
 @Table(name = "USUARIO")
 @Inheritance(strategy = InheritanceType.JOINED)
-@NamedQueries({ @NamedQuery(name = Usuario.NOMBRE_USUARIO, query = "SELECT u FROM Usuario u WHERE u.usuario=?1"),
-		@NamedQuery(name = Usuario.BUSCAR_USUARIO, query = "SELECT u FROM Usuario u "
-				+ "WHERE u.usuario=?1 AND u.password=?2") })
+@NamedQueries({
+	@NamedQuery(name=Usuario.NOMBRE_USUARIO, query="SELECT u FROM Usuario u WHERE u.usuario = ?1"),
+	@NamedQuery(name = Usuario.BUSCAR_USUARIO, query = "SELECT u FROM Usuario u "
+				+ "WHERE u.usuario=?1 AND u.password=?2")
+})
 public class Usuario implements Serializable {
 
 	/**
@@ -30,8 +34,8 @@ public class Usuario implements Serializable {
 	public static final String NOMBRE_USUARIO = "Usuario.nombreUsuario";
 
 	/**
-	 * Busca un usuario por su nombre de usuario y contraseña ?1: Nombre de
-	 * usuario ?2: Contraseña
+	 * Busca un usuario por su nombre de usuario y contraseï¿½a ?1: Nombre de
+	 * usuario ?2: Contraseï¿½a
 	 */
 	public static final String BUSCAR_USUARIO = "Usuario.buscar";
 

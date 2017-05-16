@@ -2,16 +2,28 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui" template="/template/index.xhtml">
-	
-	<ui:define name="cuerpo">
-	
-	
-	
-	 <h2>hola login</h2>
-	
-	
-	
-	
+	xmlns:p="http://primefaces.org/ui" template="/template/indexLogIn.xhtml">
+
+	<ui:define name="cuerpoLogIn">
+		<h:form prependId="false">
+			<h:panelGrid id="panelDatosIngreso" columns="1"
+				style="text-align: center;">
+
+				<p:outputLabel id="lblUsername" value="#{msj['usuario.usuario']}" />
+				<h:inputText value="#{ControladorLogIn.usuario}" id="tfUsername" />
+
+				<p:outputLabel id="lblPass" value="#{msj['usuario.password']}" />
+				<h:inputSecret value="#{ControladorLogIn.password}" id="tfpass" />
+			</h:panelGrid>
+			
+			<h:panelGrid id="panelBoton" columns="1" style="text-align: center;">
+
+				<p:commandButton value="#{msj['usuario.LogIn']}" process="@this,panelDatosIngreso"
+					update="panelDatosIngreso"
+					action="#{ControladorLogIn.iniciarSesion}" />
+
+
+			</h:panelGrid>
+		</h:form>
 	</ui:define>
-	</ui:composition>
+</ui:composition>
