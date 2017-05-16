@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +18,8 @@ public class Medicamento implements Serializable {
 
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_MED")
+	@SequenceGenerator(sequenceName="autoincremental", allocationSize=1,  name="SEQ_MED")
 	private int id;
 
 	@Column(name = "CANTIDAD", nullable = false)

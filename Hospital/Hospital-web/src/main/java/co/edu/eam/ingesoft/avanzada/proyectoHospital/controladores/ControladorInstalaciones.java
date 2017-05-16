@@ -41,7 +41,7 @@ public class ControladorInstalaciones implements Serializable {
 		Quirofano q = new Quirofano();
 		q.setOcupado(false);
 		q.setDescripcion(descQuirofano);
-		q.setId(numeroQuirofano);
+		q.setNumero(numeroQuirofano);
 		try {
 			instalacionesEJB.registrarQuirofano(q);
 			Messages.addFlashGlobalInfo("Registro exitoso");
