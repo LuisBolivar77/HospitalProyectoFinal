@@ -71,10 +71,9 @@ public class Cita implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cita(int id, Horario horario, String anotaciones, Cita cita, TipoCita tipoCita,
-			PersonalMedico personalMedico, Paciente paciente) {
+	public Cita(Horario horario, String anotaciones, Cita cita, TipoCita tipoCita, PersonalMedico personalMedico,
+			Paciente paciente) {
 		super();
-		this.id = id;
 		this.horario = horario;
 		this.anotaciones = anotaciones;
 		this.cita = cita;
@@ -83,109 +82,56 @@ public class Cita implements Serializable {
 		this.paciente = paciente;
 	}
 
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return the paciente
-	 */
-	public Paciente getPaciente() {
-		return paciente;
-	}
-
-	/**
-	 * @param paciente
-	 *            the paciente to set
-	 */
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}
-
-	/**
-	 * @return the personalMedico
-	 */
-	public PersonalMedico getPersonalMedico() {
-		return personalMedico;
-	}
-
-	/**
-	 * @param personalMedico
-	 *            the personalMedico to set
-	 */
-	public void setPersonalMedico(PersonalMedico personalMedico) {
-		this.personalMedico = personalMedico;
-	}
-
-	/**
-	 * @return the cita
-	 */
-	public Cita getCita() {
-		return cita;
-	}
-
-	/**
-	 * @param cita
-	 *            the cita to set
-	 */
-	public void setCita(Cita cita) {
-		this.cita = cita;
-	}
-
-	/**
-	 * @return the tipoCita
-	 */
-	public TipoCita getTipoCita() {
-		return tipoCita;
-	}
-
-	/**
-	 * @param tipoCita
-	 *            the tipoCita to set
-	 */
-	public void setTipoCita(TipoCita tipoCita) {
-		this.tipoCita = tipoCita;
-	}
-
-	/**
-	 * @return the horario
-	 */
 	public Horario getHorario() {
 		return horario;
 	}
 
-	/**
-	 * @param horario
-	 *            the horario to set
-	 */
 	public void setHorario(Horario horario) {
 		this.horario = horario;
 	}
 
-	/**
-	 * @return the anotaciones
-	 */
 	public String getAnotaciones() {
 		return anotaciones;
 	}
 
-	/**
-	 * @param anotaciones
-	 *            the anotaciones to set
-	 */
 	public void setAnotaciones(String anotaciones) {
 		this.anotaciones = anotaciones;
 	}
+
+	public Cita getCita() {
+		return cita;
+	}
+
+	public void setCita(Cita cita) {
+		this.cita = cita;
+	}
+
+	public TipoCita getTipoCita() {
+		return tipoCita;
+	}
+
+	public void setTipoCita(TipoCita tipoCita) {
+		this.tipoCita = tipoCita;
+	}
+
+	public PersonalMedico getPersonalMedico() {
+		return personalMedico;
+	}
+
+	public void setPersonalMedico(PersonalMedico personalMedico) {
+		this.personalMedico = personalMedico;
+	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
+	
+
+	
 
 }

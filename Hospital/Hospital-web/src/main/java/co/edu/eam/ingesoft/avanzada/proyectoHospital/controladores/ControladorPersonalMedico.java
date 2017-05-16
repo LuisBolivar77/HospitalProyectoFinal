@@ -17,14 +17,13 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Especializacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.PersonalMedico;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoPersonal;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Usuario;
-import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento;
 
 @Named("controladorPersonal")
 @ViewScoped
 public class ControladorPersonalMedico implements Serializable {
 
 	/**
-	 * Número de identificación del usuario
+	 * Nï¿½mero de identificaciï¿½n del usuario
 	 */
 	private int identificacion;
 
@@ -39,12 +38,12 @@ public class ControladorPersonalMedico implements Serializable {
 	private String apellido;
 
 	/**
-	 * Dirección del usuario
+	 * Direcciï¿½n del usuario
 	 */
 	private String direccion;
 
 	/**
-	 * Teléfono del usuario
+	 * Telï¿½fono del usuario
 	 */
 	private int telefono;
 
@@ -64,7 +63,7 @@ public class ControladorPersonalMedico implements Serializable {
 	private List<Especializacion> especializaciones;
 
 	/**
-	 * Tipo de especialización seleccionado por el usuario
+	 * Tipo de especializaciï¿½n seleccionado por el usuario
 	 */
 	private int tipoEspecializacionSel;
 
@@ -74,17 +73,17 @@ public class ControladorPersonalMedico implements Serializable {
 	private String username;
 
 	/**
-	 * Contraseña de usuario
+	 * Contraseï¿½a de usuario
 	 */
 	private String password;
 
 	/**
-	 * Número de celular del usuario
+	 * Nï¿½mero de celular del usuario
 	 */
 	private int celular;
 
 	/**
-	 * Correo electrónico del usuario
+	 * Correo electrï¿½nico del usuario
 	 */
 	private String email;
 
@@ -92,28 +91,21 @@ public class ControladorPersonalMedico implements Serializable {
 	 * Personal que ha sido buscado
 	 */
 	private PersonalMedico personalEditar;
-	
-	private TipoDocumento tiposId;
 
 	/**
 	 * Lsita del personal registrado
 	 */
 	private List<PersonalMedico> listaPersonal;
-	
-	/**
-	 * Tipo de identificación seleccionado
-	 */
-	private TipoDocumento tipoIdSeleccionado;
 
 	/**
-	 * EJB del personal médico
+	 * EJB del personal mï¿½dico
 	 */
 	@EJB
 	private PersonalMedicoEJB personalEJB;
 	
 
 	/**
-	 * EJB de especialización
+	 * EJB de especializaciï¿½n
 	 */
 	@EJB
 	private EspecializacionEJB especializacionEJB;
@@ -123,7 +115,7 @@ public class ControladorPersonalMedico implements Serializable {
 		personalEditar = null;
 		especializaciones = especializacionEJB.listar();
 		tiposPersonal = personalEJB.listarTipos();
-		//listaPersonal = personalEJB.listarPersonal();
+		listaPersonal = personalEJB.listarPersonal();
 	}
 	
 	public String redireccionarEditar (PersonalMedico per){
@@ -132,15 +124,15 @@ public class ControladorPersonalMedico implements Serializable {
 	}
 	
 	/**
-	 * Identifica si se ha seleccionado la opción de editar
-	 * @return true si se seleccionó la opción editar, de lo contrario false
+	 * Identifica si se ha seleccionado la opciï¿½n de editar
+	 * @return true si se seleccionï¿½ la opciï¿½n editar, de lo contrario false
 	 */
 	public boolean isEditar(){
 		return personalEditar != null;
 	}
 
 	/**
-	 * Registra un personal médico en la base de datos
+	 * Registra un personal mï¿½dico en la base de datos
 	 */
 	public void registrar() {
 
@@ -170,7 +162,7 @@ public class ControladorPersonalMedico implements Serializable {
 	}
 
 	/**
-	 * Busca un personal Médico por su número de identificación
+	 * Busca un personal Mï¿½dico por su nï¿½mero de identificaciï¿½n
 	 */
 	public void buscar() {
 		PersonalMedico per = personalEJB.buscar(identificacion);
@@ -241,36 +233,6 @@ public class ControladorPersonalMedico implements Serializable {
 		username = "";
 		celular = 0;
 		email = "";
-	}
-	
-  
-
-	/**
-	 * @return the tipoIdSeleccionado
-	 */
-	public TipoDocumento[] getTiposId() {
-		return TipoDocumento.values();
-	}	
-
-	/**
-	 * @return the tipoIdSeleccionado
-	 */
-	public TipoDocumento getTipoIdSeleccionado() {
-		return tipoIdSeleccionado;
-	}
-
-	/**
-	 * @param tiposId the tiposId to set
-	 */
-	public void setTiposId(TipoDocumento tiposId) {
-		this.tiposId = tiposId;
-	}
-
-	/**
-	 * @param tipoIdSeleccionado the tipoIdSeleccionado to set
-	 */
-	public void setTipoIdSeleccionado(TipoDocumento tipoIdSeleccionado) {
-		this.tipoIdSeleccionado = tipoIdSeleccionado;
 	}
 
 	/**

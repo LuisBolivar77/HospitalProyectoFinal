@@ -1,0 +1,16 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/template/indexTemp.xhtml">
+
+	<ui:define name="botonLogIn">
+		<h:form prependId="false">
+			<h:panelGrid id="botonLogIn">
+				<p:commandButton value="#{msj['usuario.LogIn']" process="@this"
+					action="#{ControladorLogIn.incizoSesion}" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

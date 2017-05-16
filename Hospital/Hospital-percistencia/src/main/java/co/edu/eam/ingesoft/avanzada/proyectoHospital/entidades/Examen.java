@@ -37,19 +37,10 @@ public class Examen implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Examen(int id, String descripcion, TipoExamen tipoExamen) {
+	public Examen(String descripcion, TipoExamen tipoExamen) {
 		super();
-		this.id = id;
 		this.descripcion = descripcion;
 		this.tipoExamen = tipoExamen;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getDescripcion() {
@@ -101,5 +92,7 @@ public class Examen implements Serializable {
 			return false;
 		return true;
 	}
+
+	
 
 }
