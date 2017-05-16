@@ -46,24 +46,9 @@
 					<p class="nav-text">Custom menu text</p>
 					<div class="top-nav s-12 l-5">
 						<ul class="right top-ul chevron">
-							<li><a>Gestion de Personal</a>
-								<ul>
-									<li><a
-										href="#{request.contextPath}/paginas/seguro/RegistroDePersonal.xhtml">Registro</a></li>
-									<li><a
-										href="#{request.contextPath}/paginas/seguro/MasOpcionesPersonal.xhtml">Mas
-											opciones</a></li>
-
-								</ul></li>
-							<li><a>Gestion de Instalaciones</a>
-								<ul>
-									<li><a
-										href="#{request.contextPath}/paginas/seguro/RegistroDesInstalaciones.xhtml"></a></li>
-									<li><a
-										href="#{request.contextPath}/paginas/seguro/MasOpcionesIntalaciones.xhtml">Mas
-											opciones</a></li>
-
-								</ul></li>
+							<li></li>
+							<li><a></a></li>
+							<li><a></a></li>
 						</ul>
 					</div>
 					<ul class="s-12 l-2">
@@ -72,29 +57,8 @@
 					</ul>
 					<div class="top-nav s-12 l-5">
 						<ul class="top-ul chevron">
-							<li><a>Gestion de Insumos</a>
-								<ul>
-									<li><a
-										href="#{request.contextPath}/paginas/seguro/RegistroDeInsumos.xhtml">Registro</a></li>
-									<li><a
-										href="#{request.contextPath}/paginas/seguro/MasOpcionesInsumos.xhtml">Mas
-											Opciones</a></li>
-
-								</ul></li>
-							<li><a>Gestion de Enfermedades</a>
-								<ul>
-									<li><a
-										href="#{request.contextPath}/paginas/seguro/RegistroDeEnfermedades.xhtml">Registro</a></li>
-									<li><a
-										href="#{request.contextPath}/paginas/seguro/MasOpcionesEnfermedades.xhtml">Mas
-											Opciones</a></li>
-
-								</ul></li>
-							<h:form>
-								<li><h:commandLink
-										action="#{ControladorLogIn.cerrarSesion}"
-										value="Cerrar Sesion" /></li>
-							</h:form>
+							<li><a></a></li>
+							<li><a></a></li>
 						</ul>
 					</div>
 				</div>
@@ -109,9 +73,7 @@
 					<img src="#{request.contextPath}/img/firstes.jpeg" alt="" />
 					<div class="carousel-text">
 						<div class="line">
-							<div class="s-12 l-9">
-								<h2>El mejor Hospital del Pais</h2>
-							</div>
+							<div class="s-12 l-9"></div>
 						</div>
 					</div>
 				</div>
@@ -119,36 +81,10 @@
 		</div>
 		<!-- FIRST BLOCK -->
 		<div id="first-block">
-			<div class="line">
-				<div class="margin">
-					<div class="s-12 m-6 l-3 margin-bottom"></div>
-				</div>
-			</div>
-		</div>
-		<!-- SECOND BLOCK -->
-		<div id="second-block">
-			<div class="line">
-				<div class="margin-bottom">
-					<div class="margin" align="center">
-						<p:messages id="facesMessage" autoUpdate="true" globalOnly="true"
-							closable="true">
-						</p:messages>
-						<ui:insert name="SolicutudPac"/>
-						<ui:insert name="cuerpo"/>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- GALLERY -->
-		<div id="third-block">
-			<div class="line">
-				<div class="margin"></div>
-			</div>
-		</div>
-		<div id="fourth-block">
-			<div class="line">
-				<div id="owl-demo2" class="owl-carousel owl-theme"></div>
-			</div>
+			<p:messages id="facesMessage" autoUpdate="true" globalOnly="true"
+				closable="true">
+			</p:messages>
+			<ui:insert name="cuerpoLogIn" />
 		</div>
 	</section>
 	<!-- FOOTER -->

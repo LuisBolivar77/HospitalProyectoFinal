@@ -29,9 +29,11 @@ public class UsuarioEJB {
 	 */
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public Usuario buscarUsuario(String user) {
-		Query q = em.createNamedQuery(Usuario.NOMBRE_USUARIO);
-		q.setParameter(user, 1);
-		List<Usuario> lista = q.getResultList();
-		return lista.get(0);
+		List<Usuario>us= em.createNamedQuery(Usuario.NOMBRE_USUARIO).setParameter(1, user).getResultList();
+		if(us.isEmpty()){
+			return null;
+		}else{
+			return us.get(0);
+		}
 	}
 }

@@ -7,7 +7,7 @@
         <dependent-module archiveName="Hospital-negocio-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Hospital-negocio/Hospital-negocio">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="Hospital-percistencia-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Hospital-percistencia/Hospital-percistencia">
+        <dependent-module archiveName="Hospital-percistencia-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Hospital-persistencia/Hospital-persistencia">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="Hospital-web"/>
