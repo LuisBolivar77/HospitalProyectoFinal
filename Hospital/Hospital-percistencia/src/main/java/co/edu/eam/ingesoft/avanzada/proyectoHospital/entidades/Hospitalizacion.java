@@ -54,6 +54,11 @@ public class Hospitalizacion implements Serializable{
 		this.cama = cama;
 	}
 
+	
+	public int getId() {
+		return id;
+	}
+
 	public Date getFechaEntrada() {
 		return fechaEntrada;
 	}

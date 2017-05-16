@@ -42,6 +42,10 @@ public class TipoPersonal implements Serializable{
 		this.descripcion = descripcion;
 	}
 
+	public int getId() {
+		return id;
+	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}

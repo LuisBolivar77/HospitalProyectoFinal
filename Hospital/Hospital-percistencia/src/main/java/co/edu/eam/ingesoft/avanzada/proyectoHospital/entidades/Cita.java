@@ -82,6 +82,11 @@ public class Cita implements Serializable {
 		this.paciente = paciente;
 	}
 
+	
+	public int getId() {
+		return id;
+	}
+
 	public Horario getHorario() {
 		return horario;
 	}

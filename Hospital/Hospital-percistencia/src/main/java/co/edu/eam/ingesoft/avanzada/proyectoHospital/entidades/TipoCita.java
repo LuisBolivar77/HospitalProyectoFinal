@@ -32,6 +32,11 @@ public class TipoCita implements Serializable{
 		this.duracion = duracion;
 	}
 
+	
+	public int getId() {
+		return id;
+	}
+
 	public int getDuracion() {
 		return duracion;
 	}

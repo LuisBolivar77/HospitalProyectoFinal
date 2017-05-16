@@ -48,6 +48,11 @@ public class Eps implements Serializable{
 		this.tipoEps = tipoEps;
 	}
 
+	
+	public int getId() {
+		return id;
+	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}

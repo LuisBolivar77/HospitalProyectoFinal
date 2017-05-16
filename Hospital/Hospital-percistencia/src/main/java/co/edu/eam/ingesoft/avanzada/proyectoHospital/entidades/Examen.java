@@ -43,6 +43,10 @@ public class Examen implements Serializable {
 		this.tipoExamen = tipoExamen;
 	}
 
+	public int getId() {
+		return id;
+	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}

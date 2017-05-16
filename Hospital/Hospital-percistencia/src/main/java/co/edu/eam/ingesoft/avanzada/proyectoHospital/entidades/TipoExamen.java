@@ -27,6 +27,10 @@ public class TipoExamen implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
+	public int getId() {
+		return id;
+	}
+
 	public TipoExamen(String descripcion) {
 		super();
 		this.descripcion = descripcion;

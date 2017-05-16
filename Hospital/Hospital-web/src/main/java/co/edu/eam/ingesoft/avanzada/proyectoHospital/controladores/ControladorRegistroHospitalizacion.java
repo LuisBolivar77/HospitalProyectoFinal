@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.omnifaces.cdi.ViewScoped;
@@ -50,13 +51,16 @@ public class ControladorRegistroHospitalizacion implements Serializable {
 	@EJB
 	private PersonalMedicoEJB personalEJB;
 
+	@Inject
+	private ControladorLogIn sesion;
+	
 	@PostConstruct
 	public void inicializar() {
 		ListarCombos();
 	}
 
 	public void ListarCombos() {
-		 citas = personalEJB.listaCitasPersonal(1094969917);
+		 citas = personalEJB.listaCitasPersonal(sesion.getUser().getIdentificacion());
 		 cama = instalacionesEJB.listarCamas();
 	}
 

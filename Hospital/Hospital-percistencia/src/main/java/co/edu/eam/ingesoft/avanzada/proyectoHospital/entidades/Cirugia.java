@@ -62,6 +62,12 @@ public class Cirugia implements Serializable{
 		this.especializacion = especializacion;
 	}
 
+	
+	
+	public int getId() {
+		return id;
+	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}
