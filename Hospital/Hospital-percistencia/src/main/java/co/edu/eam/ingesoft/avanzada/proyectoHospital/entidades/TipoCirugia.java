@@ -37,6 +37,12 @@ public class TipoCirugia implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	public int getId() {
+		return id;
+	}
+
+
 	public TipoCirugia(String descripcion) {
 		super();
 		this.descripcion = descripcion;

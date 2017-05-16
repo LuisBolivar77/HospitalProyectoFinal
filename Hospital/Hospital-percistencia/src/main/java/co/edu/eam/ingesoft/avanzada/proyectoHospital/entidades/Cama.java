@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="CAMA")
 @NamedQueries({
-	@NamedQuery(name="listarCamasDisponibles", query="SELECT c FROM Cama c WHERE c.ocupada = 1")
+	@NamedQuery(name="listarCamasDisponibles", query="SELECT c FROM Cama c WHERE c.ocupada = false")
 })
 public class Cama implements Serializable{
 
@@ -44,6 +44,16 @@ public class Cama implements Serializable{
 		super();
 		this.descripcion = descripcion;
 		this.ocupada = ocupada;
+	}
+
+
+	public int getNumero() {
+		return numero;
+	}
+
+
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 
 

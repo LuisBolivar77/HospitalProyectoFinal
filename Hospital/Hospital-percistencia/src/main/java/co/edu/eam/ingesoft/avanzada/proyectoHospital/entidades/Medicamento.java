@@ -38,6 +38,10 @@ public class Medicamento implements Serializable {
 		this.descripcion = descripcion;
 	}
 
+	public int getId() {
+		return id;
+	}
+
 	public int getCantidad() {
 		return cantidad;
 	}

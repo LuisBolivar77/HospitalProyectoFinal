@@ -32,25 +32,9 @@ public class InsumosProcedimientosEJB {
 	 */
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void crearMedicamento(Medicamento m) {
-		Medicamento med = buscarMedicamento(m.getId());
-		if (med == null) {
 			em.persist(m);
-		} else {
-			throw new ExcepcionNegocio("Este medicamento ya se encuentra registrado");
-		}
 	}
 
-	/**
-	 * metodo que busca un medicamento
-	 * 
-	 * @param cod
-	 *            codigo por el que se el va a buscar
-	 * @return el medicamento
-	 */
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public Medicamento buscarMedicamento(int cod) {
-		return em.find(Medicamento.class, cod);
-	}
 
 	/**
 	 * Edita un medicamento

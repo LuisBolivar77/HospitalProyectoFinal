@@ -27,6 +27,10 @@ public class TipoEps implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
+	public int getId() {
+		return id;
+	}
+
 	public TipoEps(String descripcion) {
 		super();
 		Descripcion = descripcion;

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="QUIROFANO")
 @NamedQueries({
-	@NamedQuery(name="ListarQuirofanosDispon", query="SELECT q FROM Quirofano q WHERE q.ocupado = 1")
+	@NamedQuery(name="ListarQuirofanosDispon", query="SELECT q FROM Quirofano q WHERE q.ocupado = false")
 })
 public class Quirofano implements Serializable{
 
