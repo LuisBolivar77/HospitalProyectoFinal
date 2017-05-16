@@ -55,59 +55,37 @@ public class Cirugia implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param id
-	 * @param descripcion
-	 * @param tipoCirugia
-	 */
-	public Cirugia(int id, String descripcion, TipoCirugia tipoCirugia) {
+	public Cirugia(String descripcion, TipoCirugia tipoCirugia, Especializacion especializacion) {
 		super();
-		this.id = id;
 		this.descripcion = descripcion;
 		this.tipoCirugia = tipoCirugia;
+		this.especializacion = especializacion;
 	}
 
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return the descripcion
-	 */
 	public String getDescripcion() {
 		return descripcion;
 	}
 
-	/**
-	 * @param descripcion the descripcion to set
-	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
-	/**
-	 * @return the tipoCirugia
-	 */
 	public TipoCirugia getTipoCirugia() {
 		return tipoCirugia;
 	}
 
-	/**
-	 * @param tipoCirugia the tipoCirugia to set
-	 */
 	public void setTipoCirugia(TipoCirugia tipoCirugia) {
 		this.tipoCirugia = tipoCirugia;
 	}
+
+	public Especializacion getEspecializacion() {
+		return especializacion;
+	}
+
+	public void setEspecializacion(Especializacion especializacion) {
+		this.especializacion = especializacion;
+	}
+
 	
 	
 }

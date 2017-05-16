@@ -17,7 +17,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="EPS")
 @NamedQueries({
-//	@NamedQuery(name = "LISTAR_EPS", query = "SELECT e FROM Eps e ORDER BY asc")
 	@NamedQuery(name = "LISTAR_EPS", query = "SELECT e FROM Eps e ")
 })
 public class Eps implements Serializable{
@@ -43,59 +42,28 @@ public class Eps implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param id
-	 * @param descripcion
-	 * @param tipoEps
-	 */
-	public Eps(int id, String descripcion, TipoEps tipoEps) {
+	public Eps(String descripcion, TipoEps tipoEps) {
 		super();
-		this.id = id;
 		this.descripcion = descripcion;
 		this.tipoEps = tipoEps;
 	}
 
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return the descripcion
-	 */
 	public String getDescripcion() {
 		return descripcion;
 	}
 
-	/**
-	 * @param descripcion the descripcion to set
-	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
-	/**
-	 * @return the tipoEps
-	 */
 	public TipoEps getTipoEps() {
 		return tipoEps;
 	}
 
-	/**
-	 * @param tipoEps the tipoEps to set
-	 */
 	public void setTipoEps(TipoEps tipoEps) {
 		this.tipoEps = tipoEps;
 	}
+
 	
 	
 	

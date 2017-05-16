@@ -27,44 +27,19 @@ public class TipoCita implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param id
-	 * @param duracion
-	 */
-	public TipoCita(int id, int duracion) {
+	public TipoCita(int duracion) {
 		super();
-		this.id = id;
 		this.duracion = duracion;
 	}
 
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return the duracion
-	 */
 	public int getDuracion() {
 		return duracion;
 	}
 
-	/**
-	 * @param duracion the duracion to set
-	 */
 	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
-	
-	
+
+
 
 }

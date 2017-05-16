@@ -46,23 +46,24 @@ public class ControladorRegistroHospitalizacion implements Serializable {
 
 	@EJB
 	private HospitalizacionEJB hospEJB;
+	
+	@EJB
+	private PersonalMedicoEJB personalEJB;
 
 	@PostConstruct
 	public void inicializar() {
-		//ListarCombos();
+		ListarCombos();
 	}
 
 	public void ListarCombos() {
-		// citas = personalEJB.listaCitasPersonal(id);
-		//cama = instalacionesEJB.listarCamas();
+		 citas = personalEJB.listaCitasPersonal(1094969917);
+		 cama = instalacionesEJB.listarCamas();
 	}
 
 	public void ordenarHospitalizacion() {
 		try {
-			// Hospitalizacion hospitalizacion = new
-			// Hospitalizacion(id, fechaEntrada, fechaSalida, citaSeleccionada,
-			// cama);
-			//insumosProcEJB.crearHospitalizacion(hospitalizacion);
+			Hospitalizacion hospitalizacion = new Hospitalizacion(fechaEntrada, fechaSalida, citaSeleccionada,camaSeleccionada);
+			insumosProcEJB.crearHospitalizacion(hospitalizacion);
 			Messages.addFlashGlobalInfo("Hospitalizacon ordenada");
 			
 		} catch (ExcepcionNegocio e) {

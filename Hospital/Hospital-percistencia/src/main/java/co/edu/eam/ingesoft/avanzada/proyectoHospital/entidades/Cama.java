@@ -40,21 +40,10 @@ public class Cama implements Serializable{
 	}
 
 
-	public Cama(int numero, String descripcion, boolean ocupada) {
+	public Cama(String descripcion, boolean ocupada) {
 		super();
-		this.numero = numero;
 		this.descripcion = descripcion;
 		this.ocupada = ocupada;
-	}
-
-
-	public int getNumero() {
-		return numero;
-	}
-
-
-	public void setNumero(int numero) {
-		this.numero = numero;
 	}
 
 
@@ -78,6 +67,7 @@ public class Cama implements Serializable{
 	}
 
 
+	
 	
 	
 	
