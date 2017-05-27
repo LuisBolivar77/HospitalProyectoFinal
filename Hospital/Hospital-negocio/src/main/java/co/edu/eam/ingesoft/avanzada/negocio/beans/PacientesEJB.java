@@ -1,5 +1,6 @@
 package co.edu.eam.ingesoft.avanzada.negocio.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -15,6 +16,7 @@ import co.edu.eam.ingesoft.avanzada.negocio.exception.ExcepcionNegocio;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Eps;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Paciente;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Usuario;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento;
 
 @LocalBean
 @Stateless
@@ -25,6 +27,9 @@ public class PacientesEJB {
 
 	@EJB
 	UsuarioEJB usuarioEJB;
+	
+	@EJB
+	EpsEJB epsEJB;
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void registrarPaciente(Paciente p) {
@@ -39,6 +44,58 @@ public class PacientesEJB {
 			em.persist(p);
 		}
 
+	}
+	
+	/**
+	 * Lista los usuarios que han solicitado un nombre de usuario
+	 * @return la lista de usuarios solicitantes
+	 */
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public List<Paciente> solicitudesUsuarios (){
+		Query q = em.createNativeQuery("SELECT u.IDENTIFICACION, u.TIPO_IDENTIFICACION, u.USERNAME, u.CONTRASENIA,"
+				+ " u.NOMBRE, u.APELLIDO, u.EMAIL, u.TELEFONO, u.CELULAR, u.DIRECCION, u.ROL, p.EPS_ID "
+				+ " FROM PACIENTE p JOIN USUARIO u "
+				+ "ON p.IDENTIFICACION = u.IDENTIFICACION JOIN EPS e "
+				+ "ON e.ID = p.EPS_ID WHERE p.USUARIO_ASIGNADO=0");
+		List<Object[] > lista = q.getResultList();
+		
+		List<Paciente> pacientes = new ArrayList<Paciente>();
+		
+		for (Object[] o : lista) {
+			
+			Paciente u = new Paciente();
+			
+			u.setIdentificacion(o[0].toString());
+			String tp = o[1].toString();
+			if (tp.equals(TipoDocumento.Cedula)){
+				u.setTipoDocumento(TipoDocumento.Cedula);
+			} else if (tp.equals(TipoDocumento.CedulaExtranjeria)) {
+				u.setTipoDocumento(TipoDocumento.CedulaExtranjeria);
+			} else if (tp.equals(TipoDocumento.Pasaporte)){
+				u.setTipoDocumento(TipoDocumento.Pasaporte);
+			} else if (tp.equals(TipoDocumento.TarjetaIdentidad)){
+				u.setTipoDocumento(TipoDocumento.TarjetaIdentidad);
+			}		
+			u.setUsuario(o[2].toString());
+			u.setPassword(o[3].toString());
+			u.setNombre(o[4].toString());
+			u.setApellido(o[5].toString());
+			u.setEmail(o[6].toString());
+			u.setTelefono(o[7].toString());
+			u.setCelular(o[8].toString());
+			u.setDireccion(o[9].toString());
+			u.setRol(o[10].toString());
+			
+			Eps eps = epsEJB.buscarEps(Integer.parseInt(o[11].toString()));
+			u.setEps(eps);
+			u.setUsuarioAsignado(false);
+			
+			pacientes.add(u);
+			
+		}
+		
+		return pacientes;
+		
 	}
 
 	/**

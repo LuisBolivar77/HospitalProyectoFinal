@@ -6,10 +6,50 @@
 	
 	<ui:define name="SolicutudPac">
 	
+	<h:form prependId="false">
+
+			<h3>Solicitudes de registro de pacientes</h3>
+
+			<h:panelGrid id="panelDatos" columns="3">
+				
+					<p:dataTable id="tablaSolicitudes"
+					value="#{controladorSolicitudes.listaSolicitudes}" var="sol" border="1">
+
+					<p:column headerText="#{msj['usuario.nombre']}">				
+						<h:outputLabel value="#{sol.nombre}"/>
+					</p:column>
+
+					<p:column headerText="#{msj['usuario.apellido']}">
+						<h:outputLabel value="#{sol.apellido}" />
+					</p:column>
+					
+					<p:column headerText="#{msj['usuario.identificacion']}">
+						<h:outputLabel value="#{sol.identificacion}" />
+					</p:column>
+					
+					<p:column headerText="#{msj['usuario.eps']}">
+						<h:outputLabel value="#{sol.eps.descripcion}" />
+					</p:column>
+					
+					<p:column headerText="#{msj['usuario.username']}">
+						<h:outputLabel value="#{sol.username}" />
+					</p:column>
+					
+					<p:column headerText="#{msj['usuario.password']}">
+						<h:outputLabel value="#{sol.contrasenia}" />
+					</p:column>
+					
+					<p:column headerText="#{msj['usuario.accion']}">
+						<p:commandButton value="#{msj['usuario.habilitar']}" process="@this,tablaSolicitudes" update="tablaSolicitudes"
+							action="#{controladorSolicitudes.habilitarUsuario(sol)}" />
+					</p:column>					
+
+				</p:dataTable>
+
+			</h:panelGrid>
+
+		</h:form>	
 	
-	
-	</ui:define>
-	
-	
+	</ui:define>	
 	
 </ui:composition>

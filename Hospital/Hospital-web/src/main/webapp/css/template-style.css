@@ -7,9 +7,7 @@ nav {
 	top: 0;
 	z-index: 500;
 }
-.top-nav {
-	background: none repeat scroll 0 0 rgba(0, 30, 34, 0.85);
-}
+
 .top-nav ul {
 	padding: 0;
 }
@@ -36,7 +34,7 @@ nav {
 	text-align: center;
 }
 .top-nav li a:hover, .top-nav li.active-item a, .top-nav .logo.active-item a:hover {
-	background: none repeat scroll 0 0 #00464f;
+	background: none repeat scroll 0 0 rgb(239, 239, 239);
 }
 .top-nav li.logo a, .top-nav li.logo.active-item a, .top-nav .logo {
 	background: none repeat scroll 0 0 #2fcbe0;
@@ -45,13 +43,13 @@ nav ul li ul li {
 	text-align: left;
 }
 .top-nav ul ul {
-	background: none repeat scroll 0 0 rgb(0, 30, 34);
+	background: none repeat scroll 0 0 rgb(239, 239, 239);
 }
 .top-nav li ul li a {
-	background: none repeat scroll 0 0 rgb(0, 30, 34);
+	background: none repeat scroll 0 0 rgb(255, 255, 255);
 }
 #fourth-block h2 {
-	color: #fff;
+	color: #000;
 }
 #fourth-block p {
 	color: #fff;
@@ -64,23 +62,24 @@ nav ul li ul li {
 	background: #fff;
 }
 #first-block {
-	background: #fff;
+	margin-bottom: -170px;
 }
 #second-block {
-	background: none repeat scroll 0 0 rgba(0, 30, 34, 0.85);
+	background: none repeat scroll 0 0 rgba(61, 62, 62, 0.85);
 }
 #third-block {
-	background: #fff;
+	margin-top:-150px;
 }
 #fourth-block {
-	background: rgb(0, 30, 34);
+	margin-top: -140px;
 }
 footer {
-	background: none repeat scroll 0 0 #0083c4;
+	height: 170px;
+	background: none repeat scroll 0 0 #ffffff;
 	padding: 1.5em 0;
 }
 footer p, footer a:link, footer a:visited, footer a:hover {
-	color: #fff;
+	color: #000000;
 }
 .carousel-text {
 	display: block;

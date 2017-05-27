@@ -14,6 +14,7 @@ import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 
 import co.edu.eam.ingesoft.avanzada.negocio.beans.UsuarioEJB;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Paciente;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Usuario;
 
 @Named("ControladorLogIn")
@@ -50,13 +51,16 @@ public class ControladorLogIn implements Serializable {
 				if(usu.getRol().equals("medico")){
 					Messages.addFlashGlobalInfo("BIENVENIDO " + user.getUsuario());
 					return "/paginas/Medico/OrdenSal.xhtml?faces-redirect=true";
+				} if (usu instanceof Paciente){
+					Messages.addFlashGlobalError("Señor usuario para acceder a nuestros servicios, "
+							+ "por favor utilice nuestra aplicación móvil ");
 				}
 
 			} else {
-				Messages.addFlashGlobalInfo("el usuario o contraseÃ±a ingresada son incorrectos ");
+				Messages.addFlashGlobalInfo("La contraseña ingresada es incorrecta");
 			}
 		} else {
-			Messages.addFlashGlobalInfo("debe ingresar un nombre de usuario y una contraseÃ±a ");
+			Messages.addFlashGlobalInfo("debe ingresar un nombre de usuario y una contraseña ");
 
 		}
 		return null;
