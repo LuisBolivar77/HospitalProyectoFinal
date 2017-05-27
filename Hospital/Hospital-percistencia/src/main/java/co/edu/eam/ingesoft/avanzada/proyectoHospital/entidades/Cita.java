@@ -22,8 +22,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "CITA")
 @NamedQueries({
-		@NamedQuery(name = Cita.LISTAR_CITAS_PERSONAL, query = "SELECT c FROM Cita c "
-				+ "WHERE c.personalMedico.identificacion = ?1"),
+		@NamedQuery(name = Cita.LISTAR_CITAS_PERSONAL, query = "SELECT c FROM Cita c WHERE c.personalMedico.identificacion = ?1"),
 		@NamedQuery(name = Cita.LISTAR_CITAS_MEDICO_FECHA, query = "SELECT c FROM Cita c "
 				+ "WHERE c.personalMedico.identificacion = ?1 AND c.horario.fechaHora = ?2") })
 public class Cita implements Serializable {

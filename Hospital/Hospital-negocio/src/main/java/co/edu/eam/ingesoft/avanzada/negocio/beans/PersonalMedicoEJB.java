@@ -113,7 +113,7 @@ public class PersonalMedicoEJB {
 	 */
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public List<Cita> listaCitasPersonal (int id){
-		Query q = em.createNamedQuery(Cita.LISTAR_CITAS_PERSONAL);
+		Query q = em.createNativeQuery("SELECT * FROM CITA c where c.PACIENTE_ID = ?1",Cita.class);
 		q.setParameter(1, id);
 		List<Cita> lista = q.getResultList();
 		return lista;

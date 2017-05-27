@@ -7,12 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Query;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = "listarTiposExamenes", query = "SELECT t FROM TipoExamen t")
+})
 @Table(name="TIPO_EXAMEN")
 public class TipoExamen implements Serializable{
+	
+	public static final String listarTiposExamen = "listarTiposExamenes";
 	
 	@Id
 	@Column(name="EXAMEN_ID")
@@ -42,6 +50,11 @@ public class TipoExamen implements Serializable{
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	@Override
+	public String toString() {
+		return descripcion;
 	}
 
 	

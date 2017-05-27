@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/template/index.xhtml">
+
+
+
+	<ui:define name="cuerpo">
+
+
+		<h2 class="registro">ACA PODRA REGISTRAR EXAMENES MEDICOS</h2>
+		<br></br>
+		<br></br>
+		<br></br>
+
+		<h:selectOneMenu id="cbtipo"
+			value="#{controladorExamen.tipoSelecciondo}">
+			<f:selectItems value="#{controladorExamen.examenes}" var="e"
+				itemValue="#{e.descripcion}" itemLabel="#{descripcion}" />
+		</h:selectOneMenu>
+
+
+
+
+	</ui:define>
+</ui:composition>

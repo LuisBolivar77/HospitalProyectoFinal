@@ -9,6 +9,7 @@ import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.omg.CORBA.ORBPackage.InconsistentTypeCode;
 import org.omnifaces.cdi.ViewScoped;
 import org.omnifaces.util.Messages;
 
@@ -35,8 +36,11 @@ public class ControladorRegistroHospitalizacion implements Serializable {
 
 	private List<Cama> cama;
 
-	private Cama camaSeleccionada;
-
+	private String camaSeleccionada;
+	
+	private Date horarioSeleccionado;
+	
+	
 	private String anotaciones;
 
 	@EJB
@@ -56,12 +60,13 @@ public class ControladorRegistroHospitalizacion implements Serializable {
 	
 	@PostConstruct
 	public void inicializar() {
-		ListarCombos();
+		 //citas = personalEJB.listaCitasPersonal(1094969918);
+		cama = instalacionesEJB.listarCamas();
 	}
 
 	public void ListarCombos() {
-		 citas = personalEJB.listaCitasPersonal(sesion.getUser().getIdentificacion());
-		 cama = instalacionesEJB.listarCamas();
+		
+		 
 	}
 
 	public void ordenarHospitalizacion() {

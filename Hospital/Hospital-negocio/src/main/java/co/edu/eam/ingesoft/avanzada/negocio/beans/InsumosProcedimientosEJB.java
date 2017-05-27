@@ -16,6 +16,7 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Cita;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Examen;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Hospitalizacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Medicamento;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoExamen;
 
 @LocalBean
 @Stateless
@@ -32,9 +33,8 @@ public class InsumosProcedimientosEJB {
 	 */
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void crearMedicamento(Medicamento m) {
-			em.persist(m);
+		em.persist(m);
 	}
-
 
 	/**
 	 * Edita un medicamento
@@ -120,18 +120,6 @@ public class InsumosProcedimientosEJB {
 	}
 
 	/**
-	 * metodo que busca una Hospitalizacion
-	 * 
-	 * @param cod
-	 *            codigo por el que se el va a buscar
-	 * @return la Hospitalizacion
-	 */
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public Hospitalizacion buscarHospitalizacion(int cod) {
-		return em.find(Hospitalizacion.class, cod);
-	}
-
-	/**
 	 * Edita una Hospitalizacion
 	 * 
 	 * @param h
@@ -203,4 +191,9 @@ public class InsumosProcedimientosEJB {
 		em.remove(ex);
 	}
 
+	public List<TipoExamen> listarExamenes() {
+		Query q = em.createNamedQuery(TipoExamen.listarTiposExamen);
+		List<TipoExamen> lista = q.getResultList();
+		return lista;
+	}
 }
