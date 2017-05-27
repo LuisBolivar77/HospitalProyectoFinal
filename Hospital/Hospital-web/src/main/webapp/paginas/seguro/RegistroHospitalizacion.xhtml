@@ -14,43 +14,100 @@
 		<br></br>
 		<br></br>
 
+
 		<h:form prependId="false">
 			<h:panelGrid id="paneldatos" columns="2">
 
-				<h:outputLabel for="cbCita" id="lblcita" value="#{msj['hospitalizacion.cita']:}" />
+
+				<h2 class="registro">Datos de la cita</h2>
+				<br></br>
+				<br></br>
+
+				<h:outputLabel for="cbChHorario" id="lblHorarioCita"
+					value="#{msj['cita.horario']}:" />
+				<h:selectOneMenu id="cbChHorario"
+					value="#{controladorHospitalizacion.camaSeleccionada}">
+
+					<f:selectItems value="#{controladorHospitalizacion.cama}" var="c"
+						itemValue="#{c.numero}" itemLabel="#{c.numero}" />
+				</h:selectOneMenu>
+				
+				<h:outputLabel for="cbCama" id="lblCama"
+					value="#{msj['hospitalizacion.camaDisponible']}:" />
+				<h:selectOneMenu id="cbCama"
+					value="#{controladorHospitalizacion.camaSeleccionada}">
+
+					<f:selectItems value="#{controladorHospitalizacion.cama}" var="c"
+						itemValue="#{c.numero}" itemLabel="#{c.numero}" />
+				</h:selectOneMenu>
+				
+				<h:outputLabel for="cbCama" id="lblCama"
+					value="#{msj['hospitalizacion.camaDisponible']}:" />
+				<h:selectOneMenu id="cbCama"
+					value="#{controladorHospitalizacion.camaSeleccionada}">
+
+					<f:selectItems value="#{controladorHospitalizacion.cama}" var="c"
+						itemValue="#{c.numero}" itemLabel="#{c.numero}" />
+				</h:selectOneMenu>
+				
+				<h:outputLabel for="cbCama" id="lblCama"
+					value="#{msj['hospitalizacion.camaDisponible']}:" />
+				<h:selectOneMenu id="cbCama"
+					value="#{controladorHospitalizacion.camaSeleccionada}">
+
+					<f:selectItems value="#{controladorHospitalizacion.cama}" var="c"
+						itemValue="#{c.numero}" itemLabel="#{c.numero}" />
+				</h:selectOneMenu>
+				
+				<h:outputLabel for="cbCama" id="lblCama"
+					value="#{msj['hospitalizacion.camaDisponible']}:" />
+				<h:selectOneMenu id="cbCama"
+					value="#{controladorHospitalizacion.camaSeleccionada}">
+
+					<f:selectItems value="#{controladorHospitalizacion.cama}" var="c"
+						itemValue="#{c.numero}" itemLabel="#{c.numero}" />
+				</h:selectOneMenu>
+				
+				
+				-------------------------------------------------------------
+				
+				<h:outputLabel for="cbCita" id="lblcita"
+					value="#{msj['hospitalizacion.cita']}:" />
 				<h:selectOneMenu id="cbCita"
 					value="#{controladorHospitalizacion.citaSeleccionada}">
 
 					<f:selectItems value="#{controladorHospitalizacion.citas}" var="c"
-						itemValue="#{c}" itemLabel="#{c}"/>
+						itemValue="#{c.id}" itemLabel="#{c.id}" />
 				</h:selectOneMenu>
 
 				<h:outputLabel for="cbfechaEntr" id="lblfechaEntr"
-					value="#{msj['hospitalizacion.fechaEntrada']:}" />
+					value="#{msj['hospitalizacion.fechaEntrada']}:" />
 				<p:calendar pattern="dd/MM/yyyy" id="cbfechaEntr"
 					value="#{controladorHospitalizacion.fechaEntrada}">
 				</p:calendar>
 
 				<h:outputLabel for="cbfechaSalida" id="lblfechaSal"
-					value="#{msj['hospitalizacion.fechaSalida']:}" />
+					value="#{msj['hospitalizacion.fechaSalida']}:" />
 				<p:calendar pattern="dd/MM/yyyy" id="cbfechaSalida"
 					value="#{controladorHospitalizacion.fechaSalida}">
 				</p:calendar>
 
-				<h:outputLabel for="cbCama" id="lblCama" value="#{msj['hospitalizacion.camaDisponible']:}" />
+				<h:outputLabel for="cbCama" id="lblCama"
+					value="#{msj['hospitalizacion.camaDisponible']}:" />
 				<h:selectOneMenu id="cbCama"
 					value="#{controladorHospitalizacion.camaSeleccionada}">
 
 					<f:selectItems value="#{controladorHospitalizacion.cama}" var="c"
-						itemValue="#{c}" itemLabel="#{c.numero}"/>
+						itemValue="#{c.numero}" itemLabel="#{c.numero}" />
 				</h:selectOneMenu>
-			
+
 			</h:panelGrid>
 			<h:panelGrid id="panelbtns" columns="2">
 
-				<p:commandButton id="btncrear" value="#{msj['hospitalizacion.Ordenar']:}"
-					process="@this,paneldatos" update="paneldatos" 
-					action="#{controladorHospitalizacion.ordenarHospitalizacion}"/>
+				<p:commandButton id="btncrear"
+					value="#{msj['hospitalizacion.Ordenar']}:"
+					process="@this,paneldatos" update="paneldatos"
+					action="#{controladorHospitalizacion.ordenarHospitalizacion}" />
 
 
 			</h:panelGrid>

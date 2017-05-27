@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/template/index.xhtml">
+
+
+	<ui:define name="cuerpo">
+		<h:form prependId="false">
+			<h:panelGrid id="paneldatos" columns="3">
+				<h2 class="registro">ORDENAR SALIDA DE HOSPITALIZACION</h2>
+				<br></br>
+				<br></br>
+				<br></br>
+
+				<h:outputLabel for="tfcedula" id="lblCedula"
+					value="#{msj['usuario.identificacion']}:" />
+				<h:inputText id="tfcedula"
+					value="#{controladorResumenMedico.identificacion}" />
+				<br></br>
+				<h:outputLabel for="tfnombre" id="lblnombre"
+					value="#{msj['usuario.nombre']}:" />
+				<h:inputText id="tfnombre"
+					value="#{controladorResumenMedico.nombre}" />
+				<br></br>
+
+				<h:outputLabel for="tffechaSalida" id="lblfechaSalida"
+					value="#{msj['usuario.fechaSalida']}:" />
+				<p:inputMask id="date1"
+					value="#{controladorResumenMedico.fechaSalida}" mask="99/99/9999" />
+
+				<h:outputLabel for="tfnuevaFecha" id="lblnuevafecha"
+					value="#{msj['usuario.nuevaFechaSalida']}:" />
+				<p:inputMask id="date2"
+					value="#{controladorResumenMedico.nuevaFechaSalida}"
+					mask="99/99/9999" />
+			</h:panelGrid>
+			
+			<h:panelGrid id="panelbtns" columns="3">
+				<p:commandButton id="btndarAlta" value="#{msj['usuario.darAlta']}"
+					process="@this,paneldatos" update="paneldatos"
+					action="#{controladorResumenMedico.darDeAlta}" />
+
+				<p:commandButton id="btnEditar" value="#{msj['usuario.editarFecha']}"
+					 process="@this,paneldatos" update="paneldatos"
+					action="#{controladorResumenMedico.editarHospitalizacion}" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="CAMA")
 @NamedQueries({
-	@NamedQuery(name="listarCamasDisponibles", query="SELECT c FROM Cama c WHERE c.ocupada = false")
+	@NamedQuery(name="camasDisponibles", query="SELECT c FROM Cama c WHERE c.ocupada = false")
 })
 public class Cama implements Serializable{
 
