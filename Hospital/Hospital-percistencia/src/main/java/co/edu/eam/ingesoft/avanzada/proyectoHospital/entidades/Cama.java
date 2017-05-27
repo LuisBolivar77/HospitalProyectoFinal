@@ -24,8 +24,6 @@ public class Cama implements Serializable{
 	
 	@Id
 	@Column(name="NUMERO")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_CAMA")
-	@SequenceGenerator(sequenceName="autoincremental", allocationSize=1,  name="SEQ_CAMA")
 	private int numero;
 	
 	@Column(name="DESCRIPCION", length=200, nullable=false)

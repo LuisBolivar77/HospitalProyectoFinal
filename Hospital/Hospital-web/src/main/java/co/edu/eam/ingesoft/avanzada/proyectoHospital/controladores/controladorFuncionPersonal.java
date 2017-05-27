@@ -27,7 +27,7 @@ public class controladorFuncionPersonal implements Serializable {
 	/**
 	 * Identificación del paciente hospitalizado
 	 */
-	private int identificacionPaciente;
+	private String identificacionPaciente;
 
 	/**
 	 * Nombre del paciente hospitalizado
@@ -146,7 +146,7 @@ public class controladorFuncionPersonal implements Serializable {
 	/**
 	 * @return the identificacionPaciente
 	 */
-	public int getIdentificacionPaciente() {
+	public String getIdentificacionPaciente() {
 		return identificacionPaciente;
 	}
 
@@ -154,7 +154,7 @@ public class controladorFuncionPersonal implements Serializable {
 	 * @param identificacionPaciente
 	 *            the identificacionPaciente to set
 	 */
-	public void setIdentificacionPaciente(int identificacionPaciente) {
+	public void setIdentificacionPaciente(String identificacionPaciente) {
 		this.identificacionPaciente = identificacionPaciente;
 	}
 

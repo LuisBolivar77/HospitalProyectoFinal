@@ -36,8 +36,8 @@ public class PersonalMedico extends Usuario implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PersonalMedico(int identificacion, TipoDocumento tipoDocumento, String usuario, String password,
-			String nombre, String apellido, String email, int telefono, int celular, String direccion,
+	public PersonalMedico(String identificacion, TipoDocumento tipoDocumento, String usuario, String password,
+			String nombre, String apellido, String email, String telefono, String celular, String direccion,
 			TipoPersonal tipoPersonal, String rol) {
 		super(identificacion, tipoDocumento, usuario, password, nombre, apellido, email, telefono, celular, direccion, rol);
 		this.tipoPersonal = tipoPersonal;

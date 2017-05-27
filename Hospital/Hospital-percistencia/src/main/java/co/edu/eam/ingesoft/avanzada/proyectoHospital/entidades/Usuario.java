@@ -41,16 +41,16 @@ public class Usuario implements Serializable {
 
 	@Id
 	@Column(name = "IDENTIFICACION", length = 20, nullable = false)
-	protected int identificacion;
+	protected String identificacion;
 
 	@Column(name = "TIPO_IDENTIFICACION")
 	@Enumerated(EnumType.STRING)
 	protected TipoDocumento tipoDocumento;
 
-	@Column(name = "USER", length = 30, nullable = false, unique = true)
+	@Column(name = "USERNAME", length = 30, nullable = false, unique = true)
 	protected String usuario;
 
-	@Column(name = "PASSWORD", length = 30, nullable = false)
+	@Column(name = "CONTRASENIA", length = 30, nullable = false)
 	protected String password;
 
 	@Column(name = "NOMBRE", length = 30, nullable = false)
@@ -63,10 +63,10 @@ public class Usuario implements Serializable {
 	protected String email;
 
 	@Column(name = "TELEFONO", length = 30, nullable = false)
-	protected int telefono;
+	protected String telefono;
 
 	@Column(name = "CELULAR", length = 30)
-	protected int celular;
+	protected String celular;
 
 	@Column(name = "DIRECCION", length = 30)
 	protected String direccion;
@@ -78,8 +78,8 @@ public class Usuario implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Usuario(int identificacion, TipoDocumento tipoDocumento, String usuario, String password, String nombre,
-			String apellido, String email, int telefono, int celular, String direccion, String rol) {
+	public Usuario(String identificacion, TipoDocumento tipoDocumento, String usuario, String password, String nombre,
+			String apellido, String email, String telefono, String celular, String direccion, String rol) {
 		super();
 		this.identificacion = identificacion;
 		this.tipoDocumento = tipoDocumento;
@@ -94,11 +94,11 @@ public class Usuario implements Serializable {
 		this.rol = rol;
 	}
 
-	public int getIdentificacion() {
+	public String getIdentificacion() {
 		return identificacion;
 	}
 
-	public void setIdentificacion(int identificacion) {
+	public void setIdentificacion(String identificacion) {
 		this.identificacion = identificacion;
 	}
 
@@ -150,19 +150,19 @@ public class Usuario implements Serializable {
 		this.email = email;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
-	public int getCelular() {
+	public String getCelular() {
 		return celular;
 	}
 
-	public void setCelular(int celular) {
+	public void setCelular(String celular) {
 		this.celular = celular;
 	}
 

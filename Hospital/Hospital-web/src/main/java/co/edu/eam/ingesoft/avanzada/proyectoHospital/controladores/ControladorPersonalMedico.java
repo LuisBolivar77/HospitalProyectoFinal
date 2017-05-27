@@ -25,7 +25,7 @@ public class ControladorPersonalMedico implements Serializable {
 	/**
 	 * N�mero de identificaci�n del usuario
 	 */
-	private int identificacion;
+	private String identificacion;
 
 	/**
 	 * Nombre del personal
@@ -45,7 +45,7 @@ public class ControladorPersonalMedico implements Serializable {
 	/**
 	 * Tel�fono del usuario
 	 */
-	private int telefono;
+	private String telefono;
 
 	/**
 	 * Tipo de personal seleccionado por el usuario
@@ -80,7 +80,7 @@ public class ControladorPersonalMedico implements Serializable {
 	/**
 	 * N�mero de celular del usuario
 	 */
-	private int celular;
+	private String celular;
 
 	/**
 	 * Correo electr�nico del usuario
@@ -115,7 +115,7 @@ public class ControladorPersonalMedico implements Serializable {
 		personalEditar = null;
 		especializaciones = especializacionEJB.listar();
 		tiposPersonal = personalEJB.listarTipos();
-		listaPersonal = personalEJB.listarPersonal();
+		//listaPersonal = personalEJB.listarPersonal();
 	}
 	
 	public String redireccionarEditar (PersonalMedico per){
@@ -229,9 +229,9 @@ public class ControladorPersonalMedico implements Serializable {
 		apellido = "";
 		direccion = "";
 		password = "";
-		telefono = 0;
+		telefono = "";
 		username = "";
-		celular = 0;
+		celular = "";
 		email = "";
 	}
 
@@ -253,7 +253,7 @@ public class ControladorPersonalMedico implements Serializable {
 	/**
 	 * @return the identificacion
 	 */
-	public int getIdentificacion() {
+	public String getIdentificacion() {
 		return identificacion;
 	}
 
@@ -261,7 +261,7 @@ public class ControladorPersonalMedico implements Serializable {
 	 * @param identificacion
 	 *            the identificacion to set
 	 */
-	public void setIdentificacion(int identificacion) {
+	public void setIdentificacion(String identificacion) {
 		this.identificacion = identificacion;
 	}
 
@@ -328,7 +328,7 @@ public class ControladorPersonalMedico implements Serializable {
 	/**
 	 * @return the telefono
 	 */
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
@@ -336,14 +336,14 @@ public class ControladorPersonalMedico implements Serializable {
 	 * @param telefono
 	 *            the telefono to set
 	 */
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
 	/**
 	 * @return the celular
 	 */
-	public int getCelular() {
+	public String getCelular() {
 		return celular;
 	}
 
@@ -351,7 +351,7 @@ public class ControladorPersonalMedico implements Serializable {
 	 * @param celular
 	 *            the celular to set
 	 */
-	public void setCelular(int celular) {
+	public void setCelular(String celular) {
 		this.celular = celular;
 	}
 

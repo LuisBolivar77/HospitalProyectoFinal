@@ -49,7 +49,7 @@ public class PacientesEJB {
 	 * @return el paciente
 	 */
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public Paciente buscarPaciente(int id) {
+	public Paciente buscarPaciente(String id) {
 		return em.find(Paciente.class, id);
 	}
 	
