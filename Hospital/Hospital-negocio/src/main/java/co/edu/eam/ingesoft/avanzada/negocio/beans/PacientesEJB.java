@@ -81,4 +81,15 @@ public class PacientesEJB {
 	List<Eps> lista =  q.getResultList();
 	return lista;
 	}
+	
+//	public List<Paciente> listadoPeticionesRegistro (){
+//		
+//		Query q = em.createNativeQuery("", arg1)
+//		
+//		
+//		
+//		
+//		
+//	}
+	
 }

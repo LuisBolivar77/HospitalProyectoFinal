@@ -45,11 +45,11 @@ public class ControladorLogIn implements Serializable {
 				Faces.setApplicationAttribute("usuario", usu);
 				if (usu.getRol().equals("admin")) {
 					Messages.addFlashGlobalInfo("BIENVENIDO " + user.getUsuario());
-					return "/paginas/seguro/SolicitudRegistroPacientes.xhtml?faces-redirect=true";
+					return "/paginas/Administrador/SolicitudRegistroPacientes.xhtml?faces-redirect=true";
 				}
 				if(usu.getRol().equals("medico")){
 					Messages.addFlashGlobalInfo("BIENVENIDO " + user.getUsuario());
-					return "/paginas/seguro/OrdenSal.xhtml?faces-redirect=true";
+					return "/paginas/Medico/OrdenSal.xhtml?faces-redirect=true";
 				}
 
 			} else {
