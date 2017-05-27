@@ -6,7 +6,7 @@ public class EspecializacionPersonalPK implements Serializable {
 
 	private int especializacion;
 	
-	private int personal;
+	private String personal;
 	
 	public EspecializacionPersonalPK() {
 		// TODO Auto-generated constructor stub
@@ -20,7 +20,7 @@ public class EspecializacionPersonalPK implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + especializacion;
-		result = prime * result + personal;
+		result = prime * result + ((personal == null) ? 0 : personal.hashCode());
 		return result;
 	}
 
@@ -38,10 +38,14 @@ public class EspecializacionPersonalPK implements Serializable {
 		EspecializacionPersonalPK other = (EspecializacionPersonalPK) obj;
 		if (especializacion != other.especializacion)
 			return false;
-		if (personal != other.personal)
+		if (personal == null) {
+			if (other.personal != null)
+				return false;
+		} else if (!personal.equals(other.personal))
 			return false;
 		return true;
 	}
+
 	
 	
 	

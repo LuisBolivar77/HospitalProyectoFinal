@@ -49,7 +49,7 @@ public class HospitalizacionEJB {
 	 * @return la hospitalización del paciente si la encuentra, de lo contrario null
 	 */
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public Hospitalizacion buscar (int idPaciente){
+	public Hospitalizacion buscar (String idPaciente){
 		Query q = em.createNativeQuery("SELECT h.id, h.cita_id, h.fecha_entrada, h.fecha_salida,"
 				+ "h.cama_numero FROM hospitalizacion h JOIN cita c ON c.id=h.cita_id WHERE "
 				+ "c.paciente_id = ?1 AND h.fecha_salida> ?2");

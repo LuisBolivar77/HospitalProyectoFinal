@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.controladores.ControladorLogIn;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Usuario;
 
-@WebFilter("/paginas/Medico/*")
-public class FiltroSesion implements Filter {
+@WebFilter("/paginas/Administrador/*")
+public class FiltroAdministrador implements Filter {
 
 	@Inject
 	private ControladorLogIn sesion;
@@ -34,7 +34,7 @@ public class FiltroSesion implements Filter {
 		HttpServletResponse res = (HttpServletResponse) arg1;
 		Usuario cus = sesion.getUser();
 		if (cus != null) {
-			if (cus.getRol().equals("medico")) {
+			if (cus.getRol().equals("admin")) {
 				arg2.doFilter(arg0, arg1);
 			} else {
 				res.sendRedirect(req.getContextPath() + "/paginas/publico/Login.xhtml");

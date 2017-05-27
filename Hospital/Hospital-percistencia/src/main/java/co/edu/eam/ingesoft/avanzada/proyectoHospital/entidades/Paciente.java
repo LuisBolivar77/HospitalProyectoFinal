@@ -26,8 +26,8 @@ public class Paciente extends Usuario implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Paciente(int identificacion, TipoDocumento tipoDocumento, String usuario, String password, String nombre,
-			String apellido, String email, int telefono, int celular, String direccion, Eps eps,
+	public Paciente(String identificacion, TipoDocumento tipoDocumento, String usuario, String password, String nombre,
+			String apellido, String email, String telefono, String celular, String direccion, Eps eps,
 			boolean usuarioAsignado, String rol) {
 		super(identificacion, tipoDocumento, usuario, password, nombre, apellido, email, telefono, celular, direccion, rol);
 		this.eps = eps;

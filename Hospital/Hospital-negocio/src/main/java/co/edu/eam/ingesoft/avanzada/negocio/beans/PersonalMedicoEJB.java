@@ -102,7 +102,7 @@ public class PersonalMedicoEJB {
 	 * @return el personal si lo encuentra, de lo contrario null
 	 */
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public PersonalMedico buscar(int id) {
+	public PersonalMedico buscar(String id) {
 		return em.find(PersonalMedico.class, id);
 	}
 	
@@ -112,8 +112,8 @@ public class PersonalMedicoEJB {
 	 * @return la lista de citas del médico
 	 */
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public List<Cita> listaCitasPersonal (int id){
-		Query q = em.createNativeQuery("SELECT * FROM CITA c where c.PACIENTE_ID = ?1",Cita.class);
+	public List<Cita> listaCitasPersonal (String id){
+		Query q = em.createNamedQuery(Cita.LISTAR_CITAS_PERSONAL);
 		q.setParameter(1, id);
 		List<Cita> lista = q.getResultList();
 		return lista;
@@ -126,7 +126,7 @@ public class PersonalMedicoEJB {
 	 * @return la lista de citas para esa fecha
 	 */
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public List<Cita> listaCitasPersonalFecha (int idPersonal, Date fecha){
+	public List<Cita> listaCitasPersonalFecha (String idPersonal, Date fecha){
 		Query q = em.createNamedQuery(Cita.LISTAR_CITAS_MEDICO_FECHA);
 		q.setParameter(1, idPersonal);
 		q.setParameter(2, fecha);
