@@ -43,7 +43,7 @@ public class PacientesEJB {
 
 	/**
 	 * busca un paciente si esta registrado o no en la base de datos
-	 * 
+	 * gg
 	 * @param id
 	 *            la identificacion por la que se le buscara
 	 * @return el paciente

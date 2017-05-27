@@ -1,0 +1,109 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/template/index.xhtml">
+
+	<ui:define name="cuerpo">
+		<h:form prependId="false">
+
+			<h3>Ordenar salida de hospitalización</h3>
+
+			<h:panelGrid id="panelDatos" columns="3">
+
+				<h:outputLabel id="lblId"
+					value="#{msj['usuario.identificacionPaciente']}" />
+				<h:inputText id="tfId"
+					value="#{controladorFuncionPersonal.identificacionPaciente}" />
+
+				<p:commandButton id="btnbuscar" value="#{msj['usuario.buscar']}"
+					process="@this,panelDatos" update="panelDatos"
+					action="#{controladorFuncionPersonal.buscar}" />
+
+			</h:panelGrid>
+
+			<h:panelGrid id="panelDatos2" columns="2">
+
+				<h:outputLabel id="lblNom" value="#{msj['usuario.nombre']}" />
+				<h:inputText id="tfNom"
+					value="#{controladorFuncionPersonal.nombrePaciente}"
+					disabled="true" />
+
+				<h:outputLabel id="lblSalida" value="#{msj['usuario.fechaSalida']}" />
+				<p:calendar id="fechaSalida" mode="inline"
+					value="#{controladorFuncionPersonal.fechaSalida}" disabled="true" />
+
+				<h:outputLabel id="lbFechaSalida"
+					value="#{msj['usuario.nuevaFechaSalida']}" />
+				<p:calendar id="fechaSalida" mode="inline"
+					value="#{controladorFuncionPersonal.nuevaFechaSalida}" />
+
+				<p:commandButton id="btnEditarFecha"
+					value="#{msj['usuario.editarFecha']}" process="@this,panelDatos2"
+					update="panelDatos2"
+					action="#{controladorFuncionPersonal.editarFechaSalida}" />
+
+				<p:commandButton id="btnDarAlta" value="#{msj['usuario.darAlta']}"
+					process="@this,panelDatos2" update="panelDatos2"
+					action="#{controladorFuncionPersonal.darAlta}" />
+
+			</h:panelGrid>
+
+			<h3>Ordenar salida de hospitalización</h3>
+
+			<h:panelGrid id="panelDatos3" columns="2">
+
+				<h:outputLabel id="lblSelecion"
+					value="#{msj['usuario.seleccioneFecha']}" />
+				<p:calendar id="fechaSelec" mode="inline"
+					value="#{controladorFuncionPersonal.fechaCita}" disabled="true" />
+
+				<p:commandButton id="btnverCitas" value="#{msj['usuario.verCitas']}"
+					process="@this,panelDatos3" update="panelDatos3"
+					action="#{controladorFucionPersonal.verCitas}" />
+
+			</h:panelGrid>
+
+			<h:panelGrid id="panelDatos4" columns="1">
+
+				<p:dataTable id="tablaCitas"
+					value="#{controladorFuncionPersonal.listaCitas}" var="cita"
+					border="1">
+
+					<p:column headerText="#{msj['usuario.nombre']}">
+						<h:outputLabel value="#{cita.paciente.nombre}" />
+					</p:column>
+
+					<p:column headerText="#{msj['usuario.identificacion']}">
+						<h:outputLabel value="#{cita.paciente.identificacion}" />
+					</p:column>
+
+					<p:column headerText="#{msj['usuario.tipoId']}">
+						<h:outputLabel value="#{cita.paciente.tipoDocumento}" />
+					</p:column>
+
+					<p:column headerText="#{msj['usuario.telefono']}">
+						<h:outputLabel value="#{cita.paciente.telefono}" />
+					</p:column>
+
+					<p:column headerText="#{msj['usuario.fecha']}">
+						<h:outputLabel value="#{cita.horario.fecha}" />
+					</p:column>
+					
+					<p:column headerText="#{msj['usuario.hora']}">
+						<h:outputLabel value="#{cita.horario.hora}" />
+					</p:column>
+
+					<p:column headerText="#{msj['usuario.atender']}">
+						<p:commandButton value="#{msj['usuario.atender']}"
+							process="@this,tablaCitas" update="tablaCitas"
+							action="#{controladorFuncionPersonal.atender(cita)}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:panelGrid>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
