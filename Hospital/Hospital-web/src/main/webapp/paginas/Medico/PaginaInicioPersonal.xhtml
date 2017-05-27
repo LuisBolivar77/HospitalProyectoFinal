@@ -19,23 +19,24 @@
 				<p:commandButton id="btnbuscar" value="#{msj['usuario.buscar']}"
 					process="@this,panelDatos" update="panelDatos"
 					action="#{controladorFuncionPersonal.buscar}" />
+					
+					<h:outputLabel id="lblNom" value="#{msj['usuario.nombre']}" />
+				<h:inputText id="tfNom"
+					value="#{controladorFuncionPersonal.nombrePaciente}"
+					disabled="true" />
 
 			</h:panelGrid>
 
 			<h:panelGrid id="panelDatos2" columns="2">
 
-				<h:outputLabel id="lblNom" value="#{msj['usuario.nombre']}" />
-				<h:inputText id="tfNom"
-					value="#{controladorFuncionPersonal.nombrePaciente}"
-					disabled="true" />
-
+				
 				<h:outputLabel id="lblSalida" value="#{msj['usuario.fechaSalida']}" />
 				<p:calendar id="fechaSalida" mode="inline"
 					value="#{controladorFuncionPersonal.fechaSalida}" disabled="true" />
 
 				<h:outputLabel id="lbFechaSalida"
 					value="#{msj['usuario.nuevaFechaSalida']}" />
-				<p:calendar id="fechaSalida" mode="inline"
+				<p:calendar id="fechaNSalida" mode="inline"
 					value="#{controladorFuncionPersonal.nuevaFechaSalida}" />
 
 				<p:commandButton id="btnEditarFecha"

@@ -47,7 +47,7 @@ public class Cita implements Serializable {
 	@OneToOne
 	private Horario horario;
 
-	@Column(name = "ANOCTACIONES", nullable = false, length = 200)
+	@Column(name = "ANOTACIONES", nullable = false, length = 200)
 	private String anotaciones;
 
 	@ManyToOne

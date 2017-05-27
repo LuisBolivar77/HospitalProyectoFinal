@@ -50,7 +50,7 @@ public class ControladorLogIn implements Serializable {
 				}
 				if(usu.getRol().equals("medico")){
 					Messages.addFlashGlobalInfo("BIENVENIDO " + user.getUsuario());
-					return "/paginas/Medico/OrdenSal.xhtml?faces-redirect=true";
+					return "/paginas/Medico/PaginaInicioPersonal.xhtml?faces-redirect=true";
 				} if (usu instanceof Paciente){
 					Messages.addFlashGlobalError("Señor usuario para acceder a nuestros servicios, "
 							+ "por favor utilice nuestra aplicación móvil ");

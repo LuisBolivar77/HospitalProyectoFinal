@@ -35,6 +35,11 @@ public class InstalacionesEJB {
 		}
 	}
 	
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public Cama buscarCama (int id){
+		return em.find(Cama.class, id);
+	}
+	
 	/**
 	 * Busca un quirofano
 	 * @param numero número del quirofano que se desea buscar

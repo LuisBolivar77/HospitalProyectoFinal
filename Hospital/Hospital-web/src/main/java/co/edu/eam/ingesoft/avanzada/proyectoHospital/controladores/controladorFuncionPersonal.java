@@ -96,8 +96,8 @@ public class controladorFuncionPersonal implements Serializable {
 	 * Atiende una cita
 	 * @param c Cita que se desea atender
 	 */
-	public void atender (Cita c){
-		//Historail paciente
+	public String atender (Cita c){
+		return "/paginas/Medico/PaginaInicioPersonal.xhtml?faces-redirect=true";
 	}
 
 	/**

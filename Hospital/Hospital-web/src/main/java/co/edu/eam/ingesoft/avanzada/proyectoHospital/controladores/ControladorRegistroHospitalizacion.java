@@ -26,17 +26,13 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Hospitalizacion;
 @Named("controladorHospitalizacion")
 public class ControladorRegistroHospitalizacion implements Serializable {
 
-	private List<Cita> citas;
-
-	private Cita citaSeleccionada;
-
 	private Date fechaEntrada;
 
 	private Date fechaSalida;
 
 	private List<Cama> cama;
 
-	private String camaSeleccionada;
+	private int camaSeleccionada;
 	
 	private Date horarioSeleccionado;
 	
@@ -71,7 +67,11 @@ public class ControladorRegistroHospitalizacion implements Serializable {
 
 	public void ordenarHospitalizacion() {
 		try {
-			Hospitalizacion hospitalizacion = new Hospitalizacion(fechaEntrada, fechaSalida, citaSeleccionada,camaSeleccionada);
+			
+			Cama c = instalacionesEJB.buscarCama(camaSeleccionada);
+			Cita cit = new Cita();
+			
+			Hospitalizacion hospitalizacion = new Hospitalizacion(fechaEntrada, fechaSalida, cit, c);
 			insumosProcEJB.crearHospitalizacion(hospitalizacion);
 			Messages.addFlashGlobalInfo("Hospitalizacon ordenada");
 			
@@ -79,14 +79,6 @@ public class ControladorRegistroHospitalizacion implements Serializable {
 			e.printStackTrace();
 			Messages.addGlobalError(e.getMessage());
 		}
-	}
-
-	public List<Cita> getCitas() {
-		return citas;
-	}
-
-	public void setCitas(List<Cita> citas) {
-		this.citas = citas;
 	}
 
 	public List<Cama> getCama() {
@@ -121,11 +113,11 @@ public class ControladorRegistroHospitalizacion implements Serializable {
 		this.fechaSalida = fechaSalida;
 	}
 
-	public Cama getCamaSeleccionada() {
+	public int getCamaSeleccionada() {
 		return camaSeleccionada;
 	}
 
-	public void setCamaSeleccionada(Cama camaSeleccionada) {
+	public void setCamaSeleccionada(int camaSeleccionada) {
 		this.camaSeleccionada = camaSeleccionada;
 	}
 
@@ -135,14 +127,6 @@ public class ControladorRegistroHospitalizacion implements Serializable {
 
 	public void setAnotaciones(String anotaciones) {
 		this.anotaciones = anotaciones;
-	}
-
-	public Cita getCitaSeleccionada() {
-		return citaSeleccionada;
-	}
-
-	public void setCitaSeleccionada(Cita citaSeleccionada) {
-		this.citaSeleccionada = citaSeleccionada;
 	}
 
 }
