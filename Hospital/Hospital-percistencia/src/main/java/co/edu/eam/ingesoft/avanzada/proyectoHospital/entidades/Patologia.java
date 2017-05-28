@@ -70,6 +70,13 @@ public class Patologia implements Serializable {
 	}
 
 	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
 	 * @param anotacion
 	 *            the anotacion to set
 	 */

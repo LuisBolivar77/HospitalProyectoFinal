@@ -53,7 +53,14 @@ public class Hospitalizacion implements Serializable{
 		this.cita = cita;
 		this.cama = cama;
 	}
+	
+	public String getFechaEntradaHosp() {
+		return fechaEntrada.getDay() + "/" + fechaEntrada.getMonth() + "/" + fechaEntrada.getYear();
+	}
 
+	public String getFechaSalidaHosp() {
+		return fechaSalida.getDay() + "/" + fechaSalida.getMonth() + "/" + fechaSalida.getYear();
+	}
 	
 	public int getId() {
 		return id;

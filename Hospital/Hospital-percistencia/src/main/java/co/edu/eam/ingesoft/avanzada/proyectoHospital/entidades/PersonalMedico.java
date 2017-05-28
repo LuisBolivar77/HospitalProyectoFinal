@@ -42,6 +42,10 @@ public class PersonalMedico extends Usuario implements Serializable {
 		super(identificacion, tipoDocumento, usuario, password, nombre, apellido, email, telefono, celular, direccion, rol);
 		this.tipoPersonal = tipoPersonal;
 	}
+	
+	public String getNombreCompleto(){
+		return nombre +" "+ apellido;
+	}
 
 	public TipoPersonal getTipoPersonal() {
 		return tipoPersonal;

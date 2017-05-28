@@ -34,7 +34,7 @@ public class ResultadoExamen implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "FECHA_HORA")
 	private Date fechaHora;
-	
+
 	public ResultadoExamen() {
 		// TODO Auto-generated constructor stub
 	}
@@ -53,6 +53,10 @@ public class ResultadoExamen implements Serializable {
 		this.fechaHora = fechaHora;
 	}
 
+	public String getFechaExamen() {
+		return fechaHora.getDay() + "/" + fechaHora.getMonth() + "/" + fechaHora.getYear();
+	}
+
 	/**
 	 * @return the examen
 	 */
@@ -61,7 +65,8 @@ public class ResultadoExamen implements Serializable {
 	}
 
 	/**
-	 * @param examen the examen to set
+	 * @param examen
+	 *            the examen to set
 	 */
 	public void setExamen(Examen examen) {
 		this.examen = examen;
@@ -75,7 +80,8 @@ public class ResultadoExamen implements Serializable {
 	}
 
 	/**
-	 * @param cita the cita to set
+	 * @param cita
+	 *            the cita to set
 	 */
 	public void setCita(Cita cita) {
 		this.cita = cita;
@@ -89,7 +95,8 @@ public class ResultadoExamen implements Serializable {
 	}
 
 	/**
-	 * @param resultado the resultado to set
+	 * @param resultado
+	 *            the resultado to set
 	 */
 	public void setResultado(String resultado) {
 		this.resultado = resultado;
@@ -103,12 +110,11 @@ public class ResultadoExamen implements Serializable {
 	}
 
 	/**
-	 * @param fechaHora the fechaHora to set
+	 * @param fechaHora
+	 *            the fechaHora to set
 	 */
 	public void setFechaHora(Date fechaHora) {
 		this.fechaHora = fechaHora;
 	}
-
-
 
 }

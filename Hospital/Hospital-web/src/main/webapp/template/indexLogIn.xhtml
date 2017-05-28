@@ -54,20 +54,42 @@
 			<div id="owl-demo" class="owl-carousel owl-theme">
 				<div class="item">
 					<img src="#{request.contextPath}/img/firstes.jpeg" alt="" />
-					<div class="carousel-text">
-						<div class="line">
-							<div class="s-12 l-9"></div>
-						</div>
-					</div>
+					
 				</div>
 			</div>
 		</div>
 		<!-- FIRST BLOCK -->
 		<div id="first-block">
-			<p:messages id="facesMessage" autoUpdate="true" globalOnly="true"
-				closable="true">
-			</p:messages>
-			<ui:insert name="cuerpoLogIn" />
+			<div class="line">
+				<div class="margin">
+					<div class="s-12 m-6 l-3 margin-bottom"></div>
+				</div>
+			</div>
+		</div>
+		<!-- SECOND BLOCK -->
+		<div id="second-block">
+			<div class="line">
+				<div class="margin-bottom">
+					<div class="margin" align="center">
+						<p:messages id="facesMessage" autoUpdate="true" globalOnly="true"
+							closable="true">
+						</p:messages>
+						<ui:insert name="SolicutudPac"/>
+						<ui:insert name="cuerpo"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- GALLERY -->
+		<div id="third-block">
+			<div class="line">
+				<div class="margin"></div>
+			</div>
+		</div>
+		<div id="fourth-block">
+			<div class="line">
+				<div id="owl-demo2" class="owl-carousel owl-theme"></div>
+			</div>
 		</div>
 	</section>
 	<!-- FOOTER -->
