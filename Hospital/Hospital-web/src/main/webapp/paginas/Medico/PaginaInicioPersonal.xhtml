@@ -5,6 +5,7 @@
 	xmlns:p="http://primefaces.org/ui" template="/template/index.xhtml">
 
 	<ui:define name="cuerpo">
+
 		<h:form prependId="false">
 
 			<h3>Ordenar salida de hospitalización</h3>
@@ -19,25 +20,26 @@
 				<p:commandButton id="btnbuscar" value="#{msj['usuario.buscar']}"
 					process="@this,panelDatos" update="panelDatos"
 					action="#{controladorFuncionPersonal.buscar}" />
-					
-					<h:outputLabel id="lblNom" value="#{msj['usuario.nombre']}" />
-				<h:inputText id="tfNom"
-					value="#{controladorFuncionPersonal.nombrePaciente}"
-					disabled="true" />
 
 			</h:panelGrid>
 
 			<h:panelGrid id="panelDatos2" columns="2">
 
-				
+				<h:outputLabel id="lblNom" value="#{msj['usuario.nombre']}" />
+				<h:inputText id="tfNom"
+					value="#{controladorFuncionPersonal.nombrePaciente}"
+					disabled="true" />
+
 				<h:outputLabel id="lblSalida" value="#{msj['usuario.fechaSalida']}" />
-				<p:calendar id="fechaSalida" mode="inline"
-					value="#{controladorFuncionPersonal.fechaSalida}" disabled="true" />
+
+				<p:inputMask id="date1" disabled="true"
+					value="#{controladorFuncionPersonal.fechaSalida}" mask="99/99/9999" />
 
 				<h:outputLabel id="lbFechaSalida"
 					value="#{msj['usuario.nuevaFechaSalida']}" />
-				<p:calendar id="fechaNSalida" mode="inline"
-					value="#{controladorFuncionPersonal.nuevaFechaSalida}" />
+				
+				<p:calendar id="button" value="#{calendarView.date2}"
+					showOn="button" />
 
 				<p:commandButton id="btnEditarFecha"
 					value="#{msj['usuario.editarFecha']}" process="@this,panelDatos2"
@@ -52,7 +54,7 @@
 
 			<h3>Citas programadas</h3>
 
-			<h:panelGrid id="panelDatos3" columns="2">
+			<h:panelGrid id="panelDatos3" columns="3">
 
 				<h:outputLabel id="lblSelecion"
 					value="#{msj['usuario.seleccioneFecha']}" />
@@ -90,7 +92,7 @@
 					<p:column headerText="#{msj['usuario.fecha']}">
 						<h:outputLabel value="#{cita.horario.fecha}" />
 					</p:column>
-					
+
 					<p:column headerText="#{msj['usuario.hora']}">
 						<h:outputLabel value="#{cita.horario.hora}" />
 					</p:column>

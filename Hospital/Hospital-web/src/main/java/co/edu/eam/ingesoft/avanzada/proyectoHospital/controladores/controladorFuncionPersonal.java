@@ -53,11 +53,15 @@ public class controladorFuncionPersonal implements Serializable {
 	 * Usuario logueado
 	 */
 	private Usuario usuario;
+	
+	private String prueba;
 
 	/**
 	 * Fecha en la que se desea buscar las citas del médico
 	 */
 	private Date fechaCita;
+	
+	private CalendarView selecionado;
 
 	@EJB
 	private HospitalizacionEJB hospitalizacionEJB;
@@ -126,7 +130,7 @@ public class controladorFuncionPersonal implements Serializable {
 		if (hospitalizacionPaciente == null) {
 			Messages.addFlashGlobalError("Debe buscar un paciente previamente");
 		} else {
-			Date nuevaFecha = nuevaFechaSalida;
+			Date nuevaFecha = selecionado.getDate2();
 			hospitalizacionPaciente.setFechaSalida(nuevaFecha);
 			hospitalizacionEJB.editar(hospitalizacionPaciente);
 		}
@@ -231,6 +235,20 @@ public class controladorFuncionPersonal implements Serializable {
 	 */
 	public void setFechaCita(Date fechaCita) {
 		this.fechaCita = fechaCita;
+	}
+
+	/**
+	 * @return the prueba
+	 */
+	public String getPrueba() {
+		return prueba;
+	}
+
+	/**
+	 * @param prueba the prueba to set
+	 */
+	public void setPrueba(String prueba) {
+		this.prueba = prueba;
 	}
 
 }

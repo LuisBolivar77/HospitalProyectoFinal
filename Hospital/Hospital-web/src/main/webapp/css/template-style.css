@@ -16,6 +16,10 @@ nav {
 	text-align: center;
 	width: 100%;
 }
+.logIn{
+	margin-left: 700px;
+	margin-top: 270px;
+}
 .top-nav a {
 	font-size: 0.9em;
 	text-transform: uppercase;
