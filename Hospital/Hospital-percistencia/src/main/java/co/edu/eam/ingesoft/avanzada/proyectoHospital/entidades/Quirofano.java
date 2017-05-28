@@ -12,13 +12,30 @@ import javax.persistence.Table;
 @Entity
 @Table(name="QUIROFANO")
 @NamedQueries({
-	@NamedQuery(name="ListarQuirofanosDispon", query="SELECT q FROM Quirofano q WHERE q.ocupado = false")
+	@NamedQuery(name="quirofanosDisponibles", query="SELECT q FROM Quirofano q WHERE q.ocupado = false"),
+	@NamedQuery(name="listarQuirofanos",query="SELECT q FROM Quirofano q"),
+	@NamedQuery(name="quirofanoPorNumero",query="SELECT q FROM Quirofano q WHERE q.numero = ?1")
 })
 public class Quirofano implements Serializable{
 
-	public static String ListarQuirofanosDispon = "quirofanosDisponibles";
+	public static final String quirofanoPorNumero = "quirofanoPorNumero";
+	/**
+	 * consulta que retorna los quirofanos disponibles
+	 */
+	public static final String ListarQuirofanosDispon = "quirofanosDisponibles";
+	
+	/**
+	 * lista todos los quirofanos
+	 */
+	public static final String ListarQuirofanos = "listarQuirofanos";
+	
+	/**
+	 * bariable estatica que almacena el numero de un quirofano
+	 */
+	public static int numeroQuirofano;
 	
 	
+
 	@Id
 	@Column(name="NUMERO")
 	private int numero;
@@ -54,7 +71,13 @@ public class Quirofano implements Serializable{
 		this.ocupado = ocupado;
 	}
 
+	public static int getNumeroQuirofano() {
+		return numeroQuirofano;
+	}
 
+	public static void setNumeroQuirofano(int numeroQuirofano) {
+		Quirofano.numeroQuirofano = numeroQuirofano;
+	}
 
 	/**
 	 * @return the id

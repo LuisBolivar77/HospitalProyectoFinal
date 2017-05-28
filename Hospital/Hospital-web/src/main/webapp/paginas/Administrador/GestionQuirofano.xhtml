@@ -17,7 +17,7 @@
 
 				<h:outputLabel id="lbldesc"
 					value="#{msj['instalacion.descripcion']}" />
-				<h:inputText id="tfdesc"
+				<h:inputTextarea id="tfdesc"
 					value="#{controladorInstalaciones.descQuirofano}" />
 
 			</h:panelGrid>
@@ -25,25 +25,23 @@
 			<h:panelGrid id="panelBotones" columns="2">
 
 				<p:commandButton id="btnRegistrar"
-					value="#{msj['customer.registrar']}" process="@this,panelRegistro"
-					update="panelRegistro" action="#{controladorPersonal.registrarQuirofano}" />
-
-				<p:commandButton id="btnbuscar" value="#{msj['usuario.buscar']}"
-					process="@this,panelRegistro" update="panelRegistro"
-					action="#{controladorInstalaciones.buscarQuirofano}" />
-
-				<p:commandButton id="btneditar" value="#{msj['usuario.editar']}"
-					process="@this,panelRegistro" update="panelRegistro"
-					action="#{controladorInstalaciones.editarQuirofano}" />
-
-				<p:commandButton id="btneliminar"
-					value="#{msj['usuario.eliminar']}" process="@this,panelRegistro"
+					value="#{msj['usuario.registrar']}" process="@this,panelRegistro"
 					update="panelRegistro"
-					action="#{controladorInstalaciones.eliminarQuirofano}" />
+					action="#{controladorInstalaciones.registarQuirofano()}" />
+
+				<p:commandButton id="btnbuscar"
+					value="#{msj['usuario.buscar']}" process="@this,panelRegistro"
+					update="panelRegistro"
+					action="#{controladorInstalaciones. buscarQuirofano()}" />
+
+				<p:commandButton id="btnEditar"
+					value="#{msj['instalaciones.editar']}"
+					process="@this,panelRegistro" update="panelRegistro"
+					action="#{controladorInstalaciones.editarQuirofano()}" />
 
 				<p:commandButton id="btnCancelar" value="#{msj['usuario.cancelar']}"
-					process="@this,panelRegistro" update="panelDatos"
-					action="#{controladorInstalaciones.cancelarQuirofano}" />
+					process="@this,panelRegistro" update="panelRegistro"
+					action="#{controladorInstalaciones.cancelarRegistro}" />
 
 			</h:panelGrid>
 		</h:form>
