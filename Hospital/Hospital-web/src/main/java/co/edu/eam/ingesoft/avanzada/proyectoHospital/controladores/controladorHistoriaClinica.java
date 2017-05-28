@@ -3,14 +3,20 @@ package co.edu.eam.ingesoft.avanzada.proyectoHospital.controladores;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.omnifaces.cdi.ViewScoped;
 
+import co.edu.eam.ingesoft.avanzada.negocio.beans.HistoriaClinicaEJB;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.EncargadoCirugia;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Hospitalizacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Medicamento;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.MedicamentoPaciente;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Patologia;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.PatologiaPaciente;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.ResultadoExamen;
 
 @ViewScoped
@@ -23,13 +29,24 @@ public class controladorHistoriaClinica implements Serializable {
 	
 	private List<ResultadoExamen> listaExamenes;
 	
-	private List<Medicamento> listaMedicamentos;
+	private List<MedicamentoPaciente> listaMedicamentos;
 	
-	private List<Patologia> listaPatologias;
+	private List<PatologiaPaciente> listaPatologias;
 	
+	@Inject
+	private ControladorPacienteCita sesion;
 	
+	@EJB
+	private HistoriaClinicaEJB historiaEJB;
 	
-	
+	@PostConstruct
+	public void inicializar(){
+		listaHospitalizaciones = historiaEJB.listaHospitalizaciones(sesion.getPaciente().getIdentificacion());
+		listaCirugias = historiaEJB.listaCirugias(sesion.getPaciente().getIdentificacion());
+		listaExamenes = historiaEJB.listaExamenes(sesion.getPaciente().getIdentificacion());
+		listaMedicamentos = historiaEJB.listaMedicamentos(sesion.getPaciente().getIdentificacion());
+		listaPatologias = historiaEJB.listaPatologias(sesion.getPaciente().getIdentificacion());
+	}
 
 	/**
 	 * @return the listaHospitalizaciones
@@ -76,28 +93,28 @@ public class controladorHistoriaClinica implements Serializable {
 	/**
 	 * @return the listaMedicamentos
 	 */
-	public List<Medicamento> getListaMedicamentos() {
+	public List<MedicamentoPaciente> getListaMedicamentos() {
 		return listaMedicamentos;
 	}
 
 	/**
 	 * @param listaMedicamentos the listaMedicamentos to set
 	 */
-	public void setListaMedicamentos(List<Medicamento> listaMedicamentos) {
+	public void setListaMedicamentos(List<MedicamentoPaciente> listaMedicamentos) {
 		this.listaMedicamentos = listaMedicamentos;
 	}
 
 	/**
 	 * @return the listaPatologias
 	 */
-	public List<Patologia> getListaPatologias() {
+	public List<PatologiaPaciente> getListaPatologias() {
 		return listaPatologias;
 	}
 
 	/**
 	 * @param listaPatologias the listaPatologias to set
 	 */
-	public void setListaPatologias(List<Patologia> listaPatologias) {
+	public void setListaPatologias(List<PatologiaPaciente> listaPatologias) {
 		this.listaPatologias = listaPatologias;
 	}
 	

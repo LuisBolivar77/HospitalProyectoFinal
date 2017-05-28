@@ -101,6 +101,8 @@ public class controladorFuncionPersonal implements Serializable {
 	 * @param c Cita que se desea atender
 	 */
 	public String atender (Cita c){
+		ControladorPacienteCita con = new ControladorPacienteCita();
+		con.buscarPaciente(c.getPaciente().getIdentificacion());
 		return "/paginas/Medico/PaginaInicioPersonal.xhtml?faces-redirect=true";
 	}
 
