@@ -48,17 +48,27 @@
 						<ul class="right top-ul chevron">
 							<li><a style="color: black">Gestion de Personal</a>
 								<ul>
-									<li><a style="color: black" href="#{request.contextPath}/paginas/seguro/RegistroDePersonal.xhtml">Registro</a></li>
-									<li><a style="color: black" href="#{request.contextPath}/paginas/seguro/MasOpcionesPersonal.xhtml">Mas opciones</a></li>
+									<li><a style="color: black"
+										href="#{request.contextPath}/paginas/Administrador/RegistroPersonalMedico.xhtml">Registro</a></li>
+									<li><a style="color: black"
+										href="#{request.contextPath}/paginas/Administrador/MasOpcionesPersonal.xhtml">Mas
+											opciones</a></li>
 
 								</ul></li>
 							<li><a style="color: black">Gestion de Instalaciones</a>
 								<ul>
-									<li><a style="color: black" 
-										href="#{request.contextPath}/paginas/seguro/RegistroDesInstalaciones.xhtml"></a></li>
-									<li><a style="color: black" 
-										href="#{request.contextPath}/paginas/seguro/MasOpcionesIntalaciones.xhtml">Mas
-											opciones</a></li>
+									<li><a style="color: black"
+										href="#{request.contextPath}/paginas/Administrador/GestionQuirofano.xhtml">Registro
+											Quirofanos</a></li>
+									<li><a style="color: black"
+										href="#{request.contextPath}/paginas/Administrador/MasOpcionesIntalacionesQuirofano.xhtml">Mas
+											opciones Quirofanos</a></li>
+									<li><a style="color: black"
+										href="#{request.contextPath}/paginas/Administrador/GestionCamas.xhtml">Registro
+											Camas</a></li>
+									<li><a style="color: black"
+										href="#{request.contextPath}/paginas/Administrador/MasOpcionesCamas.xhtml">Mas
+											opciones Camas</a></li>
 
 								</ul></li>
 						</ul>
@@ -71,24 +81,24 @@
 						<ul class="top-ul chevron">
 							<li><a style="color: black">Gestion de Insumos</a>
 								<ul>
-									<li><a style="color: black" 
+									<li><a style="color: black"
 										href="#{request.contextPath}/paginas/seguro/RegistroDeInsumos.xhtml">Registro</a></li>
-									<li><a style="color: black" 
+									<li><a style="color: black"
 										href="#{request.contextPath}/paginas/seguro/MasOpcionesInsumos.xhtml">Mas
 											Opciones</a></li>
 
 								</ul></li>
-							<li><a style="color: black" >Gestion de Enfermedades</a>
+							<li><a style="color: black">Gestion de Enfermedades</a>
 								<ul>
-									<li><a style="color: black" 
+									<li><a style="color: black"
 										href="#{request.contextPath}/paginas/seguro/RegistroDeEnfermedades.xhtml">Registro</a></li>
-									<li><a style="color: black" 
+									<li><a style="color: black"
 										href="#{request.contextPath}/paginas/seguro/MasOpcionesEnfermedades.xhtml">Mas
 											Opciones</a></li>
 
 								</ul></li>
 							<h:form>
-								<li><h:commandLink style="color: black" 
+								<li><h:commandLink style="color: black"
 										action="#{ControladorLogIn.cerrarSesion}"
 										value="Cerrar Sesion" /></li>
 							</h:form>
@@ -130,8 +140,8 @@
 						<p:messages id="facesMessage" autoUpdate="true" globalOnly="true"
 							closable="true">
 						</p:messages>
-						<ui:insert name="SolicutudPac"/>
-						<ui:insert name="cuerpo"/>
+						<ui:insert name="SolicutudPac" />
+						<ui:insert name="cuerpo" />
 					</div>
 				</div>
 			</div>

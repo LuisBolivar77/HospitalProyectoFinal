@@ -2,7 +2,9 @@ package co.edu.eam.ingesoft.avanzada.proyectoHospital.controladores;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.omnifaces.cdi.ViewScoped;
@@ -34,19 +36,31 @@ public class ControladorInstalaciones implements Serializable {
 	@EJB
 	private InstalacionesEJB instalacionesEJB;
 
+	private int estatica;
+
+	@PostConstruct
+	public void postconstructor() {
+		cargaDatosQuirofano();
+	}
+
 	/**
 	 * Registra un quirófano en la base de datos
 	 */
 	public void registarQuirofano() {
-		Quirofano q = new Quirofano();
-		q.setOcupado(false);
-		q.setDescripcion(descQuirofano);
-		q.setNumero(numeroQuirofano);
-		try {
-			instalacionesEJB.registrarQuirofano(q);
-			Messages.addFlashGlobalInfo("Registro exitoso");
-		} catch (ExcepcionNegocio e) {
-			Messages.addFlashGlobalError(e.getMessage());
+		if (numeroQuirofano == 0 || descQuirofano == "") {
+			Messages.addFlashGlobalInfo("Ingrese todos los campos");
+		} else {
+			Quirofano q = new Quirofano();
+			q.setOcupado(false);
+			q.setDescripcion(descQuirofano);
+			q.setNumero(numeroQuirofano);
+			cancelarRegistro();
+			try {
+				instalacionesEJB.registrarQuirofano(q);
+				Messages.addFlashGlobalInfo("Registro exitoso");
+			} catch (ExcepcionNegocio e) {
+				Messages.addFlashGlobalError(e.getMessage());
+			}
 		}
 	}
 
@@ -56,33 +70,52 @@ public class ControladorInstalaciones implements Serializable {
 	public void buscarQuirofano() {
 		Quirofano q = instalacionesEJB.buscarQuirofano(numeroQuirofano);
 		if (q != null) {
-			quirofanoBuscado = q;
+			numeroQuirofano = q.getNumero();
 			descQuirofano = q.getDescripcion();
+			Messages.addFlashGlobalInfo("quirofano encontrado");
 		} else {
 			Messages.addFlashGlobalError("Este quirófano no se encuentra registrado");
 		}
 	}
 
 	/**
-	 * Edita un quirófano
+	 * edita un quirofano
 	 */
 	public void editarQuirofano() {
-		if (quirofanoBuscado == null) {
-			Messages.addFlashGlobalError("Debe buscar antes de editar");
+		if (numeroQuirofano == 0) {
+			Messages.addFlashGlobalInfo("busque previa mente un quirofano");
 		} else {
+			quirofanoBuscado = instalacionesEJB.buscarQuirofano(numeroQuirofano);
+			quirofanoBuscado.setNumero(numeroQuirofano);
+			quirofanoBuscado.setDescripcion(descQuirofano);
 			instalacionesEJB.editarQuirofano(quirofanoBuscado);
+			Messages.addFlashGlobalInfo("quirofano editado correctamente");
 		}
 	}
 
 	/**
-	 * Elimina un quirófano
+	 * carga los campos previamente
 	 */
-	public void eliminarQuirofano() {
-		if (quirofanoBuscado == null){
-			Messages.addFlashGlobalError("Debe buscar antes de eliminar");
+	public String cargaDatosQuirofano() {
+		int numero = Quirofano.getNumeroQuirofano();
+		if (numero == 0) {
+			return "/paginas/Administrador/GestionQuirofano.xhtml?faces-redirect=true";
 		} else {
-			instalacionesEJB.eliminarQuirofano(quirofanoBuscado);
+			estatica = Quirofano.getNumeroQuirofano();
+			Quirofano q = instalacionesEJB.buscarQuirofano(numero);
+			numeroQuirofano = q.getNumero();
+			descQuirofano = q.getDescripcion();
+
 		}
+		return null;
+	}
+
+	/**
+	 * cancela un registro de un quirofano
+	 */
+	public void cancelarRegistro() {
+		numeroQuirofano = 0;
+		descQuirofano = "";
 	}
 
 	/**
@@ -113,6 +146,14 @@ public class ControladorInstalaciones implements Serializable {
 	 */
 	public void setDescQuirofano(String descQuirofano) {
 		this.descQuirofano = descQuirofano;
+	}
+
+	public int getEstatica() {
+		return estatica;
+	}
+
+	public void setEstatica(int estatica) {
+		this.estatica = estatica;
 	}
 
 }
