@@ -45,7 +45,8 @@
 					<h2 class="texto">Hospital el eden</h2>
 					<br></br>
 					<h2 class="texto2">Nuestra prioridad es su salud</h2>
-					<BUTTON class="logIn">LOGIN</BUTTON>
+					<BUTTON class="logInMedico">LOGIN</BUTTON>
+					<BUTTON class="gestionHorario">GESTIONAR HORARIO</BUTTON>
 			</div>
 		</nav>
 	</header>
@@ -63,24 +64,7 @@
 		<div id="first-block">
 			<div class="line">
 				<div class="margin">
-					<div class="s-12 m-6 l-3 margin-bottom">
-						<i class="icon-paperplane_ico icon2x"></i>
-						<h3>Acerca de Nosotros</h3>
-						<p>Somos el unico hospital que se preocupa por tu salud, con
-							nosotros siempre recibiras la mejor atencion posible.</p>
-					</div>
-					<div class="s-12 m-6 l-3 margin-bottom">
-						<i class="icon-star icon2x"></i>
-						<h3>Servicios</h3>
-						<p>Se atendido por los mejores profesionales en cada una de
-							nuestras areas que necesites.</p>
-					</div>
-					<div class="s-12 m-6 l-3 margin-bottom">
-						<i class="icon-message icon2x"></i>
-						<h3>Contacto</h3>
-						<p>Comunicate con nuestras lineas telefonicas o encuentranos
-							en la calle 14 junto al parque sucre</p>
-					</div>
+					<div class="s-12 m-6 l-3 margin-bottom"></div>
 				</div>
 			</div>
 		</div>
@@ -92,8 +76,8 @@
 						<p:messages id="facesMessage" autoUpdate="true" globalOnly="true"
 							closable="true">
 						</p:messages>
-
-						<ui:insert name="cuerpo"></ui:insert>
+						<ui:insert name="SolicutudPac"/>
+						<ui:insert name="cuerpo"/>
 					</div>
 				</div>
 			</div>
@@ -101,48 +85,12 @@
 		<!-- GALLERY -->
 		<div id="third-block">
 			<div class="line">
-				<h2>Nuestras Instalaciones</h2>
-				<div class="margin">
-					<div class="s-12 m-6 l-3">
-						<img src="#{request.contextPath}/img/first-small.jpeg"
-							alt="alternative text" />
-
-					</div>
-					<div class="s-12 m-6 l-3">
-						<img src="#{request.contextPath}/img/second-small.jpeg"
-							alt="alternative text" />
-
-					</div>
-					<div class="s-12 m-6 l-3">
-						<img src="#{request.contextPath}/img/third-small.jpeg"
-							alt="alternative text" />
-
-					</div>
-					<div class="s-12 m-6 l-3">
-						<img src="#{request.contextPath}/img/fourth-small.jpeg"
-							alt="alternative text" />
-
-					</div>
-				</div>
+				<div class="margin"></div>
 			</div>
 		</div>
 		<div id="fourth-block">
 			<div class="line">
-				<div id="owl-demo2" class="owl-carousel owl-theme">
-					<div class="item">
-						<h2>Nuestra Mision</h2>
-						<p class="s-12 m-12 l-8 center">trabajamos con estandares de
-							acreditacion y eficiencia para brindar atencion integral con
-							calidad y calidez humana garantizando la seguridad del paciente y
-							su familia.</p>
-					</div>
-					<div class="item">
-						<h2>Nuestra Mision</h2>
-						<p class="s-12 m-12 l-8 center">En el año 2030 el Hospital el
-							EDEN sera un hospital universitario lider, con excelencia de
-							prestacion de servicios de salud acreditados..</p>
-					</div>
-				</div>
+				<div id="owl-demo2" class="owl-carousel owl-theme"></div>
 			</div>
 		</div>
 	</section>

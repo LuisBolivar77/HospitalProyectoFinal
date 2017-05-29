@@ -47,6 +47,10 @@ public class CirugiaRealizar implements Serializable {
 		this.quirofano = quirofano;
 		this.cita = cita;
 	}
+	
+	public String getFechaCirugia() {
+		return fechaHora.getDay() + "/" + fechaHora.getMonth() + "/" + fechaHora.getYear();
+	}
 
 	/**
 	 * @return the cirugia
@@ -63,6 +67,34 @@ public class CirugiaRealizar implements Serializable {
 		this.cirugia = cirugia;
 	}
 
+
+	/**
+	 * @return the cita
+	 */
+	public Cita getCita() {
+		return cita;
+	}
+
+	/**
+	 * @param cita the cita to set
+	 */
+	public void setCita(Cita cita) {
+		this.cita = cita;
+	}
+
+	/**
+	 * @return the quirofano
+	 */
+	public Quirofano getQuirofano() {
+		return quirofano;
+	}
+
+	/**
+	 * @param quirofano the quirofano to set
+	 */
+	public void setQuirofano(Quirofano quirofano) {
+		this.quirofano = quirofano;
+	}
 
 	/**
 	 * @return the fechaHora

@@ -65,7 +65,7 @@ public class UsuarioEJB {
 	/**
 	 * Busca un usuario por username y password
 	 * @param user Nombre de usuario
-	 * @param pass Contraseña
+	 * @param pass Contraseï¿½a
 	 * @return el usuario si lo encuentra, de lo contrario null
 	 */
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
@@ -76,5 +76,21 @@ public class UsuarioEJB {
 		List<Usuario> lista = q.getResultList();
 		return lista.get(0);
 	}
+	
+	
+	/**
+	 * 
+	 * @param user
+	 * @return
+	 */
+	public Usuario buscarUsuarioLogIn(String user) {
+		List<Usuario>us= em.createNamedQuery(Usuario.NOMBRE_USUARIO).setParameter(1, user).getResultList();
+		if(us.isEmpty()){
+			return null;
+		}else{
+			return us.get(0);
+		}
+	}
+	
 	
 }

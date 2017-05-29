@@ -17,8 +17,24 @@ nav {
 	width: 100%;
 }
 .logIn{
-	margin-left: 700px;
-	margin-top: 270px;
+	margin-left: 790px;
+	margin-top: 340px;
+}
+.logInMedico{
+	margin-left: 490px;
+	margin-top: 340px;
+}
+
+.texto{
+margin-left: 490px;
+margin-top: 250px;
+font-size: 30px;
+color: white;
+}
+.texto2{
+margin-left: 490px;
+font-size: 30px;
+color: white;
 }
 .top-nav a {
 	font-size: 0.9em;
@@ -60,30 +76,53 @@ nav ul li ul li {
 }
 #first-block, #second-block, #third-block, #fourth-block {
 	text-align: center;
-	padding: 4.5em 0;
+	padding: 2em 0;
 }
 #carousel {
 	background: #fff;
 }
 #first-block {
-	margin-bottom: -170px;
+	background: #fff;
 }
 #second-block {
-	background: none repeat scroll 0 0 rgba(61, 62, 62, 0.85);
+	background: none repeat scroll 0 0 rgba(0, 30, 34, 0.85);
 }
 #third-block {
-	margin-top:-150px;
+	background: #fff;
 }
 #fourth-block {
-	margin-top: -140px;
+	background: rgb(0, 30, 34);
+}
+label{
+	color: white;
+}
+.contactos{
+	margin-top: -60px;
+	margin-left: 25px;
+}
+.logoFooter{
+	margin-left: 530px;
+	margin-top: -100px;
+}
+.redes{
+	margin-left:1000px;
+	margin-top: -160px;
+}
+.twitter{
+	margin-top: -65px;
+	margin-left: 100px;
+}
+.instagram{
+	margin-top: -75px;
+	margin-left: 190px;
 }
 footer {
-	height: 170px;
-	background: none repeat scroll 0 0 #ffffff;
-	padding: 1.5em 0;
+	background: none repeat scroll 0 0 #001e22;
+	padding: 4.5em 0;
 }
 footer p, footer a:link, footer a:visited, footer a:hover {
-	color: #000000;
+	color: #fff;
+	margin-top: -40px;
 }
 .carousel-text {
 	display: block;

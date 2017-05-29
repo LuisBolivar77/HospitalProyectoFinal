@@ -1,0 +1,147 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/template/personal.xhtml">
+
+	<ui:define name="cuerpo">
+
+		<h:form prependId="false">
+
+			<h1>HISTORIA CLÍNICA</h1>
+			<br />
+			<br />
+
+			<h3>PATOLOGIAS</h3>
+
+			<h:panelGrid id="panelDatos" columns="1">
+
+				<p:dataTable id="tablaPatologias"
+					value="#{controladorHistoriaClinica.listaPatologias}"
+					var="patPac" border="1">
+
+					<p:column headerText="#{msj['usuario.codigo']}">
+						<h:outputLabel value="#{patPac.patologia.id}" />
+					</p:column>
+
+					<p:column headerText="#{msj['usuario.nombre']}">
+						<h:outputLabel value="#{patPac.patologia.nombre}" />
+					</p:column>
+					
+					<p:column headerText="#{msj['cirugia.anotaciones']}">
+						<h:outputLabel value="#{patPac.cita.anotaciones}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:panelGrid>
+
+			<h3>MEDICAMENTOS</h3>
+
+			<h:panelGrid id="panelTabla" columns="1">
+
+				<p:dataTable id="tablaMedicamentos"
+					value="#{controladorHistoriaClinica.listaMedicamentos}" var="medPac"
+					border="1">
+
+					<p:column headerText="#{msj['usuario.codigo']}">
+						<h:outputLabel value="#{medPac.medicamento.id}" />
+					</p:column>
+
+					<p:column headerText="#{msj['usuario.nombre']}">
+						<h:outputLabel value="#{medPac.medicamento.descripcion}" />
+					</p:column>
+					
+					<p:column headerText="#{msj['cirugia.anotaciones']}">
+						<h:outputLabel value="#{medPac.cita.anotaciones}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:panelGrid>
+
+			<h3>EXAMENES TOMADOS</h3>
+
+			<h:panelGrid id="panelDatos4" columns="1">
+
+				<p:dataTable id="tablaExamenes"
+					value="#{controladorHistoriaClinica.listaExamenes}"
+					var="resulExamen" border="1">
+
+					<p:column headerText="#{msj['usuario.nombre']}">
+						<h:outputLabel value="#{resulExamen.examen.descripcion}" />
+					</p:column>
+					
+					<p:column headerText="#{msj['usuario.causaExamen']}">
+						<h:outputLabel
+							value="#{resulExamen.cita.anotaciones}" />
+					</p:column>
+
+					<p:column headerText="#{msj['usuario.resultado']}">
+						<h:outputLabel value="#{resulExamen.resultado}" />
+					</p:column>
+
+					<p:column headerText="#{msj['cirugia.fecha']}">
+						<h:outputLabel value="#{resulExamen.fechaExamen}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:panelGrid>
+
+			<h3>CIRUGIAS REALIZADAS</h3>
+
+			<h:panelGrid id="panelDatos5" columns="1">
+
+				<p:dataTable id="tablaCirugias"
+					value="#{controladorHistoriaClinica.listaCirugias}" var="cir"
+					border="1">
+
+					<p:column headerText="#{msj['usuario.nombre']}">
+						<h:outputLabel value="#{cir.cirugia.cirugia.descripcion}" />
+					</p:column>
+					
+					<p:column headerText="#{msj['usuario.causaCirugia']}">
+						<h:outputLabel
+							value="#{cir.cirugia.cita.anotaciones}" />
+					</p:column>
+
+					<p:column headerText="#{msj['cirugia.fecha']}">
+						<h:outputLabel value="#{cir.cirugia.fechaCirugia}" />
+					</p:column>
+
+					<p:column headerText="#{msj['usuario.encargado']}">
+						<h:outputLabel value="#{cir.personalMedico.nombreCompleto}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:panelGrid>
+
+			<h3>HOSPITALIZACIONES</h3>
+
+			<h:panelGrid id="panelDatos6" columns="1">
+
+				<p:dataTable id="tablaHospitalizaciones"
+					value="#{controladorHistoriaClinica.listaHospitalizaciones}"
+					var="hosp" border="1">
+
+					<p:column headerText="#{msj['usuario.fechaEntrada']}">
+						<h:outputLabel value="#{hosp.fechaEntradaHosp}" />
+					</p:column>
+
+					<p:column headerText="#{msj['usuario.fechaSalida']}">
+						<h:outputLabel value="#{hosp.fechaSalidaHosp}" />
+					</p:column>
+
+					<p:column headerText="#{msj['usuario.causa']}">
+						<h:outputLabel value="#{hosp.cita.anotaciones}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:panelGrid>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

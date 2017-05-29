@@ -40,23 +40,21 @@
 		<nav>
 			<div class="line">
 				<div class="top-nav">
-					<div class="logo hide-l">
-						<a href="../design/">DESIGN <br /> <strong>THEME</strong></a>
-					</div>
-					<p class="nav-text">Custom menu text</p>
+					<div class="logo hide-l"></div>
+					<p class="nav-text">Menu</p>
 					<div class="top-nav s-12 l-5">
 						<ul class="right top-ul chevron">
-							<li><a>Ordenes</a>
+							<li><a style="color: black">Ordenes</a>
 								<ul>
-									<li><a href="">Examenes</a></li>
-									<li><a href="">Hospitalizaciones</a></li>
-									<li><a href="">Cirugias</a></li>
+									<li><a href="" style="color: black">Examenes</a></li>
+									<li><a href="" style="color: black">Hospitalizaciones</a></li>
+									<li><a href="" style="color: black">Cirugias</a></li>
 
 								</ul></li>
-							<li><a>Procedimientos</a>
+							<li><a style="color: black">Procedimientos</a>
 								<ul>
-									<li><a href=""></a>Examenes</li>
-									<li><a href="">Cirugias</a></li>
+									<li><a href="" style="color: black">Examenes</a></li>
+									<li><a href="" style="color: black">Cirugias</a></li>
 
 								</ul></li>
 						</ul>
@@ -67,13 +65,14 @@
 					</ul>
 					<div class="top-nav s-12 l-5">
 						<ul class="top-ul chevron">
-							<li><a>Horarios</a></li>
-							<li><a>Consultas</a></li>
+							<li><a style="color: black">Horarios</a></li>
+							<li><a style="color: black">Consultas</a></li>
 						</ul>
 						<h:form>
-							<li><h:commandLink
-									action="#{ControladorLogIn.cerrarSesion}"
-									value="Cerrar Sesion" />
+							<li><h:commandLink style="color: black" 
+										action="#{ControladorLogIn.cerrarSesion}"
+										value="Cerrar Sesion">
+									</h:commandLink>
 							</li>
 						</h:form>
 					</div>
@@ -87,13 +86,7 @@
 			<div id="owl-demo" class="owl-carousel owl-theme">
 				<div class="item">
 					<img src="#{request.contextPath}/img/firstes.jpeg" alt="" />
-					<div class="carousel-text">
-						<div class="line">
-							<div class="s-12 l-9">
-								<h2>El mejor Hospital del Pais</h2>
-							</div>
-						</div>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -101,9 +94,7 @@
 		<div id="first-block">
 			<div class="line">
 				<div class="margin">
-					<div class="s-12 m-6 l-3 margin-bottom">
-						<ui:insert name="OrdenSal" />
-					</div>
+					<div class="s-12 m-6 l-3 margin-bottom"></div>
 				</div>
 			</div>
 		</div>
@@ -115,6 +106,8 @@
 						<p:messages id="facesMessage" autoUpdate="true" globalOnly="true"
 							closable="true">
 						</p:messages>
+						<ui:insert name="SolicutudPac"/>
+						<ui:insert name="cuerpo"/>
 					</div>
 				</div>
 			</div>
@@ -133,16 +126,28 @@
 	</section>
 	<!-- FOOTER -->
 	<footer>
-		<div class="line">
-			<div class="s-12 l-6">
-				<p>Copyright 2015, Vision Design - graphic zoo</p>
+		<div class="contactos">
+			<div class="tel">
+				<LABEL>Contactenos: </LABEL> <LABEL>7565434</LABEL><br /> <LABEL>Citas:
+				</LABEL> <LABEL>7565433</LABEL>
 			</div>
-			<div class="s-12 l-6">
-				<p class="right">
-					<a class="right" href="http://www.myresponsee.com"
-						title="Responsee - lightweight responsive framework">Design
-						and coding by Responsee Team</a>
-				</p>
+			<div>
+				<LABEL>Correo: </LABEL> <LABEL>hospitaleleden@gmail.com</LABEL>
+			</div>
+		</div>
+		<div class="logoFooter">
+			<img src="#{request.contextPath}/img/LogoHospital.png" alt="" />
+		</div>
+		<div class="redes">
+			<LABEL>Siguenos en nuestras redes sociales</LABEL><br/>
+			<div class="facebook">
+				<img src="#{request.contextPath}/img/facebook.png" alt="" />
+			</div>
+			<DIV class="twitter">
+				<img src="#{request.contextPath}/img/twitter.png" alt="" />
+			</DIV>
+			<div class="instagram">
+				<img src="#{request.contextPath}/img/instagram.png" alt="" />
 			</div>
 		</div>
 	</footer>
