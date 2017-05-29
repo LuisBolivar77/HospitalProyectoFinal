@@ -20,12 +20,16 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Especializacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Horario;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.PersonalMedico;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoPersonal;
-import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Usuario;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento;
 
 @Named("controladorPersonal")
 @ViewScoped
 public class ControladorPersonalMedico implements Serializable {
 
+	/**
+	 * tipo documento seleccionado
+	 */
+	private TipoDocumento tipoSeleccionado;
 	/**
 	 * N�mero de identificaci�n del usuario
 	 */
@@ -114,7 +118,6 @@ public class ControladorPersonalMedico implements Serializable {
 	 */
 	@EJB
 	private PersonalMedicoEJB personalEJB;
-	
 	@EJB
 	private HorarioEJB horarioEJB;
 	
@@ -134,7 +137,7 @@ public class ControladorPersonalMedico implements Serializable {
 		especializaciones = especializacionEJB.listar();
 		tiposPersonal = personalEJB.listarTipos();
 		listaHorarios = horarioEJB.horariosPersonal(sesion.getIdentificacion());
-		//listaPersonal = personalEJB.listarPersonal();
+		// listaPersonal = personalEJB.listarPersonal();
 	}
 	
 	public void eliminarHorario(Horario h){
@@ -157,12 +160,13 @@ public class ControladorPersonalMedico implements Serializable {
 		personalEditar = per;
 		return "/paginas/seguro/RegistroPersonalMedico.xhtml?faces-redirect=true";
 	}
-	
+
 	/**
 	 * Identifica si se ha seleccionado la opci�n de editar
+	 * 
 	 * @return true si se seleccion� la opci�n editar, de lo contrario false
 	 */
-	public boolean isEditar(){
+	public boolean isEditar() {
 		return personalEditar != null;
 	}
 
@@ -173,22 +177,10 @@ public class ControladorPersonalMedico implements Serializable {
 
 		Especializacion esp = especializacionEJB.buscar(tipoEspecializacionSel);
 		TipoPersonal tipo = personalEJB.buscarTipo(tipoPersonalSel);
-
-		PersonalMedico p = new PersonalMedico();
-		p.setApellido(apellido);
-		p.setCelular(celular);
-		p.setDireccion(direccion);
-		p.setEmail(email);
-		p.setIdentificacion(identificacion);
-		p.setNombre(nombre);
-		p.setPassword(password);
-		p.setTelefono(telefono);
-		p.setUsuario(username);
-		//p.setEspecializacion(esp);
-		p.setTipoPersonal(tipo);
-
+		PersonalMedico per = new PersonalMedico(identificacion, tipoSeleccionado, username, password, nombre, apellido,
+				email, telefono, celular, direccion, tipo, "medico");
 		try {
-			personalEJB.registrar(p);
+			personalEJB.registrar(per);
 			Messages.addFlashGlobalInfo("Registro exitoso");
 		} catch (ExcepcionNegocio e) {
 			Messages.addFlashGlobalError(e.getMessage());
@@ -200,24 +192,27 @@ public class ControladorPersonalMedico implements Serializable {
 	 * Busca un personal M�dico por su n�mero de identificaci�n
 	 */
 	public void buscar() {
-		PersonalMedico per = personalEJB.buscar(identificacion);
-		if (per != null) {
-			personalEditar = per;
-			nombre = per.getNombre();
-			apellido = per.getApellido();
-			direccion = per.getDireccion();
-			email = per.getEmail();
-		//	tipoEspecializacionSel = per.getEspecializacion().getId();
-			tipoPersonalSel = per.getTipoPersonal().getId();
-			telefono = per.getTelefono();
-			celular = per.getCelular();
-			username = per.getUsuario();
-			password = per.getPassword();
+		if (identificacion == "") {
+			Messages.addFlashGlobalInfo("Ingrese un numero de identificacion");
 		} else {
-			Messages.addFlashGlobalError("Este usuario no se encuentra registrado");
+			PersonalMedico per = personalEJB.buscar(identificacion);
+			if (per != null) {
+				personalEditar = per;
+				nombre = per.getNombre();
+				apellido = per.getApellido();
+				direccion = per.getDireccion();
+				email = per.getEmail();
+				// tipoEspecializacionSel = per.getEspecializacion().getId();
+				tipoPersonalSel = per.getTipoPersonal().getId();
+				telefono = per.getTelefono();
+				celular = per.getCelular();
+				username = per.getUsuario();
+				password = per.getPassword();
+			} else {
+				Messages.addFlashGlobalError("Este usuario no se encuentra registrado");
+			}
 		}
 	}
-
 
 	/**
 	 * Elimina un personal
@@ -232,7 +227,9 @@ public class ControladorPersonalMedico implements Serializable {
 
 	/**
 	 * Edita un personal
-	 * @param per Personal que se desea editar
+	 * 
+	 * @param per
+	 *            Personal que se desea editar
 	 */
 	public void editarPersonal(PersonalMedico per) {
 
@@ -248,7 +245,7 @@ public class ControladorPersonalMedico implements Serializable {
 		personalEditar.setPassword(password);
 		personalEditar.setTelefono(telefono);
 		personalEditar.setUsuario(username);
-		//personalEditar.setEspecializacion(esp);
+		// personalEditar.setEspecializacion(esp);
 		personalEditar.setTipoPersonal(tipo);
 
 		personalEJB.editar(personalEditar);
@@ -268,6 +265,10 @@ public class ControladorPersonalMedico implements Serializable {
 		username = "";
 		celular = "";
 		email = "";
+	}
+
+	public TipoDocumento[] getTipos() {
+		return TipoDocumento.values();
 	}
 
 	/**
@@ -369,6 +370,15 @@ public class ControladorPersonalMedico implements Serializable {
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento getTipoSeleccionado() {
+		return tipoSeleccionado;
+	}
+
+	public void setTipoSeleccionado(
+			co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento tipoSeleccionado) {
+		this.tipoSeleccionado = tipoSeleccionado;
 	}
 
 	/**

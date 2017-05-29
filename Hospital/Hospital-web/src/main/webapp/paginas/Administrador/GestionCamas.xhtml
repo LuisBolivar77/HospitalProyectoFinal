@@ -9,7 +9,43 @@
 	<ui:define name="cuerpo">
 		<h:form prependId="false">
 		
-		
+		<h1>GESTION DE CAMAS HOSPITALARIAS</h1>
+
+			<h:panelGrid id="panelRegistro" columns="2">
+
+				<h:outputLabel id="lblNumero" value="#{msj['instalacion.numero']}" />
+				<h:inputText id="tfNumero"
+					value="#{controladorCamas.numeroCama}" />
+
+				<h:outputLabel id="lbldesc"
+					value="#{msj['instalacion.descripcion']}" />
+				<h:inputTextarea id="tfdesc"
+					value="#{controladorCamas.descripcionCama}" />
+
+			</h:panelGrid>
+
+			<h:panelGrid id="panelBotones" columns="2">
+
+				<p:commandButton id="btnRegistrar"
+					value="#{msj['usuario.registrar']}" process="@this,panelRegistro"
+					update="panelRegistro"
+					action="#{controladorCamas.registarCama()}" />
+
+				<p:commandButton id="btnbuscar"
+					value="#{msj['usuario.buscar']}" process="@this,panelRegistro"
+					update="panelRegistro"
+					action="#{controladorCamas.buscarCama()}" />
+
+				<p:commandButton id="btnEditar"
+					value="#{msj['instalaciones.editar']}"
+					process="@this,panelRegistro" update="panelRegistro"
+					action="#{controladorCamas.editarCama()}" />
+
+				<p:commandButton id="btnCancelar" value="#{msj['usuario.cancelar']}"
+					process="@this,panelRegistro" update="panelRegistro"
+					action="#{controladorCamas.cancelarRegistro}" />
+
+			</h:panelGrid>
 		
 			
 		</h:form>
