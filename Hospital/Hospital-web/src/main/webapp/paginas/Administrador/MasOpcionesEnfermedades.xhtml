@@ -3,37 +3,29 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" template="/template/index.xhtml">
-	
+
 	<ui:define name="cuerpo">
-	
-	
+
+
 		<h1>BUSQUEDA Y GESTION ENFERMEDADES</h1>
-		<br></br>
-		<br></br>
-
-		<h:outputLabel for="tfbusqueda" id="lblbusqueda"
-			value="#{msj['instalacion.numero']}:" />
-		<h:inputText id="tfbusqueda"
-			value="#{controladorMasOpcionesPatol.numeroPatologia}" />
-
-		<p:commandButton
-			action="#{controladorMasOpcionesPatol.buscarPatologia()}"
-			process="@this" value="#{msj['usuario.buscar']}" update="paneltabla" />
 		<br></br>
 		<br></br>
 		<br></br>
 
 		<h:panelGrid id="paneltabla" columns="4">
-			<p:dataTable id="tablaQuir"
+		<h:form>
+			<p:dataTable id="tablaQuir" emptyMessage="Ningun resultado"
 				value="#{controladorMasOpcionesPatol.listaPatologias}" var="pat"
-				border="3">
+				filteredValue="#{controladorMasOpcionesPatol.nuevaLista}" border="3">
 
 				<p:column headerText="#{msj['insumos.ide']}">
 					<h:outputLabel value="#{pat.id}"></h:outputLabel>
 				</p:column>
 
-				<p:column headerText="#{msj['usuario.nombre']}">
-					<h:outputLabel value="#{pat.nombre}"></h:outputLabel>
+				<p:column filterBy="#{pat.nombre}"
+					headerText="#{msj['usuario.nombre']}" footerText="nombre">
+					<h:outputText value="#{pat.nombre}">
+						</h:outputText>
 				</p:column>
 
 				<p:column headerText="#{msj['cita.anotaciones']}">
@@ -51,7 +43,8 @@
 						update="paneltabla" />
 				</p:column>
 			</p:dataTable>
+			</h:form>
 		</h:panelGrid>
-	
+
 	</ui:define>
-	</ui:composition>
+</ui:composition>

@@ -27,6 +27,7 @@ public class ControladorMasOpcionesCama implements Serializable{
 	 */
 	private List<Cama>listaCamas;
 	
+	private List<Cama>listaNueva;
 
 	@EJB
 	private InstalacionesEJB instalacionesEJB;
@@ -40,14 +41,6 @@ public class ControladorMasOpcionesCama implements Serializable{
 		listaCamas = instalacionesEJB.listaDeCamas();
 	}
 
-	
-	/**
-	 * buscaa una cama y la muestra en la tabla
-	
-	public void buscarCama(){
-		listaCamas = instalacionesEJB.listaDeCamasPorNumero(numeroCama);
-	} */
-	
 
 	/**
 	 * elimina una cama de la base de datos
@@ -59,6 +52,14 @@ public class ControladorMasOpcionesCama implements Serializable{
 		instalacionesEJB.eliminarCama(c);
 		Messages.addGlobalInfo("Cama eliminada con exito");
 		listarCamas();
+	}
+
+	public List<Cama> getListaNueva() {
+		return listaNueva;
+	}
+
+	public void setListaNueva(List<Cama> listaNueva) {
+		this.listaNueva = listaNueva;
 	}
 
 	/**
