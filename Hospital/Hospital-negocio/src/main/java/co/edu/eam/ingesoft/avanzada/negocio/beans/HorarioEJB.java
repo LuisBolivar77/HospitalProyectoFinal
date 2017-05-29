@@ -15,6 +15,7 @@ import javax.persistence.Query;
 import co.edu.eam.ingesoft.avanzada.negocio.exception.ExcepcionNegocio;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Horario;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.PersonalMedico;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.DiaSemanaEnum;
 
 @LocalBean
 @Stateless
@@ -25,8 +26,8 @@ public class HorarioEJB {
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void eliminarHorario(Horario h) {
+		System.out.println("Horara Inicio: " +h.getHoraInicio()+" Hora fin: " + h.getHoraFin() + " id: " + h.getId());
 		Horario hr = em.find(Horario.class, h.getId());
-		System.out.println("Horara Inicio: " +hr.getHoraInicio()+" Hora fin: " + hr.getHoraFin() + " id: " + hr.getId());
 		em.remove(hr);
 	}
 
@@ -43,7 +44,7 @@ public class HorarioEJB {
 	 *            Personal médico al que se le registra el horario
 	 */
 	
-	public void agregarHorario(int dia, String horaInicio, String horaFin, PersonalMedico pm) {
+	public void agregarHorario(DiaSemanaEnum dia, String horaInicio, String horaFin, PersonalMedico pm) {
 		
 		System.out.println("Dia: " + dia);
 
@@ -77,7 +78,7 @@ public class HorarioEJB {
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	private void registrar(int dia, int hInicio, int minInicio, int hFin, int minFin, PersonalMedico pm){
+	private void registrar(DiaSemanaEnum dia, int hInicio, int minInicio, int hFin, int minFin, PersonalMedico pm){
 		Horario h = new Horario();
 		Date fechaInicio = agregarDiaSemana(dia);
 		fechaInicio.setHours(hInicio);
@@ -94,25 +95,25 @@ public class HorarioEJB {
 		em.persist(h);
 	}
 	
-	private Date  agregarDiaSemana(int dia){
+	private Date  agregarDiaSemana(DiaSemanaEnum dia){
 		Date fecha = new Date();
-		if (dia == 1){
+		if (dia.equals("Lunes")){
 			fecha.setDate(29);
 			fecha.setMonth(05);
 			fecha.setYear(2017);
-		} else if (dia == 2){
+		} else if (dia.equals("Martes")){
 			fecha.setDate(30);
 			fecha.setMonth(05);
 			fecha.setYear(2017);
-		} else if (dia == 3){
+		} else if (dia.equals("Miercoles")){
 			fecha.setDate(31);
 			fecha.setMonth(05);
 			fecha.setYear(2017);
-		} else if (dia==4){
+		} else if (dia.equals("Jueves")){
 			fecha.setDate(01);
 			fecha.setMonth(06);
 			fecha.setYear(2017);
-		} else if (dia == 5){
+		} else if (dia.equals("Viernes")){
 			fecha.setDate(02);
 			fecha.setMonth(06);
 			fecha.setYear(2017);

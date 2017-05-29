@@ -20,6 +20,8 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Especializacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Horario;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.PersonalMedico;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoPersonal;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Usuario;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.DiaSemanaEnum;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento;
 
 @Named("controladorPersonal")
@@ -61,7 +63,7 @@ public class ControladorPersonalMedico implements Serializable {
 	
 	private List<Horario> listaHorarios;
 	
-	private int diaSeleccionado;
+	private DiaSemanaEnum diaSeleccionado;
 
 	/**
 	 * Tipo de personal seleccionado por el usuario
@@ -270,6 +272,10 @@ public class ControladorPersonalMedico implements Serializable {
 	public TipoDocumento[] getTipos() {
 		return TipoDocumento.values();
 	}
+	
+	public DiaSemanaEnum[] getDiasSemana(){
+		return DiaSemanaEnum.values();
+	}
 
 	/**
 	 * @return the listaPersonal
@@ -296,14 +302,14 @@ public class ControladorPersonalMedico implements Serializable {
 	/**
 	 * @return the diaSeleccionado
 	 */
-	public int getDiaSeleccionado() {
+	public DiaSemanaEnum getDiaSeleccionado() {
 		return diaSeleccionado;
 	}
 
 	/**
 	 * @param diaSeleccionado the diaSeleccionado to set
 	 */
-	public void setDiaSeleccionado(int diaSeleccionado) {
+	public void setDiaSeleccionado(DiaSemanaEnum diaSeleccionado) {
 		this.diaSeleccionado = diaSeleccionado;
 	}
 
