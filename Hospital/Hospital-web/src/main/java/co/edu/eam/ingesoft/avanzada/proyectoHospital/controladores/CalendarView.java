@@ -1,5 +1,6 @@
 package co.edu.eam.ingesoft.avanzada.proyectoHospital.controladores;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.faces.application.FacesMessage;
@@ -10,7 +11,7 @@ import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
 @ManagedBean
-public class CalendarView {
+public class CalendarView implements Serializable {
 	
 	private Date date2;
 	

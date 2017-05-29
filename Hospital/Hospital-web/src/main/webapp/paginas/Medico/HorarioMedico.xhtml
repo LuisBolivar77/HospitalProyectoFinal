@@ -29,8 +29,8 @@
 
 					<p:column headerText="#{msj['usuario.eliminar']}">
 						<p:commandButton value="#{msj['usuario.eliminar']}"
-							process="@this,tablaHorarios" update="tablaHorarios"
-							action="#{controladorPersonal.eliminarHorario(hora)}" />
+							process="@this,panelDatos4" update="panelDatos4"
+							action="#{controladorPersonal.eliminarHorario(hora.id)}" />
 					</p:column>
 
 				</p:dataTable>

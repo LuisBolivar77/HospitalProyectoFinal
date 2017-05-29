@@ -23,11 +23,16 @@ public class HorarioEJB {
 
 	@PersistenceContext
 	private EntityManager em;
+	
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public Horario buscarHorario(int id){
+		return em.find(Horario.class, id);
+	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void eliminarHorario(Horario h) {
-		System.out.println("Horara Inicio: " +h.getHoraInicio()+" Hora fin: " + h.getHoraFin() + " id: " + h.getId());
-		Horario hr = em.find(Horario.class, h.getId());
+	public void eliminarHorario(int h) {
+		System.out.println(" id: " + h);
+		Horario hr = buscarHorario(h);
 		em.remove(hr);
 	}
 
@@ -129,7 +134,7 @@ public class HorarioEJB {
 	public List<Horario> horariosPersonal(String id) {
 		Query q = em.createNativeQuery("SELECT TO_CHAR(h.HORA_INICIO,'DD'), TO_CHAR(h.HORA_INICIO,'MM'),"
 				+ "  TO_CHAR(h.HORA_INICIO,'YYYY'), SUBSTR(h.HORA_INICIO,10,2), SUBSTR(h.HORA_INICIO,13,2),"
-				+ "  SUBSTR(h.HORA_FIN,10,2), SUBSTR(h.HORA_FIN,13,2)  FROM HORARIO h JOIN PERSONAL_MEDICO pm"
+				+ "  SUBSTR(h.HORA_FIN,10,2), SUBSTR(h.HORA_FIN,13,2), h.ID  FROM HORARIO h JOIN PERSONAL_MEDICO pm"
 				+ "  ON pm.IDENTIFICACION = h.PERSONAL_MEDICO_ID WHERE pm.IDENTIFICACION =?1");
 		q.setParameter(1, id);
 
@@ -156,6 +161,7 @@ public class HorarioEJB {
 
 			h.setHoraInicio(horaInicio);
 			h.setHoraFin(horaFin);
+			h.setId(Integer.parseInt(o[7].toString()));
 
 			horarios.add(h);
 
