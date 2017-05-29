@@ -18,8 +18,8 @@
 				<h:selectOneMenu id="cbTipoId"
 					value="#{controladorPersonal.tipoSeleccionado}">
 
-					<f:selectItems value="#{controladorPersonal.tipos}"
-						var="t" itemValue="#{t}"/>
+					<f:selectItems value="#{controladorPersonal.tipos}" var="t"
+						itemValue="#{t}" />
 
 				</h:selectOneMenu>
 
@@ -73,6 +73,10 @@
 			</h:panelGrid>
 
 			<h:panelGrid id="panelBotones" columns="2">
+
+				<p:commandButton id="btnReg" value="#{msj['usuario.registrar']}"
+					process="@this,panelRegistro" update="panelRegistro"
+					action="#{controladorPersonal.registrar()}" />
 
 				<p:commandButton id="btnRegistrar"
 					value="#{msj['usuario.registrar']}" process="@this,panelRegistro"

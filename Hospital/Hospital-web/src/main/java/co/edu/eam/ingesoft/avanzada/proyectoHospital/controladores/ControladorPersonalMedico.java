@@ -20,6 +20,7 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Especializacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Horario;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.PersonalMedico;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoPersonal;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Usuario;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento;
 
 @Named("controladorPersonal")
