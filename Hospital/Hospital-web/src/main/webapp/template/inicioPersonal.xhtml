@@ -45,8 +45,8 @@
 					<h2 class="texto">Hospital el eden</h2>
 					<br></br>
 					<h2 class="texto2">Nuestra prioridad es su salud</h2>
-					<BUTTON class="logInMedico">LOGIN</BUTTON>
-					<BUTTON class="gestionHorario">GESTIONAR HORARIO</BUTTON>
+					<a href="#{request.contextPath}/paginas/publico/Login.xhtml"><BUTTON class="logInMedico">LOGIN</BUTTON></a>
+					<a href="#{request.contextPath}/paginas/Medico/HorarioMedico.xhtml"><BUTTON class="gestionHorario">GESTIONAR HORARIO</BUTTON></a>
 			</div>
 		</nav>
 	</header>
@@ -98,18 +98,21 @@
 	<footer>
 		<div class="contactos">
 			<div class="tel">
-				<LABEL>Contactenos: </LABEL> <LABEL>7565434</LABEL><br /> <LABEL>Citas:
-				</LABEL> <LABEL>7565433</LABEL>
+				<LABEL class="labelFooter">Contactenos: </LABEL> <LABEL
+					class="labelFooter">7565434</LABEL><br /> <LABEL
+					class="labelFooter">Citas: </LABEL> <LABEL class="labelFooter">7565433</LABEL>
 			</div>
 			<div>
-				<LABEL>Correo: </LABEL> <LABEL>hospitaleleden@gmail.com</LABEL>
+				<LABEL class="labelFooter">Correo: </LABEL> <LABEL
+					class="labelFooter">hospitaleleden@gmail.com</LABEL>
 			</div>
 		</div>
 		<div class="logoFooter">
 			<img src="#{request.contextPath}/img/LogoHospital.png" alt="" />
 		</div>
 		<div class="redes">
-			<LABEL>Siguenos en nuestras redes sociales</LABEL><br/>
+			<LABEL class="labelFooter">Siguenos en nuestras redes
+				sociales</LABEL><br />
 			<div class="facebook">
 				<img src="#{request.contextPath}/img/facebook.png" alt="" />
 			</div>

@@ -5,15 +5,19 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.omnifaces.cdi.ViewScoped;
+import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 
 import co.edu.eam.ingesoft.avanzada.negocio.beans.EspecializacionEJB;
+import co.edu.eam.ingesoft.avanzada.negocio.beans.HorarioEJB;
 import co.edu.eam.ingesoft.avanzada.negocio.beans.PersonalMedicoEJB;
 import co.edu.eam.ingesoft.avanzada.negocio.exception.ExcepcionNegocio;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Especializacion;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Horario;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.PersonalMedico;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoPersonal;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Usuario;
@@ -46,6 +50,14 @@ public class ControladorPersonalMedico implements Serializable {
 	 * Tel�fono del usuario
 	 */
 	private String telefono;
+	
+	private String horaInicio;
+	
+	private String horaFin;
+	
+	private List<Horario> listaHorarios;
+	
+	private int diaSeleccionado;
 
 	/**
 	 * Tipo de personal seleccionado por el usuario
@@ -103,6 +115,11 @@ public class ControladorPersonalMedico implements Serializable {
 	@EJB
 	private PersonalMedicoEJB personalEJB;
 	
+	@EJB
+	private HorarioEJB horarioEJB;
+	
+	private Usuario sesion;
+	
 
 	/**
 	 * EJB de especializaci�n
@@ -112,10 +129,28 @@ public class ControladorPersonalMedico implements Serializable {
 
 	@PostConstruct
 	public void postContructor() {
+		sesion = Faces.getApplicationAttribute("usuario");
 		personalEditar = null;
 		especializaciones = especializacionEJB.listar();
 		tiposPersonal = personalEJB.listarTipos();
+		listaHorarios = horarioEJB.horariosPersonal(sesion.getIdentificacion());
 		//listaPersonal = personalEJB.listarPersonal();
+	}
+	
+	public void eliminarHorario(Horario h){
+		horarioEJB.eliminarHorario(h);
+		Messages.addFlashGlobalInfo("El horario ha sido eliminado");
+	}
+	
+	public void agregarHorario(){
+		try{
+		PersonalMedico per = personalEJB.buscar(sesion.getIdentificacion());
+		System.out.println("Dia: "+diaSeleccionado);
+		horarioEJB.agregarHorario(diaSeleccionado, horaInicio, horaFin, per);
+		Messages.addFlashGlobalInfo("Se ha registrado el horario exitosamente");
+		} catch (ExcepcionNegocio e){
+			Messages.addFlashGlobalError(e.getMessage());
+		}
 	}
 	
 	public String redireccionarEditar (PersonalMedico per){
@@ -255,6 +290,62 @@ public class ControladorPersonalMedico implements Serializable {
 	 */
 	public String getIdentificacion() {
 		return identificacion;
+	}
+
+	/**
+	 * @return the diaSeleccionado
+	 */
+	public int getDiaSeleccionado() {
+		return diaSeleccionado;
+	}
+
+	/**
+	 * @param diaSeleccionado the diaSeleccionado to set
+	 */
+	public void setDiaSeleccionado(int diaSeleccionado) {
+		this.diaSeleccionado = diaSeleccionado;
+	}
+
+	/**
+	 * @return the horaInicio
+	 */
+	public String getHoraInicio() {
+		return horaInicio;
+	}
+
+	/**
+	 * @param horaInicio the horaInicio to set
+	 */
+	public void setHoraInicio(String horaInicio) {
+		this.horaInicio = horaInicio;
+	}
+
+	/**
+	 * @return the horaFin
+	 */
+	public String getHoraFin() {
+		return horaFin;
+	}
+
+	/**
+	 * @param horaFin the horaFin to set
+	 */
+	public void setHoraFin(String horaFin) {
+		this.horaFin = horaFin;
+	}
+
+	/**
+	 * @return the listaHorarios
+	 */
+	public List<Horario> getListaHorarios() {
+		return listaHorarios;
+	}
+
+	/**
+	 * @param listaHorarios the listaHorarios to set
+	 */
+	public void setListaHorarios(List<Horario> listaHorarios) {
+		this.listaHorarios = listaHorarios;
 	}
 
 	/**

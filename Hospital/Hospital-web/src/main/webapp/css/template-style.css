@@ -94,6 +94,9 @@ nav ul li ul li {
 	background: rgb(0, 30, 34);
 }
 label{
+	color: black;
+}
+.labelFooter{
 	color: white;
 }
 .contactos{

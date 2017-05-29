@@ -109,7 +109,7 @@ public class HistoriaClinicaEJB {
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public List<ResultadoExamen> listaExamenes (String id){
 		Query q = em.createNativeQuery("SELECT e.DESCRIPCION, c.ANOTACIONES, re.RESULTADO, "
-				+ " SUBSTR(re.FECHA_HORA,0,2),  SUBSTR(re.FECHA_HORA,4,2), SUBSTR(re.FECHA_HORA,6,2)"
+				+ " TO_CHAR(re.FECHA_HORA,'DD'),  TO_CHAR(re.FECHA_HORA,'MM'), SUBSTR(re.FECHA_HORA,6,2)"
 				+ "  FROM RESULTADO_EXAMEN re JOIN CITA c ON c.ID=re.CITA_ID JOIN EXAMEN e ON e.ID = re.EXAMEN_ID"
 				+ "  JOIN TIPO_EXAMEN te ON te.EXAMEN_ID = e.TIPO_EXAMEN  WHERE c.PACIENTE_ID=?1");
 		q.setParameter(1, id);
@@ -149,7 +149,7 @@ public class HistoriaClinicaEJB {
 	 */
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public List<EncargadoCirugia> listaCirugias (String id){
-		Query q = em.createNativeQuery(" SELECT cir.DESCRIPCION, c.ANOTACIONES, SUBSTR(cr.FECHA_HORA,0,2),"
+		Query q = em.createNativeQuery(" SELECT cir.DESCRIPCION, c.ANOTACIONES, SUBSTR(cr.FECHA_HORA,1,2),"
 				+ "  SUBSTR(cr.FECHA_HORA,4,2), SUBSTR(cr.FECHA_HORA,6,2), us.NOMBRE, us.APELLIDO"
 				+ "  FROM ENCARGADO_CIRUGIA ec JOIN CIRUGIA_REALIZAR cr"
 				+ "  ON cr.CIRUGIA_ID = ec.CIRUGIA_ID AND cr.CITA_ID=ec.CITA_ID"
@@ -200,8 +200,8 @@ public class HistoriaClinicaEJB {
 	 */
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public List<Hospitalizacion> listaHospitalizaciones(String id){
-		Query q = em.createNativeQuery("SELECT SUBSTR(h.FECHA_ENTRADA,0,2), SUBSTR(h.FECHA_ENTRADA,4,2), "
-				+ "SUBSTR(h.FECHA_ENTRADA,6,2), SUBSTR(h.FECHA_SALIDA,0,2), SUBSTR(h.FECHA_SALIDA,4,2), "
+		Query q = em.createNativeQuery("SELECT SUBSTR(h.FECHA_ENTRADA,1,2), SUBSTR(h.FECHA_ENTRADA,4,2), "
+				+ "SUBSTR(h.FECHA_ENTRADA,6,2), SUBSTR(h.FECHA_SALIDA,1,2), SUBSTR(h.FECHA_SALIDA,4,2), "
 				+ "SUBSTR(h.FECHA_SALIDA,6,2), c.ANOTACIONES "
 				+ "FROM HOSPITALIZACION h JOIN CITA c  ON c.ID = h.CITA_ID WHERE c.PACIENTE_ID =?1");
 		q.setParameter(1, id);

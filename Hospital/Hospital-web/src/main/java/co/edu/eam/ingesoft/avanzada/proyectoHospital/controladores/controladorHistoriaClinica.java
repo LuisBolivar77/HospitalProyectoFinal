@@ -9,12 +9,14 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.omnifaces.cdi.ViewScoped;
+import org.omnifaces.util.Faces;
 
 import co.edu.eam.ingesoft.avanzada.negocio.beans.HistoriaClinicaEJB;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.EncargadoCirugia;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Hospitalizacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Medicamento;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.MedicamentoPaciente;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Paciente;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Patologia;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.PatologiaPaciente;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.ResultadoExamen;
@@ -33,19 +35,19 @@ public class controladorHistoriaClinica implements Serializable {
 	
 	private List<PatologiaPaciente> listaPatologias;
 	
-	@Inject
-	private ControladorPacienteCita sesion;
+	private Paciente sesion;
 	
 	@EJB
 	private HistoriaClinicaEJB historiaEJB;
 	
 	@PostConstruct
 	public void inicializar(){
-		listaHospitalizaciones = historiaEJB.listaHospitalizaciones(sesion.getPaciente().getIdentificacion());
-		listaCirugias = historiaEJB.listaCirugias(sesion.getPaciente().getIdentificacion());
-		listaExamenes = historiaEJB.listaExamenes(sesion.getPaciente().getIdentificacion());
-		listaMedicamentos = historiaEJB.listaMedicamentos(sesion.getPaciente().getIdentificacion());
-		listaPatologias = historiaEJB.listaPatologias(sesion.getPaciente().getIdentificacion());
+		sesion = Faces.getApplicationAttribute("paciente");
+		listaHospitalizaciones = historiaEJB.listaHospitalizaciones(sesion.getIdentificacion());
+		listaCirugias = historiaEJB.listaCirugias(sesion.getIdentificacion());
+		listaExamenes = historiaEJB.listaExamenes(sesion.getIdentificacion());
+		listaMedicamentos = historiaEJB.listaMedicamentos(sesion.getIdentificacion());
+		listaPatologias = historiaEJB.listaPatologias(sesion.getIdentificacion());
 	}
 
 	/**

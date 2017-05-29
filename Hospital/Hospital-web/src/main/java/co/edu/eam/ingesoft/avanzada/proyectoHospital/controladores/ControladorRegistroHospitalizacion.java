@@ -36,7 +36,6 @@ public class ControladorRegistroHospitalizacion implements Serializable {
 	
 	private Date horarioSeleccionado;
 	
-	
 	private String anotaciones;
 
 	@EJB
