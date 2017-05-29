@@ -33,7 +33,7 @@ public class ControladorPersonalMedico implements Serializable {
 	 */
 	private TipoDocumento tipoSeleccionado;
 	/**
-	 * N�mero de identificaci�n del usuario
+	 * N�mero de identificacion del usuario
 	 */
 	private String identificacion;
 
