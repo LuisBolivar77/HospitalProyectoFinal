@@ -49,8 +49,9 @@ public class ControladorMasOpcionesQuirofano implements Serializable {
 	 * buscaa un quirofano y lo muestra en la tabla
 	*/
 	public void buscarQuirofano(){
-		
+		quirofanos = null;
 		quirofanos = instalacionesEJB.quirofanoPorNumero(numeroQuirofano);
+		
 	} 
 	
 

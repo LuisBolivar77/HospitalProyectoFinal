@@ -157,21 +157,25 @@ public class ControladorPersonalMedico implements Serializable {
 	 * Busca un personal M�dico por su n�mero de identificaci�n
 	 */
 	public void buscar() {
-		PersonalMedico per = personalEJB.buscar(identificacion);
-		if (per != null) {
-			personalEditar = per;
-			nombre = per.getNombre();
-			apellido = per.getApellido();
-			direccion = per.getDireccion();
-			email = per.getEmail();
-			// tipoEspecializacionSel = per.getEspecializacion().getId();
-			tipoPersonalSel = per.getTipoPersonal().getId();
-			telefono = per.getTelefono();
-			celular = per.getCelular();
-			username = per.getUsuario();
-			password = per.getPassword();
+		if (identificacion == "") {
+			Messages.addFlashGlobalInfo("Ingrese un numero de identificacion");
 		} else {
-			Messages.addFlashGlobalError("Este usuario no se encuentra registrado");
+			PersonalMedico per = personalEJB.buscar(identificacion);
+			if (per != null) {
+				personalEditar = per;
+				nombre = per.getNombre();
+				apellido = per.getApellido();
+				direccion = per.getDireccion();
+				email = per.getEmail();
+				// tipoEspecializacionSel = per.getEspecializacion().getId();
+				tipoPersonalSel = per.getTipoPersonal().getId();
+				telefono = per.getTelefono();
+				celular = per.getCelular();
+				username = per.getUsuario();
+				password = per.getPassword();
+			} else {
+				Messages.addFlashGlobalError("Este usuario no se encuentra registrado");
+			}
 		}
 	}
 
