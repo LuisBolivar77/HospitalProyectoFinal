@@ -26,26 +26,11 @@ public class ControladorMasOpcionesQuirofano implements Serializable {
 
 	private int numQuirofano;
 
-	public int getNumQuirofano() {
-		return numQuirofano;
-	}
-
-	public void setNumQuirofano(int numQuirofano) {
-		this.numQuirofano = numQuirofano;
-	}
-
-	public InstalacionesEJB getInstalacionesEJB() {
-		return instalacionesEJB;
-	}
-
-	public void setInstalacionesEJB(InstalacionesEJB instalacionesEJB) {
-		this.instalacionesEJB = instalacionesEJB;
-	}
-
 	/**
 	 * lista de quirofanos para llenar la tabla
 	 */
 	private List<Quirofano> quirofanos;
+	
 
 	@EJB
 	private InstalacionesEJB instalacionesEJB;
@@ -53,7 +38,6 @@ public class ControladorMasOpcionesQuirofano implements Serializable {
 	@PostConstruct
 	public void postconstructor() {
 		listarQuirofanos();
-		//buscarQuirofano();
 	}
 
 	public void listarQuirofanos() {
@@ -63,11 +47,13 @@ public class ControladorMasOpcionesQuirofano implements Serializable {
 	
 	/**
 	 * buscaa un quirofano y lo muestra en la tabla
-	
+	*/
 	public void buscarQuirofano(){
+		
 		quirofanos = instalacionesEJB.quirofanoPorNumero(numeroQuirofano);
-	} */
+	} 
 	
+
 	/**
 	 * elimina un quirofano de la base de datos
 	 * 
@@ -105,4 +91,21 @@ public class ControladorMasOpcionesQuirofano implements Serializable {
 		this.quirofanos = quirofanos;
 	}
 
+	public int getNumQuirofano() {
+		return numQuirofano;
+	}
+
+	public void setNumQuirofano(int numQuirofano) {
+		this.numQuirofano = numQuirofano;
+	}
+
+	public InstalacionesEJB getInstalacionesEJB() {
+		return instalacionesEJB;
+	}
+
+	public void setInstalacionesEJB(InstalacionesEJB instalacionesEJB) {
+		this.instalacionesEJB = instalacionesEJB;
+	}
+	
+	
 }

@@ -7,7 +7,7 @@
 	<ui:define name="cuerpo">
 		<h:form prependId="false">
 
-			<h3>Ingrese los siguientes campos</h3>
+			<h1>Ingrese los siguientes campos</h1>
 
 			<h:panelGrid id="panelRegistro" columns="2">
 
@@ -16,9 +16,9 @@
 
 				<h:outputLabel id="lbltipo" value="#{msj['usuario.tipoId']}" />
 				<h:selectOneMenu id="cbTipoId"
-					value="#{controladorPersonal.tipoIdSeleccionado}">
+					value="#{controladorPersonal.tipoSeleccionado}">
 
-					<f:selectItems value="#{controladorPersonal.tiposId}"
+					<f:selectItems value="#{controladorPersonal.tipos}"
 						var="t" itemValue="#{t}"/>
 
 				</h:selectOneMenu>

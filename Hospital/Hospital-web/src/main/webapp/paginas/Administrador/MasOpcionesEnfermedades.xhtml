@@ -7,11 +7,51 @@
 	<ui:define name="cuerpo">
 	
 	
-	
-	 <h2>mas opciones pagina enfermedades</h2>
-	
-	
-	
+		<h1>BUSQUEDA Y GESTION ENFERMEDADES</h1>
+		<br></br>
+		<br></br>
+
+		<h:outputLabel for="tfbusqueda" id="lblbusqueda"
+			value="#{msj['instalacion.numero']}:" />
+		<h:inputText id="tfbusqueda"
+			value="#{controladorMasOpcionesPatol.numeroPatologia}" />
+
+		<p:commandButton
+			action="#{controladorMasOpcionesPatol.buscarPatologia()}"
+			process="@this" value="#{msj['usuario.buscar']}" update="paneltabla" />
+		<br></br>
+		<br></br>
+		<br></br>
+
+		<h:panelGrid id="paneltabla" columns="4">
+			<p:dataTable id="tablaQuir"
+				value="#{controladorMasOpcionesPatol.listaPatologias}" var="pat"
+				border="3">
+
+				<p:column headerText="#{msj['insumos.ide']}">
+					<h:outputLabel value="#{pat.id}"></h:outputLabel>
+				</p:column>
+
+				<p:column headerText="#{msj['usuario.nombre']}">
+					<h:outputLabel value="#{pat.nombre}"></h:outputLabel>
+				</p:column>
+
+				<p:column headerText="#{msj['cita.anotaciones']}">
+					<h:outputLabel value="#{pat.anotacion}"></h:outputLabel>
+				</p:column>
+
+				<p:column headerText="#{msj['instalaciones.acciones']}">
+					<p:commandButton
+						action="#{controladorMasOpcionesPatol.eliminarPatologia(pat)}"
+						process="@this" value="#{msj['instalaciones.eliminar']}"
+						update="paneltabla" />
+					<p:commandButton
+						action="#{controladorMasOpcionesPatol.editarPatologia(pat.id)}"
+						process="@this" value="#{msj['instalaciones.editar']}"
+						update="paneltabla" />
+				</p:column>
+			</p:dataTable>
+		</h:panelGrid>
 	
 	</ui:define>
 	</ui:composition>

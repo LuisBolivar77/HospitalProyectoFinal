@@ -9,17 +9,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "MEDICAMENTO")
+@NamedQueries({ @NamedQuery(name = "listarMedicamentos", query = "SELECT m FROM Medicamento m") })
 public class Medicamento implements Serializable {
+
+	public static int codigomedicamento;
+	/*
+	 * lista todos los medicamentos
+	 */
+	public static final String listarMedicamentos = "listarMedicamentos";
 
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_MED")
-	@SequenceGenerator(sequenceName="autoincremental", allocationSize=1,  name="SEQ_MED")
 	private int id;
 
 	@Column(name = "CANTIDAD", nullable = false)
@@ -32,10 +39,21 @@ public class Medicamento implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Medicamento(int id, int cantidad, String descripcion) {
+		super();
+		this.id = id;
+		this.cantidad = cantidad;
+		this.descripcion = descripcion;
+	}
+
 	public Medicamento(int cantidad, String descripcion) {
 		super();
 		this.cantidad = cantidad;
 		this.descripcion = descripcion;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getId() {
@@ -56,6 +74,15 @@ public class Medicamento implements Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+
+	public static int getCodigomedicamento() {
+		return codigomedicamento;
+	}
+
+	public static void setCodigomedicamento(int codigomedicamento) {
+		Medicamento.codigomedicamento = codigomedicamento;
 	}
 
 	@Override
@@ -88,9 +115,5 @@ public class Medicamento implements Serializable {
 			return false;
 		return true;
 	}
-
-
-	
-
 
 }

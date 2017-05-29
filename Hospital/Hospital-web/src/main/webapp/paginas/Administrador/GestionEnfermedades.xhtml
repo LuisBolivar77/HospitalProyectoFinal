@@ -3,15 +3,50 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" template="/template/index.xhtml">
-	
+
 	<ui:define name="cuerpo">
-	
-	
-	
-	 <h2>hola Gestion de enfermedades</h2>
-	
-	
-	
-	
+
+		<h:form prependId="false">
+
+			<h1>REGISTRO DE PATOLOGIAS</h1>
+
+			<h:panelGrid id="panelRegistro" columns="2">
+
+				<h:outputLabel id="lblNumero" value="#{msj['insumos.codigo']}" />
+				<h:inputText id="tfNumero"
+					value="#{controladorPatologias.numeroPatologia}" />
+
+				<h:outputLabel id="lbldesc" value="#{msj['usuario.nombre']}" />
+				<h:inputText id="tfdesc"
+					value="#{controladorPatologias.nombrePatologia}" />
+
+				<h:outputLabel for="lblAnotac" id="lblAnotacion" value="#{msj['cirugia.anotaciones']}" />
+				<h:inputTextarea id="lblAnotac"
+					value="#{controladorPatologias.anotacionPat}" />
+
+			</h:panelGrid>
+
+			<h:panelGrid id="panelBotones" columns="2">
+
+				<p:commandButton id="btnRegistrar"
+					value="#{msj['usuario.registrar']}" process="@this,panelRegistro"
+					update="panelRegistro"
+					action="#{controladorPatologias.registarPatologia()}" />
+
+				<p:commandButton id="btnbuscar" value="#{msj['usuario.buscar']}"
+					process="@this,panelRegistro" update="panelRegistro"
+					action="#{controladorPatologias.buscarPatologia()}" />
+
+				<p:commandButton id="btnEditar"
+					value="#{msj['instalaciones.editar']}"
+					process="@this,panelRegistro" update="panelRegistro"
+					action="#{controladorPatologias.editarPatologia()}" />
+
+				<p:commandButton id="btnCancelar" value="#{msj['usuario.cancelar']}"
+					process="@this,panelRegistro" update="panelRegistro"
+					action="#{controladorPatologias.cancelarRegistro()}" />
+
+			</h:panelGrid>
+		</h:form>
 	</ui:define>
-	</ui:composition>
+</ui:composition>

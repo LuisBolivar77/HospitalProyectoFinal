@@ -6,12 +6,52 @@
 	
 	<ui:define name="cuerpo">
 	
-	
-	
-	 <h2>mas opciones de pagina camas</h2>
-	
-	
-	
+	<h1>BUSQUEDA Y GESTION DE CAMAS</h1>
+		<br></br>
+		<br></br>
+
+		<h:outputLabel for="tfbusqueda" id="lblbusqueda"
+			value="#{msj['masOpcionesQuirofano']}:" />
+		<h:inputText id="tfbusqueda"
+			value="#{controladorMasOpcionesCama.numeroCama}" />
+
+		<p:commandButton
+			action="#{controladorMasOpcionesCama.buscarCama()}"
+			process="@this" value="#{msj['usuario.buscar']}"
+			update="paneltabla" />
+		<br></br>
+		<br></br>
+		<br></br>
+
+		<h:panelGrid id="paneltabla" columns="4">
+			<p:dataTable id="tablaQuir"
+				value="#{controladorMasOpcionesCama.listaCamas}" var="cam"
+				border="3">
+
+				<p:column headerText="#{msj['instalacion.numero']}">
+					<h:outputLabel value="#{cam.numero}"></h:outputLabel>
+				</p:column>
+
+				<p:column headerText="#{msj['instalacion.descripcion']}">
+					<h:outputLabel value="#{cam.descripcion}"></h:outputLabel>
+				</p:column>
+
+				<p:column headerText="#{msj['instalacion.estado']}">
+					<h:outputLabel value="#{cam.ocupada}"></h:outputLabel>
+				</p:column>
+
+				<p:column headerText="#{msj['instalaciones.acciones']}">
+					<p:commandButton
+						action="#{controladorMasOpcionesCama.eliminarCama(cam)}"
+						process="@this" value="#{msj['instalaciones.eliminar']}"
+						update="paneltabla" />
+					<p:commandButton
+						action="#{controladorMasOpcionesCama.editarCama(cam.numero)}"
+						process="@this" value="#{msj['instalaciones.editar']}"
+						update="paneltabla" />
+				</p:column>
+			</p:dataTable>
+		</h:panelGrid>
 	
 	</ui:define>
 	</ui:composition>

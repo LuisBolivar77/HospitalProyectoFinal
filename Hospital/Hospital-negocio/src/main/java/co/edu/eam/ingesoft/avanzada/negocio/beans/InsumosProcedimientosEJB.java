@@ -1,5 +1,6 @@
 package co.edu.eam.ingesoft.avanzada.negocio.beans;
 
+import java.sql.PreparedStatement;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -33,7 +34,59 @@ public class InsumosProcedimientosEJB {
 	 */
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void crearMedicamento(Medicamento m) {
-		em.persist(m);
+		Medicamento med = buscarMedicamento(m.getId());
+		if (med == null) {
+			em.persist(m);
+		} else {
+			throw new ExcepcionNegocio("Este insumo ya existe, si desea edite la cantidad de este insumo");
+		}
+	}
+
+	
+	/**
+	 * metodo que busca un medicamento en la base de datos
+	 * @param cod codigo por el que se va a buscar
+	 * @return el medicamento
+	 */
+	public Medicamento buscarMedicamento(int cod){
+		return em.find(Medicamento.class,cod);
+	}
+	/**
+	 * metodo que busca un medicamento en la base de datos
+	 * 
+	 * @param nombre
+	 *            el nombre del medicamento a buscar
+	 * @return
+	 
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public Medicamento buscarMedicamento(String nombre) {
+
+		Query q = em.createNativeQuery(
+				"SELECT m.ID, m.CANTIDAD, m.DESCRIPCION FROM MEDICAMENTO m WHERE lower(m.DESCRIPCION) = ?1",Medicamento.class);
+
+		q.setParameter(1, nombre);
+		Medicamento medicamento = new Medicamento();
+		Object[] us = (Object[]) q.getSingleResult();
+
+		medicamento.setId(Integer.parseInt(us[0].toString()));
+		medicamento.setCantidad(Integer.parseInt(us[1].toString()));
+		medicamento.setDescripcion(us[2].toString());
+
+		return medicamento;
+		
+		
+
+	}*/
+
+	/**
+	 * lista los medicamentos de la base de datos
+	 * 
+	 * @return la lista
+	 */
+	public List<Medicamento> listarMedicamentos() {
+		Query q = em.createNamedQuery(Medicamento.listarMedicamentos);
+		List<Medicamento> lista = q.getResultList();
+		return lista;
 	}
 
 	/**
@@ -55,7 +108,7 @@ public class InsumosProcedimientosEJB {
 	 */
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void eliminar(Medicamento med) {
-		em.remove(med);
+		em.remove(em.merge(med));
 	}
 
 	/**

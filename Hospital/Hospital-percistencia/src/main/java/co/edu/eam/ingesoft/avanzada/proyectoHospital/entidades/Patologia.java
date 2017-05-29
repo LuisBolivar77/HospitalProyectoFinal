@@ -7,38 +7,73 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "PATOLOGIA")
+@NamedQueries({ @NamedQuery(name = "listarPatologias", query = "SELECT p FROM Patologia p"),
+		@NamedQuery(name = "listarPatologiasPorNumero", query = "SELECT p FROM Patologia p WHERE p.id = ?1") })
 public class Patologia implements Serializable {
+
+	/**
+	 * busca una patologia por numero
+	 */
+	public static final String ListarPatologiasPorNumero = "listarPatologiasPorNumero";
+	/**
+	 * lista todas las patologias
+	 */
+	public static final String ListarPatologias = "listarPatologias";
+
+	/**
+	 * variable estatica que almacena el numero de una patologia
+	 */
+	public static int numeroPatologia;
 
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_PATOLOGIA")
-	@SequenceGenerator(sequenceName="autoincremental", allocationSize=1,  name="SEQ_PATOLOGIA")
 	private int id;
 
 	@Column(name = "NOMBRE", length = 40, nullable = false, unique = true)
 	private String nombre;
 
-	@Column(name = "ANOTACIONES", length = 200, nullable = true)
+	@Column(name = "ANOTACION", length = 200, nullable = true)
 	private String anotacion;
 
 	public Patologia() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param nombre
-	 * @param anotacion
-	 */
-	public Patologia(String nombre, String anotacion) {
+	
+
+	public Patologia(int id, String nombre, String anotacion) {
 		super();
+		this.id = id;
 		this.nombre = nombre;
 		this.anotacion = anotacion;
 	}
+
+
+
+	public static int getNumeroPatologia() {
+		return numeroPatologia;
+	}
+
+
+
+	public static void setNumeroPatologia(int numeroPatologia) {
+		Patologia.numeroPatologia = numeroPatologia;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 
 	/**
 	 * @return the id

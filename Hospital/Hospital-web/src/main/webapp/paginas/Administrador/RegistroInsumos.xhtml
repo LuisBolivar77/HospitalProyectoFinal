@@ -3,15 +3,51 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" template="/template/index.xhtml">
-	
+
 	<ui:define name="cuerpo">
-	
-	
-	
-	 <h2>hola Gestion de insumos</h2>
-	
-	
-	
-	
+
+
+		<h:form prependId="false">
+
+			<h1>Registro de Insumos Medicos</h1>
+
+
+			<h:panelGrid id="panelRegistro" columns="2">
+
+				<h:outputLabel for="codigo" id="lblcodigo"
+					value="#{msj['insumos.codigo']}:" />
+				<h:inputText id="codigo" value="#{ControladorInsumos.codigo}" />
+
+				<h:outputLabel for="lblcantid" id="lblcantidad"
+					value="#{msj['insumos.cantidad']}:" />
+				<h:inputText id="lblcantid" value="#{ControladorInsumos.cantidad}" />
+
+				<h:outputLabel for="lbldesc" id="lbldescrip"
+					value="#{msj['insumos.descripcion']}:" />
+				<h:inputText id="lbldesc" value="#{ControladorInsumos.descripcion}" />
+
+			</h:panelGrid>
+
+			<h:panelGrid id="panelBotones" columns="2">
+				<p:commandButton id="btnRegistrar"
+					value="#{msj['usuario.registrar']}" process="@this,panelRegistro"
+					update="panelRegistro"
+					action="#{ControladorInsumos.registrarInsumo()}" />
+
+				<p:commandButton id="btnBuscar" value="#{msj['usuario.buscar']}"
+					process="@this,panelRegistro" update="panelRegistro"
+					action="#{ControladorInsumos.buscarInsumo()}" />
+				<br></br>
+				<p:commandButton id="btnEditar" value="#{msj['usuario.editar']}"
+					process="@this,panelRegistro" update="panelRegistro"
+					action="#{ControladorInsumos.editarInsumo()}" />
+
+				<p:commandButton id="btnCancelar" value="#{msj['usuario.cancelar']}"
+					process="@this,panelRegistro" update="panelRegistro"
+					action="#{ControladorInsumos.cancelarRegistro()}" />
+				<br></br>
+			</h:panelGrid>
+		</h:form>
+
 	</ui:define>
-	</ui:composition>
+</ui:composition>

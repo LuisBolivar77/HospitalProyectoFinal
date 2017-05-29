@@ -37,10 +37,7 @@ public class InstalacionesEJB {
 		}
 	}
 
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public Cama buscarCama(int id) {
-		return em.find(Cama.class, id);
-	}
+	
 
 	/**
 	 * Busca un quirofano
@@ -87,7 +84,30 @@ public class InstalacionesEJB {
 		List<Cama> lista = q.getResultList();
 		return lista;
 	}
+	
+	/**
+	 * lista de las camas 
+	 * 
+	 * @return la lista
+	 */
+	public List<Cama> listaDeCamas() {
+		Query q = em.createNamedQuery(Cama.ListaDeCamas);
+		List<Cama> lista = q.getResultList();
+		return lista;
+	}
 
+	/**
+	 * lista de las camas por numero
+	 * 
+	 * @return la lista
+	 */
+	public List<Cama> listaDeCamasPorNumero(int num) {
+		Query q = em.createNamedQuery(Cama.listarCamaPorNumero);
+		q.setParameter(1, num);
+		List<Cama> lista = q.getResultList();
+		return lista;
+	}
+	
 	/**
 	 * lista de todos los quirofanos
 	 * @return la lista 
@@ -109,5 +129,55 @@ public class InstalacionesEJB {
 		q.setParameter(1, num);
 		List<Quirofano>lista = q.getResultList();
 		return lista;
+	}
+	
+	
+	/**
+	 * Registra una cama en la base de datos
+	 * 
+	 * @param c
+	 *            cama que se desea registrar
+	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void registrarCama(Cama c) {
+		Cama buscado = buscarCama(c.getNumero());
+		if (buscado == null) {
+			em.persist(c);
+		} else {
+			throw new ExcepcionNegocio("Esta cama ya se encuentra registradaS");
+		}
+	}
+	
+	/**
+	 * metodo que busca una cama
+	 * @param id codigo por el que se va a buscar
+	 * @return la cama
+	 */
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public Cama buscarCama(int id) {
+		return em.find(Cama.class, id);
+	}
+	
+	/**
+	 * Edita una cama
+	 * 
+	 * @param c
+	 *            cama que se desea editar
+	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void editarCama(Cama c) {
+		em.merge(c);
+	}
+
+	/**
+	 * Elimina una cama
+	 * 
+	 * @param c
+	 *            cama que se desea eliminar
+	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void eliminarCama(Cama c) {
+		em.remove(em.merge(c));
+	
 	}
 }

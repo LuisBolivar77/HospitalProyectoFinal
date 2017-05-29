@@ -30,7 +30,7 @@ public class Quirofano implements Serializable{
 	public static final String ListarQuirofanos = "listarQuirofanos";
 	
 	/**
-	 * bariable estatica que almacena el numero de un quirofano
+	 * variable estatica que almacena el numero de un quirofano
 	 */
 	public static int numeroQuirofano;
 	
