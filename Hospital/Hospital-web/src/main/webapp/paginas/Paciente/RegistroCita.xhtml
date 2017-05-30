@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/template/Paciente.xhtml">
+
+	<ui:define name="cuerpo">
+		<h:form prependId="false">
+			<h:panelGrid id="panelBotones2" columns="3">
+
+				<h:outputLabel id="lblfecha" value="Fecha" />
+				<h:inputText id="tffecha"
+					value="#{controladorCita.fecha}" />
+
+				<h:selectOneMenu id="cbTipoCita"
+					value="#{controladorCita.tipoCitaSelecc}">
+
+					<f:selectItem itemValue="Prioritaria" itemLabel="Prioritaria" />
+					<f:selectItem itemValue="General" itemLabel="General" />
+					<f:selectItem itemValue="Especialista" itemLabel="Especialista" />
+
+				</h:selectOneMenu>
+
+				<h:selectOneMenu id="cbTipoEspe"
+					value="#{controladorCita.tipoEspeSelecc}">
+
+					<f:selectItem itemValue="Cardiologia" itemLabel="Cardiologia" />
+					<f:selectItem itemValue="Ginecologia" itemLabel="Ginecologia" />
+					<f:selectItem itemValue="Neurologia" itemLabel="Neurologia" />
+
+				</h:selectOneMenu>
+				
+				<p:commandButton id="btnRegistrar" value="Registar Cita"
+					ajax="false"
+					action="#{controladorCita.registrar}" />
+
+
+			</h:panelGrid>
+			<h:panelGrid>
+				<h:outputLabel for="cbMedicos" id="lbMedicos"
+					value="#Medicos" />
+				<h:selectOneMenu id="cbmedicos"
+					value="#{controladorProductos.MedicoSelec}">
+
+					<f:selectItems value="#{controladorCita.medicos}"
+						var="cuentaAso" itemValue="#{cuentaAso.id}"
+						itemLabel="#{cuentaAso.nombreCuenta}" />
+
+				</h:selectOneMenu>
+
+
+
+
+
+
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
