@@ -112,6 +112,7 @@ public class ControladorPersonalMedico implements Serializable {
 	 */
 	private String email;
 
+	private String estatica;
 	/**
 	 * Personal que ha sido buscado
 	 */
@@ -146,6 +147,7 @@ public class ControladorPersonalMedico implements Serializable {
 		tiposPersonal = personalEJB.listarTipos();
 		listaHorarios = horarioEJB.horariosPersonal(sesion.getIdentificacion());
 		listaPersonal = personalEJB.listarPersonal();
+		//cargarDatosPersonalEditar();
 	}
 
 	public void eliminarHorario(int id) {
@@ -165,11 +167,36 @@ public class ControladorPersonalMedico implements Serializable {
 		}
 	}
 
+	/**
 	public String redireccionarEditar(PersonalMedico per) {
 		personalEditar = per;
+		PersonalMedico.setIdPersonal(per.getIdentificacion());
 		return "/paginas/seguro/RegistroPersonalMedico.xhtml?faces-redirect=true";
-	}
+	} */
 
+	/**
+	 * carga los datos previa mente
+	 * @return
+	 */
+	public String cargarDatosPersonalEditar(){
+		String ide = PersonalMedico.getIdPersonal();
+		if(ide == ""){
+			return "/paginas/seguro/RegistroPersonalMedico.xhtml?faces-redirect=true";
+		}else{
+			estatica = PersonalMedico.getIdPersonal();
+			PersonalMedico per = personalEJB.buscar(estatica);
+			nombre = per.getNombre();
+			apellido = per.getApellido();
+			direccion = per.getDireccion();
+			email = per.getEmail();
+			tipoPersonalSel = per.getTipoPersonal().getId();
+			telefono = per.getTelefono();
+			celular = per.getCelular();
+			username = per.getUsuario();
+			password = per.getPassword();
+		}
+		return null;
+	}
 	/**
 	 * Identifica si se ha seleccionado la opci�n de editar
 	 * 
@@ -295,6 +322,14 @@ public class ControladorPersonalMedico implements Serializable {
 	 */
 	public List<PersonalMedico> getListaNueva() {
 		return listaNueva;
+	}
+
+	public String getEstatica() {
+		return estatica;
+	}
+
+	public void setEstatica(String estatica) {
+		this.estatica = estatica;
 	}
 
 	/**

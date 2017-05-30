@@ -27,6 +27,16 @@ public class PersonalMedico extends Usuario implements Serializable {
 	 * Obtiene la lista del personal registrado
 	 */
 	public static final String LISTAR_PERSONAL = "PersonalMedico.listar";
+	
+	public static String idPersonal;
+
+	public static String getIdPersonal() {
+		return idPersonal;
+	}
+
+	public static void setIdPersonal(String idPersonal) {
+		PersonalMedico.idPersonal = idPersonal;
+	}
 
 	@ManyToOne
 	@JoinColumn(name = "TIPO_PERSONAL_ID")

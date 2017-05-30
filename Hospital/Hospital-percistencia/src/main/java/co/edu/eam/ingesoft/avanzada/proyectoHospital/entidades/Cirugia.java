@@ -36,11 +36,9 @@ public class Cirugia implements Serializable{
 	
 	@Id
 	@Column(name="ID")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_CIRUGIA")
-	@SequenceGenerator(sequenceName="autoincremental", allocationSize=1,  name="SEQ_CIRUGIA")
 	private int id;
 	
-	@Column(name="DECRIPCION", nullable=false, length=200)
+	@Column(name="DESCRIPCION", nullable=false, length=200)
 	private String descripcion;
 	
 	@ManyToOne
@@ -55,15 +53,30 @@ public class Cirugia implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cirugia(String descripcion, TipoCirugia tipoCirugia, Especializacion especializacion) {
+	
+
+	
+	
+	public Cirugia(int id, String descripcion, TipoCirugia tipoCirugia, Especializacion especializacion) {
 		super();
+		this.id = id;
 		this.descripcion = descripcion;
 		this.tipoCirugia = tipoCirugia;
 		this.especializacion = especializacion;
 	}
 
-	
-	
+
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+
+
 	public int getId() {
 		return id;
 	}

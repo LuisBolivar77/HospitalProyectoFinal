@@ -14,10 +14,14 @@ import javax.persistence.Query;
 import co.edu.eam.ingesoft.avanzada.negocio.exception.ExcepcionNegocio;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Cirugia;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Cita;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Especializacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Examen;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Hospitalizacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Medicamento;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoCirugia;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoExamen;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Usuario;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento;
 
 @LocalBean
 @Stateless
@@ -248,5 +252,16 @@ public class InsumosProcedimientosEJB {
 		Query q = em.createNamedQuery(TipoExamen.listarTiposExamen);
 		List<TipoExamen> lista = q.getResultList();
 		return lista;
+	}
+	
+	
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public TipoCirugia buscarTipoCirugia(int cod) {
+		return em.find(TipoCirugia.class, cod);
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public Especializacion buscarEspecializacion(int cod) {
+		return em.find(Especializacion.class, cod);
 	}
 }

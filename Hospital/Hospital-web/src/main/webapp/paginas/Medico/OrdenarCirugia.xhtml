@@ -8,27 +8,26 @@
 
 
 
-		<h2 >ORDENAR CIRUGIA</h2>
+		<h2>ORDENAR CIRUGIA</h2>
 		<br></br>
 		<br></br>
 		<br></br>
 
 		<h:form prependId="false">
 			<h:panelGrid id="paneldatos" columns="3">
+
+
+				<h:outputLabel for="tfid" id="lblid"
+					value="Id:" />
+				<h:inputText id="tfid"
+					value="#{controladorOrdenarCir.codigo}">
+				</h:inputText>
 				
-				<h:outputLabel for="cTEspecializacion" id="lblespecializacion"
-					value="Especializacion para cirugia:" />
-				<h:selectOneMenu id="cTEspecializacion"
-					value="#{controladorOrdenarCir.especializacion}">
-
-					<f:selectItems value="#{controladorOrdenarCir.especializacionSeleccionada}" var="t"
-						itemValue="#{t.id}" itemLabel=#{t.nombre}/>
-				</h:selectOneMenu>
-
-				<h:outputLabel for="tfduracion" id="lblduracion"
-					value="Duraciom:" />
-                <h:inputText id="tfduracion" value="#{controladorOrdenarCir.duracion}"/>  
-                
+				<h:outputLabel for="tfAnotaciones" id="lblanotaciones"
+					value="Descripcion:" />
+				<h:inputTextarea id="tfAnotaciones"
+					value="#{controladorOrdenarCir.anotaciones}">
+				</h:inputTextarea>
 
 				<h:outputLabel for="cTipoCirugia" id="lbltipoCirugia"
 					value="Tipo de Cirugia:" />
@@ -36,20 +35,28 @@
 					value="#{controladorOrdenarCir.tipoCirugiaSeleccionada}">
 
 					<f:selectItems value="#{controladorOrdenarCir.tipoCirugia}" var="t"
-						itemValue="#{t}" itemLabel=#{t}/>
+						itemValue="#{t.id}" itemLabel="#{t.descripcion}" />
 				</h:selectOneMenu>
 
-				<h:outputLabel for="tfAnotaciones" id="lblanotaciones"
-					value="anotaciones:" />
-				<h:inputTextarea id="tfAnotaciones"
-					value="#{controladorOrdenarCir.anotaciones}">
-				</h:inputTextarea>
+				<h:outputLabel for="tfduracion" id="lblduracion" value="Duracion:" />
+				<h:inputText id="tfduracion"
+					value="#{controladorOrdenarCir.duracion}" />
+
+				<h:outputLabel for="cTEspecializacion" id="lblespecializacion"
+					value="Especializacion para cirugia:" />
+				<h:selectOneMenu id="cTEspecializacion"
+					value="#{controladorOrdenarCir.especializacionSeleccionada}">
+
+					<f:selectItems value="#{controladorOrdenarCir.especializacion}"
+						var="esp" itemValue="#{esp.id}" itemLabel="#{esp.nombre}" />
+				</h:selectOneMenu>
 
 			</h:panelGrid>
 			<h:panelGrid id="panelbtns" columns="2">
 
-				<p:commandButton  id="btncrear" value="Ordenar"
-					process="@this,paneldatos" update="paneldatos"/>
+				<p:commandButton id="btncrear" value="Registrar"
+					process="@this,paneldatos" update="paneldatos"
+					action="#{controladorOrdenarCir.ordenarCirugia()}" />
 
 
 			</h:panelGrid>

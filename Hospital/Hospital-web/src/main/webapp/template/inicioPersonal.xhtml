@@ -38,15 +38,37 @@
 	<!-- TOP NAV WITH LOGO -->
 	<header>
 		<nav>
-			<div class="line">
-					<ul class="s-12 l-2">
-						<img src="#{request.contextPath}/img/LogoHospital.png" alt=""/>
+			<div class="top-nav">
+				<div class="logo hide-l">
+					<a href="../design/">DESIGN <br /> <strong>THEME</strong></a>
+				</div>
+				<p class="nav-text">Menu</p>
+				<div class="top-nav s-12 l-5">
+					<ul class="right top-ul chevron">
+						<li><a style="color: black">Gestion de Personal</a>
+							<ul>
+								<li><a style="color: black"
+									href="#{request.contextPath}/paginas/Medico/OrdenarCirugia.xhtml">Registro Cirugias</a></li>
+
+							</ul></li>
+						<h:form>
+							<li><h:commandLink style="color: black"
+									action="#{ControladorLogIn.cerrarSesion}" value="Cerrar Sesion" /></li>
+						</h:form>
 					</ul>
-					<h2 class="texto">Hospital el eden</h2>
-					<br></br>
-					<h2 class="texto2">Nuestra prioridad es su salud</h2>
-					<a href="#{request.contextPath}/paginas/publico/Login.xhtml"><BUTTON class="logInMedico">LOGIN</BUTTON></a>
-					<a href="#{request.contextPath}/paginas/Medico/HorarioPersonal.xhtml"><BUTTON class="gestionHorario">GESTIONAR HORARIO</BUTTON></a>
+				</div>
+			</div>
+			<div class="line">
+				<ul class="s-12 l-2">
+					<img src="#{request.contextPath}/img/LogoHospital.png" alt="" />
+				</ul>
+				<h2 class="texto">Hospital el eden</h2>
+				<br></br>
+				<h2 class="texto2">Nuestra prioridad es su salud</h2>
+				<a href="#{request.contextPath}/paginas/publico/Login.xhtml"><BUTTON
+						class="logInMedico">LOGIN</BUTTON></a> <a
+					href="#{request.contextPath}/paginas/Medico/HorarioPersonal.xhtml"><BUTTON
+						class="gestionHorario">GESTIONAR HORARIO</BUTTON></a>
 			</div>
 		</nav>
 	</header>
@@ -56,7 +78,7 @@
 			<div id="owl-demo" class="owl-carousel owl-theme">
 				<div class="item">
 					<img src="#{request.contextPath}/img/firstes.jpeg" alt="" />
-					
+
 				</div>
 			</div>
 		</div>
@@ -76,8 +98,8 @@
 						<p:messages id="facesMessage" autoUpdate="true" globalOnly="true"
 							closable="true">
 						</p:messages>
-						<ui:insert name="SolicutudPac"/>
-						<ui:insert name="cuerpo"/>
+						<ui:insert name="SolicutudPac" />
+						<ui:insert name="cuerpo" />
 					</div>
 				</div>
 			</div>

@@ -26,8 +26,6 @@ public class Especializacion implements Serializable {
 
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_ESP")
-	@SequenceGenerator(sequenceName="autoincremental", allocationSize=1,  name="SEQ_ESP")
 	private int id;
 
 	@Column(name = "NOMBRE", length = 30)
