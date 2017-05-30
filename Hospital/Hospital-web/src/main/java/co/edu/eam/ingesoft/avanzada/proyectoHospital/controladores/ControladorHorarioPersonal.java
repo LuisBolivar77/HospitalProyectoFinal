@@ -41,10 +41,6 @@ public class ControladorHorarioPersonal implements Serializable {
 	@EJB
 	private PersonalMedicoEJB personalEJB;
 	
-	public ControladorHorarioPersonal() {
-		// TODO Auto-generated constructor stub
-	}
-	
 	@PostConstruct
 	public void postConstructor(){
 		sesion = Faces.getApplicationAttribute("usuario");
