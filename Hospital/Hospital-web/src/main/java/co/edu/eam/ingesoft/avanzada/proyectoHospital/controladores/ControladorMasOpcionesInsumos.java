@@ -15,32 +15,32 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Medicamento;
 
 @ViewScoped
 @Named("controladorMasOpcionesInsumos")
-public class ControladorMasOpcionesInsumos implements Serializable{
-	
+public class ControladorMasOpcionesInsumos implements Serializable {
+
 	private String descripcion;
 
+	private List<Medicamento> listaNueva;
 	
-	private List<Medicamento>listaMedicamentos;
-	
+	private List<Medicamento> listaMedicamentos;
+
 	@EJB
 	InsumosProcedimientosEJB insumosEJB;
 
-
-
 	@PostConstruct
-	public void postConstruct(){
+	public void postConstruct() {
 		listarTabla();
 	}
 
-	public void listarTabla(){
+	public void listarTabla() {
 		listaMedicamentos = insumosEJB.listarMedicamentos();
 	}
-	
+
 	/**
 	 * elimina un medicamento
+	 * 
 	 * @param m
 	 */
-	public void eliminarMedicamento(Medicamento m){
+	public void eliminarMedicamento(Medicamento m) {
 		insumosEJB.eliminar(m);
 		listarTabla();
 		Messages.addGlobalInfo("Quirofano eliminado con exito");
@@ -48,27 +48,29 @@ public class ControladorMasOpcionesInsumos implements Serializable{
 
 	/**
 	 * obtiene el numero seleccionado y lo almacena en una variable estatica
+	 * 
 	 * @param numero
 	 */
 	public String editarMedicamento(int cod) {
 		Medicamento.setCodigomedicamento(cod);
 		return "/paginas/Administrador/RegistroInsumos.xhtml?faces-redirect=true";
 	}
-	
-	
-	
-	
-	public void buscarInsumos(){
-		
+
+	public void buscarInsumos() {
+
 	}
-	
-	
-	
+
+	public List<Medicamento> getListaNueva() {
+		return listaNueva;
+	}
+
+	public void setListaNueva(List<Medicamento> listaNueva) {
+		this.listaNueva = listaNueva;
+	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}
-
-
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
@@ -78,10 +80,8 @@ public class ControladorMasOpcionesInsumos implements Serializable{
 		return listaMedicamentos;
 	}
 
-
-
 	public void setListaMedicamentos(List<Medicamento> listaMedicamentos) {
 		this.listaMedicamentos = listaMedicamentos;
 	}
-	
+
 }

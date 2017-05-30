@@ -13,7 +13,6 @@
 
 				<h:outputLabel id="lblId" value="#{msj['usuario.identificacion']}" />
 				<h:inputText id="tfId" value="#{controladorPersonal.identificacion}" />
-				
 				<p:commandButton id="btnbuscar" value="#{msj['usuario.buscar']}"
 					process="@this,panelDatos" update="panelDatos"
 					action="#{controladorPersonal.buscar}" />

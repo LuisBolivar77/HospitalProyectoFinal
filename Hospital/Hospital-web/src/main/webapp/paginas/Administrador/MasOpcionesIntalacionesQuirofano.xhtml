@@ -9,48 +9,38 @@
 		<h1>BUSQUEDA Y GESTION DE QUIROFANOS</h1>
 		<br></br>
 		<br></br>
-
-		<h:outputLabel for="tfbusqueda" id="lblbusqueda"
-			value="#{msj['masOpcionesQuirofano']}:" />
-		<h:inputText id="tfbusqueda"
-			value="#{controladorMasOpcionesQuirof.numeroQuirofano}" />
-
-		<p:commandButton
-			action="#{controladorMasOpcionesQuirof.buscarQuirofano()}"
-			process="@this" value="#{msj['usuario.buscar']}"
-			update="paneltabla" />
-		<br></br>
-		<br></br>
 		<br></br>
 
 		<h:panelGrid id="paneltabla" columns="4">
-			<p:dataTable id="tablaQuir"
-				value="#{controladorMasOpcionesQuirof.quirofanos}" var="quir"
-				border="3">
+			<h:form>
+				<p:dataTable var="quir" id="tablaQuir" border="1"
+					emptyMessage="Ningun resultado" value="#{controladorMasOpcionesQuirof.quirofanos}"
+					filteredValue="#{controladorMasOpcionesQuirof.quirof}" >
+			
+					<p:column filterBy="#{quir.numero}" headerText="Id" footerText="codigos">
+					<h:outputText value="#{quir.numero}" />
+					</p:column>
 
-				<p:column headerText="#{msj['instalacion.numero']}">
-					<h:outputLabel value="#{quir.numero}"></h:outputLabel>
-				</p:column>
+					<p:column headerText="#{msj['instalacion.descripcion']}">
+						<h:outputLabel value="#{quir.descripcion}"></h:outputLabel>
+					</p:column>
 
-				<p:column headerText="#{msj['instalacion.descripcion']}">
-					<h:outputLabel value="#{quir.descripcion}"></h:outputLabel>
-				</p:column>
+					<p:column headerText="#{msj['instalacion.estado']}">
+						<h:outputLabel value="#{quir.ocupado}"></h:outputLabel>
+					</p:column>
 
-				<p:column headerText="#{msj['instalacion.estado']}">
-					<h:outputLabel value="#{quir.ocupado}"></h:outputLabel>
-				</p:column>
-
-				<p:column headerText="#{msj['instalaciones.acciones']}">
-					<p:commandButton
-						action="#{controladorMasOpcionesQuirof.eliminarQuirofano(quir)}"
-						process="@this" value="#{msj['instalaciones.eliminar']}"
-						update="paneltabla" />
-					<p:commandButton
-						action="#{controladorMasOpcionesQuirof.editarQuirofano(quir.numero)}"
-						process="@this" value="#{msj['instalaciones.editar']}"
-						update="paneltabla" />
-				</p:column>
-			</p:dataTable>
+					<p:column headerText="#{msj['instalaciones.acciones']}">
+						<p:commandButton
+							action="#{controladorMasOpcionesQuirof.eliminarQuirofano(quir)}"
+							process="@this" value="#{msj['instalaciones.eliminar']}"
+							update="paneltabla" />
+						<p:commandButton
+							action="#{controladorMasOpcionesQuirof.editarQuirofano(quir.numero)}"
+							process="@this" value="#{msj['instalaciones.editar']}"
+							update="paneltabla" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
 		</h:panelGrid>
 	</ui:define>
 </ui:composition>

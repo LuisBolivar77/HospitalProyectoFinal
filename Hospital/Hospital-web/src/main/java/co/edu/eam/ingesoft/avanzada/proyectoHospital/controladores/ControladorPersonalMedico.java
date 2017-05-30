@@ -278,6 +278,8 @@ public class ControladorPersonalMedico implements Serializable {
 		return DiaSemanaEnum.values();
 	}
 
+	
+	
 	/**
 	 * @return the listaPersonal
 	 */

@@ -31,6 +31,7 @@ public class ControladorMasOpcionesQuirofano implements Serializable {
 	 */
 	private List<Quirofano> quirofanos;
 	
+	private List<Quirofano>quirof;
 
 	@EJB
 	private InstalacionesEJB instalacionesEJB;
@@ -44,6 +45,8 @@ public class ControladorMasOpcionesQuirofano implements Serializable {
 		quirofanos = instalacionesEJB.listarQuirofanos();
 	}
 
+	
+	
 	
 	/**
 	 * buscaa un quirofano y lo muestra en la tabla
@@ -82,6 +85,14 @@ public class ControladorMasOpcionesQuirofano implements Serializable {
 
 	public void setNumeroQuirofano(int numeroQuirofano) {
 		this.numeroQuirofano = numeroQuirofano;
+	}
+
+	public List<Quirofano> getQuirof() {
+		return quirof;
+	}
+
+	public void setQuirof(List<Quirofano> quirof) {
+		this.quirof = quirof;
 	}
 
 	public List<Quirofano> getQuirofanos() {

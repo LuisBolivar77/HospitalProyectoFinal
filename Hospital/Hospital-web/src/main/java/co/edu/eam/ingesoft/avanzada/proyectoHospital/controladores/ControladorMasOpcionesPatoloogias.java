@@ -15,9 +15,8 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Patologia;
 
 @ViewScoped
 @Named("controladorMasOpcionesPatol")
-public class ControladorMasOpcionesPatoloogias implements Serializable{
+public class ControladorMasOpcionesPatoloogias implements Serializable {
 
-	
 	/**
 	 * numero de la patologia
 	 */
@@ -27,7 +26,8 @@ public class ControladorMasOpcionesPatoloogias implements Serializable{
 	 * lista de patologias para llenar la tabla
 	 */
 	private List<Patologia> listaPatologias;
-	
+
+	private List<Patologia> nuevaLista;
 
 	@EJB
 	private PatologiaEJB patologiaEJB;
@@ -41,14 +41,6 @@ public class ControladorMasOpcionesPatoloogias implements Serializable{
 		listaPatologias = patologiaEJB.listarPatologias();
 	}
 
-	
-	/**
-	 * busca una patologia y lo muestra en la tabla
-
-	public void buscarPatologia(){
-		listaPatologias = patologiaEJB.listarPatologiaPorNumero(numeroPatologia);
-	} 	*/
-	
 
 	/**
 	 * elimina una Patologia de la base de datos
@@ -64,11 +56,20 @@ public class ControladorMasOpcionesPatoloogias implements Serializable{
 
 	/**
 	 * obtiene el numero seleccionado y lo almacena en una variable estatica
+	 * 
 	 * @param numero
 	 */
 	public String editarPatologia(int numero) {
 		Patologia.setNumeroPatologia(numero);
 		return "/paginas/Administrador/GestionEnfermedades.xhtml?faces-redirect=true";
+	}
+
+	public List<Patologia> getNuevaLista() {
+		return nuevaLista;
+	}
+
+	public void setNuevaLista(List<Patologia> nuevaLista) {
+		this.nuevaLista = nuevaLista;
 	}
 
 	public int getNumeroPatologia() {
@@ -95,7 +96,4 @@ public class ControladorMasOpcionesPatoloogias implements Serializable{
 		this.patologiaEJB = patologiaEJB;
 	}
 
-	
-	
-	
 }

@@ -10,23 +10,14 @@
 		<h1>BUSQUEDA Y GESTION DE INSUMOS MEDICOS</h1>
 		<br></br>
 		<br></br>
-
-		<h:outputLabel for="tfbusqueda" id="lblbusqueda"
-			value="#{msj['insumos.descripcion']}:" />
-		<h:inputText id="tfbusqueda"
-			value="#{controladorMasOpcionesInsumos.descripcion}" />
-
-		<p:commandButton
-			action="#{controladorMasOpcionesInsumos.buscarInsumos()}"
-			process="@this" value="#{msj['usuario.buscar']}" update="paneltabla" />
-		<br></br>
-		<br></br>
 		<br></br>
 
 		<h:panelGrid id="paneltabla" columns="4">
+		<h:form>
 			<p:dataTable id="tablaQuir"
 				value="#{controladorMasOpcionesInsumos.listaMedicamentos}" var="med"
-				border="3">
+				border="3" emptyMessage="Ningun resultado"
+				filteredValue="#{controladorMasOpcionesInsumos.listaNueva}">
 
 				<p:column headerText="#{msj['insumos.ide']}">
 					<h:outputLabel value="#{med.id}"></h:outputLabel>
@@ -36,8 +27,11 @@
 					<h:outputLabel value="#{med.cantidad}"></h:outputLabel>
 				</p:column>
 
-				<p:column headerText="#{msj['insumos.descripcion']}">
-					<h:outputLabel value="#{med.descripcion}"></h:outputLabel>
+				<p:column filterBy="#{med.descripcion}"
+					headerText="#{msj['insumos.descripcion']}"
+					footerText="medicamentos">
+					<h:outputText value="#{med.descripcion}">
+						</h:outputText>
 				</p:column>
 
 				<p:column headerText="#{msj['instalaciones.acciones']}">
@@ -51,6 +45,7 @@
 						update="paneltabla" />
 				</p:column>
 			</p:dataTable>
+			</h:form>
 		</h:panelGrid>
 
 
