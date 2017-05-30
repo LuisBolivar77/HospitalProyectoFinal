@@ -13,7 +13,7 @@
 				style="text-align: center;">
 
 				<p:dataTable id="tablaHorarios"
-					value="#{ControladorHorarioPersonal.listaHorarios}" var="hora"
+					value="#{controladorPersonal.listaHorarios}" var="hora"
 					border="1">
 
 					<p:column headerText="#{msj['usuario.dia']}">
@@ -31,7 +31,7 @@
 					<p:column headerText="#{msj['usuario.eliminar']}">
 						<p:commandButton value="#{msj['usuario.eliminar']}"
 							process="@this,panelDatosTabla" update="panelDatosTabla"
-							action="#{ControladorHorarioPersonal.eliminarHorario(hora.id)}" />
+							action="#{controladorPersonal.eliminarHorario(hora.id)}" />
 					</p:column>
 
 				</p:dataTable>
@@ -46,9 +46,9 @@
 
 				<h:outputLabel id="lblDia" value="#{msj['usuario.diaHorario']}" />
 				<h:selectOneMenu id="cbTipoId"
-					value="#{ControladorHorarioPersonal.diaSeleccionado}">
+					value="#{controladorPersonal.diaSeleccionado}">
 
-					<f:selectItems value="#{ControladorHorarioPersonal.diasSemana}"
+					<f:selectItems value="#{controladorPersonal.diasSemana}"
 						var="t" itemValue="#{t}" />
 
 				</h:selectOneMenu>
@@ -60,11 +60,11 @@
 				<h:outputLabel id="lblHoraInicio"
 					value="#{msj['usuario.horaInicio']}" />
 				<h:inputText id="tfInicio"
-					value="#{ControladorHorarioPersonal.horaInicio}" />
+					value="#{controladorPersonal.horaInicio}" />
 
 				<h:outputLabel id="lblHoraFin" value="#{msj['usuario.horaFin']}" />
 				<h:inputText id="tfFin"
-					value="#{ControladorHorarioPersonal.horaFin}" />
+					value="#{controladorPersonal.horaFin}" />
 
 			</h:panelGrid>
 
@@ -72,7 +72,7 @@
 				<p:commandButton value="#{msj['usuario.agregarHorario']}"
 					process="@this,panelDatos4, panelDatosTabla"
 					update="panelDatos4, panelDatosTabla"
-					action="#{ControladorHorarioPersonal.agregarHorario}" />
+					action="#{controladorPersonal.agregarHorario}" />
 			</h:panelGrid>
 
 		</h:form>

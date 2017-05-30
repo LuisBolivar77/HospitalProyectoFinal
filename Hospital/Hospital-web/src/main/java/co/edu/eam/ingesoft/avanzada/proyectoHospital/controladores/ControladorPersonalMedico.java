@@ -38,6 +38,8 @@ public class ControladorPersonalMedico implements Serializable {
 	 */
 	private String identificacion;
 
+	private List<PersonalMedico> listaNueva;
+	
 	/**
 	 * Nombre del personal
 	 */
@@ -143,11 +145,12 @@ public class ControladorPersonalMedico implements Serializable {
 		especializaciones = especializacionEJB.listar();
 		tiposPersonal = personalEJB.listarTipos();
 		listaHorarios = horarioEJB.horariosPersonal(sesion.getIdentificacion());
-		// listaPersonal = personalEJB.listarPersonal();
+		listaPersonal = personalEJB.listarPersonal();
 	}
 
 	public void eliminarHorario(int id) {
 		horarioEJB.eliminarHorario(id);
+		postContructor();
 		Messages.addFlashGlobalInfo("El horario ha sido eliminado");
 	}
 
@@ -214,6 +217,7 @@ public class ControladorPersonalMedico implements Serializable {
 		if (identificacion == "") {
 			Messages.addFlashGlobalInfo("Ingrese un numero de identificacion");
 		} else {
+			System.out.println("Identificacion: " + identificacion);
 			PersonalMedico per = personalEJB.buscar(identificacion);
 			if (per != null) {
 				personalEditar = per;
@@ -284,6 +288,20 @@ public class ControladorPersonalMedico implements Serializable {
 		username = "";
 		celular = "";
 		email = "";
+	}
+
+	/**
+	 * @return the listaNueva
+	 */
+	public List<PersonalMedico> getListaNueva() {
+		return listaNueva;
+	}
+
+	/**
+	 * @param listaNueva the listaNueva to set
+	 */
+	public void setListaNueva(List<PersonalMedico> listaNueva) {
+		this.listaNueva = listaNueva;
 	}
 
 	public TipoDocumento[] getTipos() {

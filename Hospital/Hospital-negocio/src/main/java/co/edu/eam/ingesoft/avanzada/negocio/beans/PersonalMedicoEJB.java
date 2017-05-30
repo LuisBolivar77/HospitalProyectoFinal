@@ -91,7 +91,7 @@ public class PersonalMedicoEJB {
 	 */
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void eliminar(PersonalMedico per){
-		em.remove(per);
+		em.remove(em.merge(per));
 	}
 
 	/**
