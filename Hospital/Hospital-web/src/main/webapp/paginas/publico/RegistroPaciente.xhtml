@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/templates/Paciente.xhtml">
+
+	<ui:define name="cuerpoRegistroPA">
+		<h:form prependId="false">
+			<h:panelGrid id="panelDatos" columns="2">
+
+				<h:outputLabel id="lblNombre" value="Nombre" />
+				<h:inputText id="tfNombre" value="#{ControladorPaciente.nombre}" />
+
+				<h:outputLabel id="lblApellido" value="Apellido" />
+				<h:inputText id="tfApellido" value="#{ControladorPaciente.apellido}" />
+
+				<h:outputLabel id="lblTipoId"
+					value="Tipo Identificacion" />
+				<h:selectOneMenu id="cbTipoCed"
+					value="#{controladorPacient.tipoIdentiSelec}">
+
+					<f:selectItem itemValue="Cedula" itemLabel="Cedula" />
+					<f:selectItem itemValue="Pasaporte" itemLabel="Pasaporte" />
+					<f:selectItem itemValue="Tarjeta de Identidad"
+						itemLabel="Tarjeta de Identidad" />
+
+				</h:selectOneMenu>
+				
+				<h:outputLabel id="lblCed" value="Cedula" />
+				<h:inputText id="tfCed"
+					value="#{controladorPaciente.dentificacion}" />
+
+				<h:outputLabel id="lblUserName" value="Nombre de Usuario" />
+				<h:inputText id="tfUserName"
+					value="#{controladorPaciente.username}" />
+
+				<p:outputLabel for="tfpass" value="Contraseña" />
+				<h:inputSecret value="#{controladorPaciente.password}" id="tfpass" />
+
+			</h:panelGrid>
+
+			<h:panelGrid id="panelBotones" columns="2">
+
+				<p:commandButton id="btnRegistrar"
+					value="Registro" process="@this,panelDatos"
+					update="panelDatos" action="#{controladorPaciente.registarExamen}" />
+
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

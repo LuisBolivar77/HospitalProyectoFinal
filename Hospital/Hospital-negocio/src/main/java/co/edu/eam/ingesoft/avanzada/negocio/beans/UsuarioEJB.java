@@ -9,6 +9,9 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import co.edu.eam.ingesoft.avanzada.negocio.exception.ExcepcionNegocio;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Examen;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Usuario;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento;
 
@@ -18,6 +21,23 @@ public class UsuarioEJB {
 
 	@PersistenceContext
 	private EntityManager em;
+	
+	
+	/**
+	 * Registra una patologia en la base de datos
+	 * 
+	 * @param p
+	 *            Patologia que se desea registrar
+	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void registrarUsuario(Usuario p) {
+		Usuario usu = buscarUsuario(p.getIdentificacion());
+		if (usu == null) {
+			em.persist(p);
+		} else {
+			throw new ExcepcionNegocio("esta patologia ya se encuentra registrada");
+		}
+	}
 
 	/**
 	 * Busca un usuario por su nombre de usuario
