@@ -53,23 +53,29 @@
 
 				</h:selectOneMenu>
 
-				<h:outputLabel id="lblEspecializacion"
-					value="#{msj['usuario.especializacion']}" />
-				<h:selectOneMenu id="cbEspecializacion"
-					value="#{controladorPersonal.tipoEspecializacionSel}">
-
-					<f:selectItems value="#{controladorPersonal.especializaciones}"
-						var="esp" itemValue="#{esp.id}" itemLabel="#{esp.nombre}" />
-
-				</h:selectOneMenu>
-
-
 				<h:outputLabel id="lblUserName" value="#{msj['usuario.username']}" />
 				<h:inputText id="tfUserName" value="#{controladorPersonal.username}" />
 
 				<h:outputLabel id="lblPa" for="tfpass" value="#{msj['usuario.password']}" />
 				<h:inputSecret value="#{controladorPersonal.password}" id="tfpass" />
 
+				<h:outputLabel for="check" id="lblCombo" value="#{msj['usuario.checkbox']}" />
+				<h:form>
+					<h:selectBooleanCheckbox value="#{controladorPersonal.checkboxSeleccionado}" id="check" binding="#{checkbox}">
+						<f:ajax render="cbEspecializacion" />
+					</h:selectBooleanCheckbox>
+				</h:form>
+
+				<h:outputLabel id="lblEspecializacion"
+					value="#{msj['usuario.especializacion']}" />
+				<h:selectOneMenu id="cbEspecializacion"
+					disabled="#{not checkbox.value}"
+					value="#{controladorPersonal.tipoEspecializacionSel}">
+
+					<f:selectItems value="#{controladorPersonal.especializaciones}"
+						var="esp" itemValue="#{esp.id}" itemLabel="#{esp.nombre}" />
+
+				</h:selectOneMenu>
 			</h:panelGrid>
 
 			<h:panelGrid id="panelBotones" columns="2">
