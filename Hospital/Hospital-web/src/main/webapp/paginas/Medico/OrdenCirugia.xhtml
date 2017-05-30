@@ -1,0 +1,63 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/template/personal.xhtml">
+
+
+	<ui:define name="cuerpo">
+
+
+
+		<h2 class="registro">ORDEN DE CIRUGIAS</h2>
+		<br></br>
+		<br></br>
+		<br></br>
+		
+		<h:form prependId="false">
+			<h:panelGrid id="paneldatos" columns="2">
+
+				<h:outputLabel id="lblNom" value="Anotaciones" />
+				<h:inputTextarea id="tfNom"
+					value="#{controladorOrdenCirugia.anotaciones}" />
+
+			</h:panelGrid>
+			
+			<h:selectOneMenu id="cTEspecializacion"
+					value="#{controladorOrdenCirugia.quirofanos}">
+
+					<f:selectItems value="#{controladorOrdenCirugia.quirofanoSeleccionado}" var="t"
+						itemValue="#{t.numero}" itemLabel="#{t.descripcion}"/>
+				</h:selectOneMenu>
+			
+		</h:form>
+		
+		<h:panelGrid id="paneltabla" columns="4">
+		<h:form>
+			<p:dataTable id="tablaQuir"
+				value="#{controladorOrdenCirugia.listaCirugias}" var="med"
+				border="3" emptyMessage="Ningun resultado"
+				filteredValue="#{controladorOrdenCirugia.listaNueva}">
+
+				<p:column headerText="#{msj['insumos.ide']}">
+					<h:outputLabel value="#{med.id}"></h:outputLabel>
+				</p:column>
+
+				<p:column filterBy="#{med.descripcion}"
+					headerText="Nombre cirugia">
+					<h:outputText value="#{med.descripcion}">
+						</h:outputText>
+				</p:column>
+
+				<p:column headerText="#{msj['instalaciones.acciones']}">
+					<p:commandButton
+						action="#{controladorOrdenCirugia.ordenarCirugia(med)}"
+						process="@this" value="Ordenar"
+						update="paneltabla" />
+				</p:column>
+			</p:dataTable>
+			</h:form>
+		</h:panelGrid>
+
+	</ui:define>
+</ui:composition>

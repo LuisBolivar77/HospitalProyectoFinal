@@ -38,8 +38,8 @@
 				<h:outputLabel id="lbFechaSalida"
 					value="#{msj['usuario.nuevaFechaSalida']}" />
 				
-				<p:calendar id="button" value="#{calendarView.date2}"
-					showOn="button" />				
+				<p:inputMask id="date2"
+					value="#{controladorFuncionPersonal.nuevaFechaSalida}" mask="99/99/9999" />			
 
 			</h:panelGrid>
 			
@@ -55,19 +55,6 @@
 			</h:panelGrid>
 
 			<h3>Citas programadas</h3>
-
-			<h:panelGrid id="panelDatos3" columns="3">
-
-				<h:outputLabel id="lblSelecion"
-					value="#{msj['usuario.seleccioneFecha']}" />
-				<p:calendar id="fechaSelec" mode="inline"
-					value="#{controladorFuncionPersonal.fechaCita}" disabled="true" />
-
-				<p:commandButton id="btnverCitas" value="#{msj['usuario.verCitas']}"
-					process="@this,panelDatos3" update="panelDatos3"
-					action="#{controladorFucionPersonal.verCitas}" />
-
-			</h:panelGrid>
 
 			<h:panelGrid id="panelDatos4" columns="1">
 
@@ -92,11 +79,11 @@
 					</p:column>
 
 					<p:column headerText="#{msj['usuario.fecha']}">
-						<h:outputLabel value="#{cita.horario.fecha}" />
+						<h:outputLabel value="#{cita.fecha.fecha}" />
 					</p:column>
 
 					<p:column headerText="#{msj['usuario.hora']}">
-						<h:outputLabel value="#{cita.horario.hora}" />
+						<h:outputLabel value="#{cita.fecha.horario.hora}" />
 					</p:column>
 
 					<p:column headerText="#{msj['usuario.atender']}">

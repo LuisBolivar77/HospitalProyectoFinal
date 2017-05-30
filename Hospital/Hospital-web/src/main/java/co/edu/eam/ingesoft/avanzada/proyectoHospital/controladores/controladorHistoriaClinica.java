@@ -42,12 +42,12 @@ public class controladorHistoriaClinica implements Serializable {
 	
 	@PostConstruct
 	public void inicializar(){
-		sesion = Faces.getApplicationAttribute("paciente");
-		listaHospitalizaciones = historiaEJB.listaHospitalizaciones(sesion.getIdentificacion());
-		listaCirugias = historiaEJB.listaCirugias(sesion.getIdentificacion());
-		listaExamenes = historiaEJB.listaExamenes(sesion.getIdentificacion());
-		listaMedicamentos = historiaEJB.listaMedicamentos(sesion.getIdentificacion());
-		listaPatologias = historiaEJB.listaPatologias(sesion.getIdentificacion());
+		
+		listaHospitalizaciones = historiaEJB.listaHospitalizaciones(Paciente.getIdPaciente());
+		listaCirugias = historiaEJB.listaCirugias(Paciente.getIdPaciente());
+		listaExamenes = historiaEJB.listaExamenes(Paciente.getIdPaciente());
+		listaMedicamentos = historiaEJB.listaMedicamentos(Paciente.getIdPaciente());
+		listaPatologias = historiaEJB.listaPatologias(Paciente.getIdPaciente());
 	}
 
 	/**
