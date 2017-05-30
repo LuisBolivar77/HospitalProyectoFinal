@@ -35,6 +35,11 @@ public class UsuarioEJB {
 				+ "FROM USUARIO u WHERE u.USERNAME=?1");
 		q.setParameter(1, user);
 		
+		List<Object[]> lista = q.getResultList();
+		if (lista.size() == 0){
+			return null;
+		} 
+		
 		Object[] us = (Object[]) q.getSingleResult();
 		
 		Usuario u = new Usuario();

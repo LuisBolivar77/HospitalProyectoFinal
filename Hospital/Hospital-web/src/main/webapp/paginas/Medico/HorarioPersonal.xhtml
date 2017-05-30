@@ -1,0 +1,80 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/template/personal.xhtml">
+
+	<ui:define name="cuerpo">
+		<h:form prependId="false">
+			<h1>HORARIO ACTUAL</h1>
+			<br />
+
+			<h:panelGrid id="panelDatosTabla" columns="1"
+				style="text-align: center;">
+
+				<p:dataTable id="tablaHorarios"
+					value="#{ControladorHorarioPersonal.listaHorarios}" var="hora"
+					border="1">
+
+					<p:column headerText="#{msj['usuario.dia']}">
+						<h:outputLabel value="#{hora.diaSemana}" />
+					</p:column>
+
+					<p:column headerText="#{msj['usuario.horaInicio']}">
+						<h:outputLabel value="#{hora.horaInicioHorario}" />
+					</p:column>
+
+					<p:column headerText="#{msj['usuario.horaFin']}">
+						<h:outputLabel value="#{hora.horaFinHorario}" />
+					</p:column>
+
+					<p:column headerText="#{msj['usuario.eliminar']}">
+						<p:commandButton value="#{msj['usuario.eliminar']}"
+							process="@this,panelDatosTabla" update="panelDatosTabla"
+							action="#{ControladorHorarioPersonal.eliminarHorario(hora.id)}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:panelGrid>
+			<br />
+
+			<h1>AGREGAR HORARIO</h1>
+			<br />
+
+			<h:panelGrid id="panel2" columns="1" style="text-align: center;">
+
+				<h:outputLabel id="lblDia" value="#{msj['usuario.diaHorario']}" />
+				<h:selectOneMenu id="cbTipoId"
+					value="#{ControladorHorarioPersonal.diaSeleccionado}">
+
+					<f:selectItems value="#{ControladorHorarioPersonal.diasSemana}"
+						var="t" itemValue="#{t}" />
+
+				</h:selectOneMenu>
+
+			</h:panelGrid>
+
+			<h:panelGrid id="panelDatos3" columns="4">
+
+				<h:outputLabel id="lblHoraInicio"
+					value="#{msj['usuario.horaInicio']}" />
+				<h:inputText id="tfInicio"
+					value="#{ControladorHorarioPersonal.horaInicio}" />
+
+				<h:outputLabel id="lblHoraFin" value="#{msj['usuario.horaFin']}" />
+				<h:inputText id="tfFin"
+					value="#{ControladorHorarioPersonal.horaFin}" />
+
+			</h:panelGrid>
+
+			<h:panelGrid id="panelDatos4" columns="1">
+				<p:commandButton value="#{msj['usuario.agregarHorario']}"
+					process="@this,panelDatos4, panelDatosTabla"
+					update="panelDatos4, panelDatosTabla"
+					action="#{ControladorHorarioPersonal.agregarHorario}" />
+			</h:panelGrid>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

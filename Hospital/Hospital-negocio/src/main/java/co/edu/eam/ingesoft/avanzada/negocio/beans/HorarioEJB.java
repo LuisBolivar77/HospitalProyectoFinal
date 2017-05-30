@@ -85,7 +85,7 @@ public class HorarioEJB {
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	private void registrar(DiaSemanaEnum dia, int hInicio, int minInicio, int hFin, int minFin, PersonalMedico pm){
 		Horario h = new Horario();
-		h.setDiaSemana(dia.toString());
+		h.setDiaSemana("Martes");
 		
 		Date fechaInicio = new Date();
 		fechaInicio.setHours(hInicio);

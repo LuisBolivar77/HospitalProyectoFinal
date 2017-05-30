@@ -57,13 +57,6 @@ public class ControladorPersonalMedico implements Serializable {
 	 */
 	private String telefono;
 	
-	private String horaInicio;
-	
-	private String horaFin;
-	
-	private List<Horario> listaHorarios;
-	
-	private DiaSemanaEnum diaSeleccionado;
 
 	/**
 	 * Tipo de personal seleccionado por el usuario
@@ -123,8 +116,9 @@ public class ControladorPersonalMedico implements Serializable {
 	@EJB
 	private HorarioEJB horarioEJB;
 	
-	private Usuario sesion;
-	
+	public ControladorPersonalMedico() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * EJB de especializaci�n
@@ -134,30 +128,12 @@ public class ControladorPersonalMedico implements Serializable {
 
 	@PostConstruct
 	public void postContructor() {
-		sesion = Faces.getApplicationAttribute("usuario");
 		personalEditar = null;
 		especializaciones = especializacionEJB.listar();
 		tiposPersonal = personalEJB.listarTipos();
-		listaHorarios = horarioEJB.horariosPersonal(sesion.getIdentificacion());
 		// listaPersonal = personalEJB.listarPersonal();
 	}
 	
-	public void eliminarHorario(int id){
-		horarioEJB.eliminarHorario(id);
-		postContructor();
-		Messages.addFlashGlobalInfo("El horario ha sido eliminado");
-	}
-	
-	public void agregarHorario(){
-		try{
-		PersonalMedico per = personalEJB.buscar(sesion.getIdentificacion());
-		System.out.println("Dia: "+diaSeleccionado);
-		horarioEJB.agregarHorario(diaSeleccionado, horaInicio, horaFin, per);
-		Messages.addFlashGlobalInfo("Se ha registrado el horario exitosamente");
-		} catch (ExcepcionNegocio e){
-			Messages.addFlashGlobalError(e.getMessage());
-		}
-	}
 	
 	public String redireccionarEditar (PersonalMedico per){
 		personalEditar = per;
@@ -274,11 +250,6 @@ public class ControladorPersonalMedico implements Serializable {
 		return TipoDocumento.values();
 	}
 	
-	public DiaSemanaEnum[] getDiasSemana(){
-		return DiaSemanaEnum.values();
-	}
-
-	
 	
 	/**
 	 * @return the listaPersonal
@@ -302,62 +273,7 @@ public class ControladorPersonalMedico implements Serializable {
 		return identificacion;
 	}
 
-	/**
-	 * @return the diaSeleccionado
-	 */
-	public DiaSemanaEnum getDiaSeleccionado() {
-		return diaSeleccionado;
-	}
-
-	/**
-	 * @param diaSeleccionado the diaSeleccionado to set
-	 */
-	public void setDiaSeleccionado(DiaSemanaEnum diaSeleccionado) {
-		this.diaSeleccionado = diaSeleccionado;
-	}
-
-	/**
-	 * @return the horaInicio
-	 */
-	public String getHoraInicio() {
-		return horaInicio;
-	}
-
-	/**
-	 * @param horaInicio the horaInicio to set
-	 */
-	public void setHoraInicio(String horaInicio) {
-		this.horaInicio = horaInicio;
-	}
-
-	/**
-	 * @return the horaFin
-	 */
-	public String getHoraFin() {
-		return horaFin;
-	}
-
-	/**
-	 * @param horaFin the horaFin to set
-	 */
-	public void setHoraFin(String horaFin) {
-		this.horaFin = horaFin;
-	}
-
-	/**
-	 * @return the listaHorarios
-	 */
-	public List<Horario> getListaHorarios() {
-		return listaHorarios;
-	}
-
-	/**
-	 * @param listaHorarios the listaHorarios to set
-	 */
-	public void setListaHorarios(List<Horario> listaHorarios) {
-		this.listaHorarios = listaHorarios;
-	}
-
+	
 	/**
 	 * @param identificacion
 	 *            the identificacion to set
