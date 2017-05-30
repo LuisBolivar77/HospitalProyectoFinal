@@ -60,7 +60,7 @@ public class ControladorExamen implements Serializable {
 
 	@PostConstruct
 	public void inicializar() {
-		listarExamenes();
+		listarTipoExamenes();
 
 	}
 	
@@ -68,11 +68,10 @@ public class ControladorExamen implements Serializable {
 	/**
 	 * Registra una patologia en la base de datos
 	 */
-	public void registarPatologia() {
+	public void registarExamen() {
 		if (descripcion == null || tipoExamenSelecc == null) {
 			Messages.addFlashGlobalInfo("Ingrese todos los campos");
 		} else {
-			
 			
 			TipoExamen tipo = new TipoExamen();
 			tipo.setDescripcion(tipoExamenSelecc);
@@ -94,7 +93,7 @@ public class ControladorExamen implements Serializable {
 	/**
 	 * Busca una patologia
 	 */
-	public void buscarPatologia() {
+	public void buscarExamen() {
 		if (numeroExamen == 0) {
 			Messages.addFlashGlobalError("ingrese un idenentificador de la patologia");
 		} else {

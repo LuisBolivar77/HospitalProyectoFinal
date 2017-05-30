@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/template/InicioTemp.xhtml">
+
+	<ui:define name="cuerpoExamenes">
+		<h:form prependId="false">
+			<h:panelGrid id="panelDatos" columns="2">
+				
+				
+				<h:outputLabel id="lblDescripcion" value="Descripcion" />
+				<h:inputText id="tfDescripcion" value="#{controladorExamen.descripcion}"/>
+				
+				<h:outputLabel for="cbExamenesTipos" id="cbExamenesTipos"
+					value="Tipo de Examen" />
+				<h:selectOneMenu id="cbComboTipos"
+					value="#{controladorExamen.tipoExamenSelecc}">
+
+					<f:selectItems value="#{controladorExamen.examenes}"
+						var="exam" itemValue="#{exam.id}" itemLabel="#{exam.descripcion}" />
+
+				</h:selectOneMenu>
+							
+			</h:panelGrid>
+			
+			<h:panelGrid id="panelBotones2" columns="3">
+
+				<p:commandButton id="btnRegistrar" value="Registrar"
+					ajax="false"
+					action="#{controladorExamen.registarExamen}" />
+
+
+			</h:panelGrid>
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>
