@@ -51,8 +51,8 @@ public class ControladorLogIn implements Serializable {
 					Messages.addFlashGlobalInfo("BIENVENIDO " + user.getUsuario());
 					return "/paginas/Medico/PaginaInicioPersonal.xhtml?faces-redirect=true";
 				} if (usu instanceof Paciente){
-					Messages.addFlashGlobalError("Se�or usuario para acceder a nuestros servicios, "
-							+ "por favor utilice nuestra aplicaci�n m�vil ");
+					Messages.addFlashGlobalError("BIENVENIDO " + user.getUsuario());
+					return "/paginas/Paciente/RegistroCita.xhtml?faces-redirect=true";
 				}
 
 			} else {
