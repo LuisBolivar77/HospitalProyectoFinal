@@ -37,7 +37,6 @@ public class ControladorLogIn implements Serializable {
 	public String iniciarSesion() {
 
 		Usuario usu = usuEJB.buscarUsuario(usuario);
-		System.out.println("usuariooooooooo = " + usu);
 		if (usuario != null) {
 			if (usu != null && password.equals(usu.getPassword())) {
 				user = usu;
@@ -52,15 +51,15 @@ public class ControladorLogIn implements Serializable {
 					Messages.addFlashGlobalInfo("BIENVENIDO " + user.getUsuario());
 					return "/paginas/Medico/PaginaInicioPersonal.xhtml?faces-redirect=true";
 				} if (usu instanceof Paciente){
-					Messages.addFlashGlobalError("Señor usuario para acceder a nuestros servicios, "
-							+ "por favor utilice nuestra aplicación móvil ");
+					Messages.addFlashGlobalError("Seï¿½or usuario para acceder a nuestros servicios, "
+							+ "por favor utilice nuestra aplicaciï¿½n mï¿½vil ");
 				}
 
 			} else {
-				Messages.addFlashGlobalInfo("La contraseña ingresada es incorrecta");
+				Messages.addFlashGlobalInfo("La contraseï¿½a ingresada es incorrecta");
 			}
 		} else {
-			Messages.addFlashGlobalInfo("debe ingresar un nombre de usuario y una contraseña ");
+			Messages.addFlashGlobalInfo("debe ingresar un nombre de usuario y una contraseï¿½a ");
 
 		}
 		return null;
