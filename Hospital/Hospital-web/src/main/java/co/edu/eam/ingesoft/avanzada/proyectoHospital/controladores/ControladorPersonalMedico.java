@@ -17,6 +17,7 @@ import co.edu.eam.ingesoft.avanzada.negocio.beans.HorarioEJB;
 import co.edu.eam.ingesoft.avanzada.negocio.beans.PersonalMedicoEJB;
 import co.edu.eam.ingesoft.avanzada.negocio.exception.ExcepcionNegocio;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Especializacion;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.EspecializacionPersonal;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Horario;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.PersonalMedico;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoPersonal;
@@ -56,13 +57,13 @@ public class ControladorPersonalMedico implements Serializable {
 	 * Tel�fono del usuario
 	 */
 	private String telefono;
-	
+
 	private String horaInicio;
-	
+
 	private String horaFin;
-	
+
 	private List<Horario> listaHorarios;
-	
+
 	private DiaSemanaEnum diaSeleccionado;
 
 	/**
@@ -90,6 +91,10 @@ public class ControladorPersonalMedico implements Serializable {
 	 */
 	private String username;
 
+	/**
+	 * valor seleccionado del check box
+	 */
+	private boolean checkboxSeleccionado;
 	/**
 	 * Contrase�a de usuario
 	 */
@@ -122,9 +127,8 @@ public class ControladorPersonalMedico implements Serializable {
 	private PersonalMedicoEJB personalEJB;
 	@EJB
 	private HorarioEJB horarioEJB;
-	
+
 	private Usuario sesion;
-	
 
 	/**
 	 * EJB de especializaci�n
@@ -141,24 +145,24 @@ public class ControladorPersonalMedico implements Serializable {
 		listaHorarios = horarioEJB.horariosPersonal(sesion.getIdentificacion());
 		// listaPersonal = personalEJB.listarPersonal();
 	}
-	
-	public void eliminarHorario(int id){
+
+	public void eliminarHorario(int id) {
 		horarioEJB.eliminarHorario(id);
 		Messages.addFlashGlobalInfo("El horario ha sido eliminado");
 	}
-	
-	public void agregarHorario(){
-		try{
-		PersonalMedico per = personalEJB.buscar(sesion.getIdentificacion());
-		System.out.println("Dia: "+diaSeleccionado);
-		horarioEJB.agregarHorario(diaSeleccionado, horaInicio, horaFin, per);
-		Messages.addFlashGlobalInfo("Se ha registrado el horario exitosamente");
-		} catch (ExcepcionNegocio e){
+
+	public void agregarHorario() {
+		try {
+			PersonalMedico per = personalEJB.buscar(sesion.getIdentificacion());
+			System.out.println("Dia: " + diaSeleccionado);
+			horarioEJB.agregarHorario(diaSeleccionado, horaInicio, horaFin, per);
+			Messages.addFlashGlobalInfo("Se ha registrado el horario exitosamente");
+		} catch (ExcepcionNegocio e) {
 			Messages.addFlashGlobalError(e.getMessage());
 		}
 	}
-	
-	public String redireccionarEditar (PersonalMedico per){
+
+	public String redireccionarEditar(PersonalMedico per) {
 		personalEditar = per;
 		return "/paginas/seguro/RegistroPersonalMedico.xhtml?faces-redirect=true";
 	}
@@ -176,19 +180,32 @@ public class ControladorPersonalMedico implements Serializable {
 	 * Registra un personal m�dico en la base de datos
 	 */
 	public void registrar() {
-
-		Especializacion esp = especializacionEJB.buscar(tipoEspecializacionSel);
-		TipoPersonal tipo = personalEJB.buscarTipo(tipoPersonalSel);
-		PersonalMedico per = new PersonalMedico(identificacion, tipoSeleccionado, username, password, nombre, apellido,
-				email, telefono, celular, direccion, tipo, "medico");
 		try {
-			personalEJB.registrar(per);
-			Messages.addFlashGlobalInfo("Registro exitoso");
+			if (checkboxSeleccionado == false) {
+				TipoPersonal tipo = personalEJB.buscarTipo(tipoPersonalSel);
+				PersonalMedico per = new PersonalMedico(identificacion, tipoSeleccionado, username, password, nombre,
+						apellido, email, telefono, celular, direccion, tipo, "medico");
+
+				personalEJB.registrar(per);
+				Messages.addFlashGlobalInfo("Registro exitoso");
+			} else {
+				Especializacion esp = especializacionEJB.buscar(tipoEspecializacionSel);
+				TipoPersonal tipo = personalEJB.buscarTipo(tipoPersonalSel);
+				PersonalMedico per = new PersonalMedico(identificacion, tipoSeleccionado, username, password, nombre,
+						apellido, email, telefono, celular, direccion, tipo, "medico");
+
+				EspecializacionPersonal espe = new EspecializacionPersonal(esp, per);
+				personalEJB.registrar(per);
+				especializacionEJB.registrarEspecializacionPersonal(espe);
+				Messages.addFlashGlobalInfo("Registro exitoso");
+				
+			}
 		} catch (ExcepcionNegocio e) {
 			Messages.addFlashGlobalError(e.getMessage());
 		}
 
 	}
+
 
 	/**
 	 * Busca un personal M�dico por su n�mero de identificaci�n
@@ -272,13 +289,19 @@ public class ControladorPersonalMedico implements Serializable {
 	public TipoDocumento[] getTipos() {
 		return TipoDocumento.values();
 	}
-	
-	public DiaSemanaEnum[] getDiasSemana(){
+
+	public DiaSemanaEnum[] getDiasSemana() {
 		return DiaSemanaEnum.values();
 	}
 
-	
-	
+	public boolean isCheckboxSeleccionado() {
+		return checkboxSeleccionado;
+	}
+
+	public void setCheckboxSeleccionado(boolean checkboxSeleccionado) {
+		this.checkboxSeleccionado = checkboxSeleccionado;
+	}
+
 	/**
 	 * @return the listaPersonal
 	 */
@@ -309,7 +332,8 @@ public class ControladorPersonalMedico implements Serializable {
 	}
 
 	/**
-	 * @param diaSeleccionado the diaSeleccionado to set
+	 * @param diaSeleccionado
+	 *            the diaSeleccionado to set
 	 */
 	public void setDiaSeleccionado(DiaSemanaEnum diaSeleccionado) {
 		this.diaSeleccionado = diaSeleccionado;
@@ -323,7 +347,8 @@ public class ControladorPersonalMedico implements Serializable {
 	}
 
 	/**
-	 * @param horaInicio the horaInicio to set
+	 * @param horaInicio
+	 *            the horaInicio to set
 	 */
 	public void setHoraInicio(String horaInicio) {
 		this.horaInicio = horaInicio;
@@ -337,7 +362,8 @@ public class ControladorPersonalMedico implements Serializable {
 	}
 
 	/**
-	 * @param horaFin the horaFin to set
+	 * @param horaFin
+	 *            the horaFin to set
 	 */
 	public void setHoraFin(String horaFin) {
 		this.horaFin = horaFin;
@@ -351,7 +377,8 @@ public class ControladorPersonalMedico implements Serializable {
 	}
 
 	/**
-	 * @param listaHorarios the listaHorarios to set
+	 * @param listaHorarios
+	 *            the listaHorarios to set
 	 */
 	public void setListaHorarios(List<Horario> listaHorarios) {
 		this.listaHorarios = listaHorarios;

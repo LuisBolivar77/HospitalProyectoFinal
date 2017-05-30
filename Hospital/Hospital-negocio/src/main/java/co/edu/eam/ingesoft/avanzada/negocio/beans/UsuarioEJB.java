@@ -16,11 +16,9 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento
 @Stateless
 public class UsuarioEJB {
 
-	
 	@PersistenceContext
 	private EntityManager em;
-	
-	
+
 	/**
 	 * Busca un usuario por su nombre de usuario
 	 * 
@@ -34,21 +32,19 @@ public class UsuarioEJB {
 				+ " u.NOMBRE, u.APELLIDO, u.EMAIL, u.TELEFONO, u.CELULAR, u.DIRECCION, u.ROL "
 				+ "FROM USUARIO u WHERE u.USERNAME=?1");
 		q.setParameter(1, user);
-		
 		Object[] us = (Object[]) q.getSingleResult();
-		
 		Usuario u = new Usuario();
 		u.setIdentificacion(us[0].toString());
 		String tp = us[1].toString();
-		if (tp.equals(TipoDocumento.Cedula)){
+		if (tp.equals(TipoDocumento.Cedula)) {
 			u.setTipoDocumento(TipoDocumento.Cedula);
 		} else if (tp.equals(TipoDocumento.CedulaExtranjeria)) {
 			u.setTipoDocumento(TipoDocumento.CedulaExtranjeria);
-		} else if (tp.equals(TipoDocumento.Pasaporte)){
+		} else if (tp.equals(TipoDocumento.Pasaporte)) {
 			u.setTipoDocumento(TipoDocumento.Pasaporte);
-		} else if (tp.equals(TipoDocumento.TarjetaIdentidad)){
+		} else if (tp.equals(TipoDocumento.TarjetaIdentidad)) {
 			u.setTipoDocumento(TipoDocumento.TarjetaIdentidad);
-		}		
+		}
 		u.setUsuario(us[2].toString());
 		u.setPassword(us[3].toString());
 		u.setNombre(us[4].toString());
@@ -58,39 +54,40 @@ public class UsuarioEJB {
 		u.setCelular(us[8].toString());
 		u.setDireccion(us[9].toString());
 		u.setRol(us[10].toString());
-		
+
 		return u;
 	}
-	
+
 	/**
 	 * Busca un usuario por username y password
-	 * @param user Nombre de usuario
-	 * @param pass Contrase�a
+	 * 
+	 * @param user
+	 *            Nombre de usuario
+	 * @param pass
+	 *            Contrase�a
 	 * @return el usuario si lo encuentra, de lo contrario null
 	 */
 	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public Usuario buscar (String user, String pass){
+	public Usuario buscar(String user, String pass) {
 		Query q = em.createNamedQuery(Usuario.BUSCAR_USUARIO);
 		q.setParameter(1, user);
 		q.setParameter(2, pass);
 		List<Usuario> lista = q.getResultList();
 		return lista.get(0);
 	}
-	
-	
+
 	/**
 	 * 
 	 * @param user
 	 * @return
 	 */
 	public Usuario buscarUsuarioLogIn(String user) {
-		List<Usuario>us= em.createNamedQuery(Usuario.NOMBRE_USUARIO).setParameter(1, user).getResultList();
-		if(us.isEmpty()){
+		List<Usuario> us = em.createNamedQuery(Usuario.NOMBRE_USUARIO).setParameter(1, user).getResultList();
+		if (us.isEmpty()) {
 			return null;
-		}else{
+		} else {
 			return us.get(0);
 		}
 	}
-	
-	
+
 }

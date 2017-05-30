@@ -12,6 +12,27 @@ public class EspecializacionPersonalPK implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	public int getEspecializacion() {
+		return especializacion;
+	}
+
+
+	public void setEspecializacion(int especializacion) {
+		this.especializacion = especializacion;
+	}
+
+
+	public String getPersonal() {
+		return personal;
+	}
+
+
+	public void setPersonal(String personal) {
+		this.personal = personal;
+	}
+
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
