@@ -17,6 +17,5 @@ public class SeguridadREST {
 	
 	@EJB
 	private UsuarioEJB ejb;
-
 	
 }

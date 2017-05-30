@@ -144,6 +144,7 @@ public class ControladorPersonalMedico implements Serializable {
 	
 	public void eliminarHorario(int id){
 		horarioEJB.eliminarHorario(id);
+		postContructor();
 		Messages.addFlashGlobalInfo("El horario ha sido eliminado");
 	}
 	
