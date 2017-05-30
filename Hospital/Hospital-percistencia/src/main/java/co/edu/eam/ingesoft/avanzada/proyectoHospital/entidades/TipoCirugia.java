@@ -26,8 +26,6 @@ public class TipoCirugia implements Serializable{
 	
 	@Id
 	@Column(name="ID")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_TCIRUGIA")
-	@SequenceGenerator(sequenceName="autoincremental", allocationSize=1,  name="SEQ_TCIRUGIA")
 	private int id;
 	
 	@Column(name="DESCRIPCION", nullable=false, length=200)

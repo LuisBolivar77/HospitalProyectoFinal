@@ -38,7 +38,7 @@ public class controladorFuncionPersonal implements Serializable {
 	 * Fecha actual que tiene de salida el paciente
 	 */
 	private Date fechaSalida;
-
+	
 	/**
 	 * Nueva fecha de salida del paciente
 	 */
@@ -101,9 +101,10 @@ public class controladorFuncionPersonal implements Serializable {
 	 * @param c Cita que se desea atender
 	 */
 	public String atender (Cita c){
-		ControladorPacienteCita con = new ControladorPacienteCita();
-		con.buscarPaciente(c.getPaciente().getIdentificacion());
-		return "/paginas/Medico/PaginaInicioPersonal.xhtml?faces-redirect=true";
+		//ControladorPacienteCita con = new ControladorPacienteCita();
+		//con.buscarPaciente(c.getPaciente().getIdentificacion());
+		Paciente.setIdPaciente(c.getPaciente().getIdentificacion());
+		return "/paginas/Medico/HistoriaClinica.xhtml?faces-redirect=true";
 	}
 
 	/**
@@ -132,8 +133,7 @@ public class controladorFuncionPersonal implements Serializable {
 		if (hospitalizacionPaciente == null) {
 			Messages.addFlashGlobalError("Debe buscar un paciente previamente");
 		} else {
-			Date nuevaFecha = selecionado.getDate2();
-			hospitalizacionPaciente.setFechaSalida(nuevaFecha);
+			hospitalizacionPaciente.setFechaSalida(nuevaFechaSalida);
 			hospitalizacionEJB.editar(hospitalizacionPaciente);
 		}
 	}

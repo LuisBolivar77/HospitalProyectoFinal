@@ -9,9 +9,11 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 
 import org.omnifaces.cdi.ViewScoped;
+import org.omnifaces.util.Messages;
 
 import co.edu.eam.ingesoft.avanzada.negocio.beans.CirugiaEJB;
 import co.edu.eam.ingesoft.avanzada.negocio.beans.EspecializacionEJB;
+import co.edu.eam.ingesoft.avanzada.negocio.beans.InsumosProcedimientosEJB;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Cirugia;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Especializacion;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoCirugia;
@@ -20,13 +22,13 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.TipoCirugia;
 @Named("controladorOrdenarCir")
 public class ControladorOrdenarCirugia implements Serializable{
 
-	
+	private int codigo;
 	
 	private String anotaciones;
 	
 	private List<TipoCirugia>tipoCirugia;
 	
-	private String tipoCirugiaSeleccionada;
+	private int tipoCirugiaSeleccionada;
 	
 	private String duracion;
 	
@@ -40,10 +42,13 @@ public class ControladorOrdenarCirugia implements Serializable{
 	@EJB
 	private CirugiaEJB cirugiaEJB;
 	
+	@EJB
+	private InsumosProcedimientosEJB procedimientosEJB;
+	
 	@PostConstruct
 	public void inicializar(){
-		//listarComboTipoCirugia();
-		//listarComboEspecializacion();
+		listarComboTipoCirugia();
+		listarComboEspecializacion();
 	}
 
 	
@@ -59,14 +64,29 @@ public class ControladorOrdenarCirugia implements Serializable{
 	
 	
 	public void ordenarCirugia(){
-		
-		
+		TipoCirugia tipo = procedimientosEJB.buscarTipoCirugia(tipoCirugiaSeleccionada);
+		Especializacion esp = procedimientosEJB.buscarEspecializacion(especializacionSeleccionada);
+		Cirugia c = new Cirugia(codigo, anotaciones, tipo, esp);
+		procedimientosEJB.crearCirugia(c);
+		Messages.addFlashGlobalInfo("Se ha registrado exitosamente");
 	}
 	
 	
 	
 	
 	
+	public int getCodigo() {
+		return codigo;
+	}
+
+
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+
+
 	public String getDuracion() {
 		return duracion;
 	}
@@ -85,12 +105,12 @@ public class ControladorOrdenarCirugia implements Serializable{
 		this.especializacionSeleccionada = especializacionSeleccionada;
 	}
 
-	public String getTipoCirugiaSeleccionada() {
+	public int getTipoCirugiaSeleccionada() {
 		return tipoCirugiaSeleccionada;
 	}
 
 
-	public void setTipoCirugiaSeleccionada(String tipoCirugiaSeleccionada) {
+	public void setTipoCirugiaSeleccionada(int tipoCirugiaSeleccionada) {
 		this.tipoCirugiaSeleccionada = tipoCirugiaSeleccionada;
 	}
 

@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/template/personal.xhtml">
+
+
+	<ui:define name="cuerpo">
+
+
+
+		<h2 class="registro">REGISTRO DE PATOLOGIAS</h2>
+		<br></br>
+		<br></br>
+		<br></br>
+		
+		<h:form prependId="false">
+			<h:panelGrid id="paneldatos" columns="2">
+
+				<h:outputLabel id="lblNom" value="Anotaciones" />
+				<h:inputTextarea id="tfNom"
+					value="#{controladorOrdenPatologia.anotaciones}" />
+
+			</h:panelGrid>
+			
+		</h:form>
+		
+		<h:panelGrid id="paneltabla" columns="4">
+		<h:form>
+			<p:dataTable id="tablaQuir"
+				value="#{controladorOrdenPatologia.listaPatologias}" var="med"
+				border="3" emptyMessage="Ningun resultado"
+				filteredValue="#{controladorOrdenPatologia.listaNueva}">
+
+				<p:column headerText="#{msj['insumos.ide']}">
+					<h:outputLabel value="#{med.id}"></h:outputLabel>
+				</p:column>
+
+				<p:column filterBy="#{med.nombre}"
+					headerText="Nombre Patologia">
+					<h:outputText value="#{med.nombre}">
+						</h:outputText>
+				</p:column>
+
+				<p:column headerText="#{msj['instalaciones.acciones']}">
+					<p:commandButton
+						action="#{controladorOrdenPatologia.registrarPatologia}"
+						process="@this" value="Registrar"
+						update="paneltabla" />
+				</p:column>
+			</p:dataTable>
+			</h:form>
+		</h:panelGrid>
+
+	</ui:define>
+</ui:composition>

@@ -12,6 +12,7 @@ import javax.persistence.Query;
 
 import co.edu.eam.ingesoft.avanzada.negocio.exception.ExcepcionNegocio;
 import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.Patologia;
+import co.edu.eam.ingesoft.avanzada.proyectoHospital.entidades.PatologiaPaciente;
 
 @LocalBean
 @Stateless
@@ -37,6 +38,10 @@ public class PatologiaEJB {
 		}
 	}
 
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void registrarPatologiaPaciente (PatologiaPaciente pp){
+		em.persist(pp);
+	}
 	
 
 	/**

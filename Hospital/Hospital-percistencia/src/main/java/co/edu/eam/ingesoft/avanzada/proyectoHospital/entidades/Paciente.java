@@ -22,6 +22,8 @@ public class Paciente extends Usuario implements Serializable {
 	@Column(name = "USUARIO_ASIGNADO")
 	private boolean usuarioAsignado;
 	
+	public static String idPaciente;
+	
 	public Paciente() {
 		// TODO Auto-generated constructor stub
 	}
@@ -48,6 +50,20 @@ public class Paciente extends Usuario implements Serializable {
 
 	public void setUsuarioAsignado(boolean usuarioAsignado) {
 		this.usuarioAsignado = usuarioAsignado;
+	}
+
+	/**
+	 * @return the idPaciente
+	 */
+	public static String getIdPaciente() {
+		return idPaciente;
+	}
+
+	/**
+	 * @param idPaciente the idPaciente to set
+	 */
+	public static void setIdPaciente(String idPaciente) {
+		Paciente.idPaciente = idPaciente;
 	}
 
 	@Override
