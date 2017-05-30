@@ -23,19 +23,20 @@ import javax.persistence.TemporalType;
 @Table(name = "CITA")
 @NamedQueries({
 		@NamedQuery(name = Cita.LISTAR_CITAS_PERSONAL, query = "SELECT c FROM Cita c WHERE c.personalMedico.identificacion = ?1"),
-		@NamedQuery(name = Cita.LISTAR_CITAS_MEDICO_FECHA, query = "SELECT c FROM Cita c "
-				+ "WHERE c.personalMedico.identificacion = ?1 AND c.horario.horaInicio = ?2") })
+		@NamedQuery(name=Cita.LISTAR_CITAS_MEDICO_FECHA, query="SELECT c FROM Cita c WHERE"
+				+ " c.personalMedico.identificacion=?1  AND c.fecha.fecha=?2")
+})
 public class Cita implements Serializable {
 
 	/**
 	 * Lista las citas de un médico
 	 */
 	public static final String LISTAR_CITAS_PERSONAL = "PersonalMedico.listarCitas";
-
+	
 	/**
-	 * Lista las citas de un médico en una feha determinada
+	 * Lsita las citas que tiene un medico en una fecha
 	 */
-	public static final String LISTAR_CITAS_MEDICO_FECHA = "PersonalMedico.listarCitasFecha";
+	public static final String LISTAR_CITAS_MEDICO_FECHA = "PersonalMedico.listarCitasMedicoFecha";
 
 	@Id
 	@Column(name = "ID", nullable = false)
@@ -43,9 +44,9 @@ public class Cita implements Serializable {
 	@SequenceGenerator(sequenceName="autoincremental", allocationSize=1,  name="SEQ_CITA")
 	private int id;
 
-	@JoinColumn(name = "HORARIO_ID", unique = true)
+	@JoinColumn(name = "FECHA_CITA_ID", unique = true)
 	@OneToOne
-	private Horario horario;
+	private FechaCita fecha;
 
 	@Column(name = "ANOTACIONES", nullable = false, length = 200)
 	private String anotaciones;
@@ -70,10 +71,10 @@ public class Cita implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cita(Horario horario, String anotaciones, Cita cita, TipoCita tipoCita, PersonalMedico personalMedico,
+	public Cita(FechaCita fecha, String anotaciones, Cita cita, TipoCita tipoCita, PersonalMedico personalMedico,
 			Paciente paciente) {
 		super();
-		this.horario = horario;
+		this.fecha = fecha;
 		this.anotaciones = anotaciones;
 		this.cita = cita;
 		this.tipoCita = tipoCita;
@@ -86,12 +87,12 @@ public class Cita implements Serializable {
 		return id;
 	}
 
-	public Horario getHorario() {
-		return horario;
+	public FechaCita getFecha() {
+		return fecha;
 	}
 
-	public void setHorario(Horario horario) {
-		this.horario = horario;
+	public void setFecha(FechaCita horario) {
+		this.fecha = horario;
 	}
 
 	public String getAnotaciones() {

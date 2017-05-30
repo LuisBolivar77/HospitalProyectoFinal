@@ -29,7 +29,7 @@ import co.edu.eam.ingesoft.avanzada.proyectoHospital.enumeraciones.TipoDocumento
 @ViewScoped
 public class ControladorPersonalMedico implements Serializable {
 
-	/**
+	/*
 	 * tipo documento seleccionado
 	 */
 	private TipoDocumento tipoSeleccionado;
